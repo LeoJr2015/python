@@ -1,0 +1,7 @@
+Map,C:/Python27/Projects/Map to FTI Converter/Copy of Map.map
+Symbols,C:/Python27/Projects/Map to FTI Converter/symbols.txt
+Output,C:/Python27/Projects/Map to FTI Converter/SMC00-0000-0000.map.csv
+ActiveItem,_SSPC__Pull
+ActiveItem,_SSPC__SetCollar
+InactiveItem,_SSPC__Reset
+SplitLarge,True

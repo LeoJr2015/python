@@ -1,0 +1,1197 @@
+.TH   "" "" ""
+.SH NAME
+ \- 
+.\" Man page generated from reStructeredText.
+.
+.sp
+"""HTTP server base class.
+.sp
+Note: the class in this module doesn\(aqt implement any HTTP request; see
+SimpleHTTPServer for simple implementations of GET, HEAD and POST
+(including CGI scripts).  It does, however, optionally implement HTTP/1.1
+persistent connections, as of version 0.3.
+.sp
+Contents:
+.INDENT 0.0
+.IP \(bu 2
+.
+BaseHTTPRequestHandler: HTTP request handler base class
+.IP \(bu 2
+.
+test: test function
+.UNINDENT
+.sp
+XXX To do:
+.INDENT 0.0
+.IP \(bu 2
+.
+log requests even later (to capture byte count)
+.IP \(bu 2
+.
+log user\-agent header and other interesting goodies
+.IP \(bu 2
+.
+send error log to separate file
+.UNINDENT
+.IP "System Message: WARNING/2 (/usr/lib/python2.6/BaseHTTPServer.py:, line 18)"
+.
+Bullet list ends without a blank line; unexpected unindent.
+.sp
+"""
+.sp
+# See also:
+#
+# HTTP Working Group                                        T. Berners\-Lee
+# INTERNET\-DRAFT                                            R. T. Fielding
+# <draft\-ietf\-http\-v10\-spec\-00.txt>                     H. Frystyk Nielsen
+# Expires September 8, 1995                                  March 8, 1995
+#
+# URL: \fI\%http://www.ics.uci.edu/pub/ietf/http/draft\-ietf\-http\-v10\-spec\-00.txt\fP
+#
+# and
+#
+# Network Working Group                                      R. Fielding
+# Request for Comments: 2616                                       et al
+# Obsoletes: 2068                                              June 1999
+# Category: Standards Track
+#
+# URL: \fI\%http://www.faqs.org/rfcs/rfc2616.html\fP
+.sp
+# Log files
+# \-\-\-\-\-\-\-\-\-
+#
+# Here\(aqs a quote from the NCSA httpd docs about log file format.
+#
+# | The logfile format is as follows. Each line consists of:
+# |
+# | host rfc931 authuser [DD/Mon/YYYY:hh:mm:ss] "request" ddd bbbb
+# |
+# |        host: Either the DNS name or the IP number of the remote client
+# |        rfc931: Any information returned by identd for this person,
+# |                \- otherwise.
+# |        authuser: If user sent a userid for authentication, the user name,
+# |                  \- otherwise.
+# |        DD: Day
+# |        Mon: Month (calendar name)
+# |        YYYY: Year
+# |        hh: hour (24\-hour format, the machine\(aqs timezone)
+# |        mm: minutes
+# |        ss: seconds
+# |        request: The first line of the HTTP request as sent by the client.
+# |        ddd: the status code returned by the server, \- if not available.
+# |        bbbb: the total number of bytes sent,
+# |              \fInot including the HTTP/1.0 header\fP, \- if not available
+# |
+# | You can determine the name of the file accessed through request.
+#
+# (Actually, the latter is only true if you know the server configuration
+# at the time the request was made!)
+.sp
+__version__ = "0.3"
+.sp
+__all__ = ["HTTPServer", "BaseHTTPRequestHandler"]
+.sp
+import sys
+import time
+import socket # For gethostbyaddr()
+from warnings import filterwarnings, catch_warnings
+with catch_warnings():
+.IP "System Message: ERROR/3 (/usr/lib/python2.6/BaseHTTPServer.py:, line 78)"
+.
+Unexpected indentation.
+.INDENT 0.0
+.INDENT 3.5
+.INDENT 0.0
+.TP
+.B if sys.py3kwarning:
+.INDENT 7.0
+.TP
+.B filterwarnings("ignore", ".*mimetools has been removed",
+.
+DeprecationWarning)
+.UNINDENT
+.UNINDENT
+.IP "System Message: WARNING/2 (/usr/lib/python2.6/BaseHTTPServer.py:, line 81)"
+.
+Definition list ends without a blank line; unexpected unindent.
+.sp
+import mimetools
+.UNINDENT
+.UNINDENT
+.IP "System Message: WARNING/2 (/usr/lib/python2.6/BaseHTTPServer.py:, line 82)"
+.
+Block quote ends without a blank line; unexpected unindent.
+.sp
+import SocketServer
+.sp
+# Default error message template
+DEFAULT_ERROR_MESSAGE = """<head>
+<title>Error response</title>
+</head>
+<body>
+<h1>Error response</h1>
+<p>Error code %(code)d.
+<p>Message: %(message)s.
+<p>Error code explanation: %(code)s = %(explain)s.
+</body>
+"""
+.sp
+DEFAULT_ERROR_CONTENT_TYPE = "text/html"
+.INDENT 0.0
+.TP
+.B def _quote_html(html):
+.
+return html.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+.UNINDENT
+.sp
+class HTTPServer(SocketServer.TCPServer):
+.INDENT 0.0
+.INDENT 3.5
+.sp
+allow_reuse_address = 1    # Seems to make sense in testing environment
+.INDENT 0.0
+.TP
+.B def server_bind(self):
+.
+"""Override server_bind to store the server name."""
+SocketServer.TCPServer.server_bind(self)
+host, port = self.socket.getsockname()[:2]
+self.server_name = socket.getfqdn(host)
+self.server_port = port
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.sp
+class BaseHTTPRequestHandler(SocketServer.StreamRequestHandler):
+.INDENT 0.0
+.INDENT 3.5
+.sp
+"""HTTP request handler base class.
+.sp
+The following explanation of HTTP serves to guide you through the
+code as well as to expose any misunderstandings I may have about
+HTTP (so you don\(aqt need to read the code to figure out I\(aqm wrong
+:\-).
+.sp
+HTTP (HyperText Transfer Protocol) is an extensible protocol on
+top of a reliable stream transport (e.g. TCP/IP).  The protocol
+recognizes three parts to a request:
+.INDENT 0.0
+.IP 1. 3
+.
+One line identifying the request type and path
+.IP 2. 3
+.
+An optional set of RFC\-822\-style headers
+.IP 3. 3
+.
+An optional data part
+.UNINDENT
+.sp
+The headers and data are separated by a blank line.
+.sp
+The first line of the request has the form
+.sp
+<command> <path> <version>
+.sp
+where <command> is a (case\-sensitive) keyword such as GET or POST,
+<path> is a string containing path information for the request,
+and <version> should be the string "HTTP/1.0" or "HTTP/1.1".
+<path> is encoded using the URL encoding scheme (using %xx to signify
+the ASCII character with hex code xx).
+.sp
+The specification specifies that lines are separated by CRLF but
+for compatibility with the widest range of clients recommends
+servers also handle LF.  Similarly, whitespace in the request line
+is treated sensibly (allowing multiple spaces between components
+and allowing trailing whitespace).
+.sp
+Similarly, for output, lines ought to be separated by CRLF pairs
+but most clients grok LF characters just fine.
+.sp
+If the first line of the request has the form
+.sp
+<command> <path>
+.sp
+(i.e. <version> is left out) then this is assumed to be an HTTP
+0.9 request; this form has no optional headers and data part and
+the reply consists of just the data.
+.sp
+The reply form of the HTTP 1.x protocol again has three parts:
+.INDENT 0.0
+.IP 1. 3
+.
+One line giving the response code
+.IP 2. 3
+.
+An optional set of RFC\-822\-style headers
+.IP 3. 3
+.
+The data
+.UNINDENT
+.sp
+Again, the headers and data are separated by a blank line.
+.sp
+The response code line has the form
+.sp
+<version> <responsecode> <responsestring>
+.sp
+where <version> is the protocol version ("HTTP/1.0" or "HTTP/1.1"),
+<responsecode> is a 3\-digit response code indicating success or
+failure of the request, and <responsestring> is an optional
+human\-readable string explaining what the response code means.
+.sp
+This server parses the request and the headers, and then calls a
+function specific to the request type (<command>).  Specifically,
+a request SPAM will be handled by a method do_SPAM().  If no
+such method exists the server sends an error response to the
+client.  If it exists, it is called with no arguments:
+.sp
+do_SPAM()
+.sp
+Note that the request name is case sensitive (i.e. SPAM and spam
+are different requests).
+.sp
+The various request details are stored in instance variables:
+.INDENT 0.0
+.IP \(bu 2
+.
+client_address is the client IP address in the form (host,
+.UNINDENT
+.IP "System Message: WARNING/2 (/usr/lib/python2.6/BaseHTTPServer.py:, line 191)"
+.
+Bullet list ends without a blank line; unexpected unindent.
+.sp
+port);
+.INDENT 0.0
+.IP \(bu 2
+.
+command, path and version are the broken\-down request line;
+.IP \(bu 2
+.
+headers is an instance of mimetools.Message (or a derived
+.UNINDENT
+.IP "System Message: WARNING/2 (/usr/lib/python2.6/BaseHTTPServer.py:, line 196)"
+.
+Bullet list ends without a blank line; unexpected unindent.
+.sp
+class) containing the header information;
+.INDENT 0.0
+.IP \(bu 2
+.
+rfile is a file object open for reading positioned at the
+.UNINDENT
+.IP "System Message: WARNING/2 (/usr/lib/python2.6/BaseHTTPServer.py:, line 199)"
+.
+Bullet list ends without a blank line; unexpected unindent.
+.sp
+start of the optional input data part;
+.INDENT 0.0
+.IP \(bu 2
+.
+wfile is a file object open for writing.
+.UNINDENT
+.sp
+IT IS IMPORTANT TO ADHERE TO THE PROTOCOL FOR WRITING!
+.sp
+The first thing to be written must be the response line.  Then
+follow 0 or more header lines, then a blank line, and then the
+actual data (if any).  The meaning of the header lines depends on
+the command executed by the server; in most cases, when data is
+returned, there should be at least one header line of the form
+.sp
+Content\-type: <type>/<subtype>
+.sp
+where <type> and <subtype> should be registered MIME types,
+e.g. "text/html" or "text/plain".
+.sp
+"""
+.sp
+# The Python system version, truncated to its first component.
+sys_version = "Python/" + sys.version.split()[0]
+.sp
+# The server software version.  You may want to override this.
+# The format is multiple whitespace\-separated strings,
+# where each string is of the form name[/version].
+server_version = "BaseHTTP/" + __version__
+.sp
+# The default request version.  This only affects responses up until
+# the point where the request line is parsed, so it mainly decides what
+# the client gets back when sending a malformed request line.
+# Most web servers default to HTTP 0.9, i.e. don\(aqt send a status line.
+default_request_version = "HTTP/0.9"
+.INDENT 0.0
+.TP
+.B def parse_request(self):
+.
+"""Parse a request (internal).
+.sp
+The request should be stored in self.raw_requestline; the results
+are in self.command, self.path, self.request_version and
+self.headers.
+.sp
+Return True for success, False for failure; on failure, an
+error is sent back.
+.sp
+"""
+self.command = None  # set in case of error on the first line
+self.request_version = version = self.default_request_version
+self.close_connection = 1
+requestline = self.raw_requestline
+if requestline[\-2:] == \(aqrn\(aq:
+.IP "System Message: ERROR/3 (/usr/lib/python2.6/BaseHTTPServer.py:, line 248)"
+.
+Unexpected indentation.
+.INDENT 7.0
+.INDENT 3.5
+.sp
+requestline = requestline[:\-2]
+.UNINDENT
+.UNINDENT
+.IP "System Message: WARNING/2 (/usr/lib/python2.6/BaseHTTPServer.py:, line 249)"
+.
+Block quote ends without a blank line; unexpected unindent.
+.INDENT 7.0
+.TP
+.B elif requestline[\-1:] == \(aqn\(aq:
+.
+requestline = requestline[:\-1]
+.UNINDENT
+.IP "System Message: WARNING/2 (/usr/lib/python2.6/BaseHTTPServer.py:, line 251)"
+.
+Definition list ends without a blank line; unexpected unindent.
+.sp
+self.requestline = requestline
+words = requestline.split()
+if len(words) == 3:
+.IP "System Message: ERROR/3 (/usr/lib/python2.6/BaseHTTPServer.py:, line 254)"
+.
+Unexpected indentation.
+.INDENT 7.0
+.INDENT 3.5
+.sp
+[command, path, version] = words
+if version[:5] != \(aqHTTP/\(aq:
+.IP "System Message: ERROR/3 (/usr/lib/python2.6/BaseHTTPServer.py:, line 256)"
+.
+Unexpected indentation.
+.INDENT 0.0
+.INDENT 3.5
+.sp
+self.send_error(400, "Bad request version (%r)" % version)
+return False
+.UNINDENT
+.UNINDENT
+.IP "System Message: WARNING/2 (/usr/lib/python2.6/BaseHTTPServer.py:, line 258)"
+.
+Block quote ends without a blank line; unexpected unindent.
+.INDENT 0.0
+.TP
+.B try:
+.
+base_version_number = version.split(\(aq/\(aq, 1)[1]
+version_number = base_version_number.split(".")
+# RFC 2145 section 3.1 says there can be only one "." and
+#   \- major and minor numbers MUST be treated as
+#      separate integers;
+#   \- HTTP/2.4 is a lower version than HTTP/2.13, which in
+#      turn is lower than HTTP/12.3;
+#   \- Leading zeros MUST be ignored by recipients.
+if len(version_number) != 2:
+.IP "System Message: ERROR/3 (/usr/lib/python2.6/BaseHTTPServer.py:, line 268)"
+.
+Unexpected indentation.
+.INDENT 7.0
+.INDENT 3.5
+.sp
+raise ValueError
+.UNINDENT
+.UNINDENT
+.IP "System Message: WARNING/2 (/usr/lib/python2.6/BaseHTTPServer.py:, line 269)"
+.
+Block quote ends without a blank line; unexpected unindent.
+.sp
+version_number = int(version_number[0]), int(version_number[1])
+.TP
+.B except (ValueError, IndexError):
+.
+self.send_error(400, "Bad request version (%r)" % version)
+return False
+.TP
+.B if version_number >= (1, 1) and self.protocol_version >= "HTTP/1.1":
+.
+self.close_connection = 0
+.TP
+.B if version_number >= (2, 0):
+.INDENT 7.0
+.TP
+.B self.send_error(505,
+.
+"Invalid HTTP Version (%s)" % base_version_number)
+.UNINDENT
+.IP "System Message: WARNING/2 (/usr/lib/python2.6/BaseHTTPServer.py:, line 278)"
+.
+Definition list ends without a blank line; unexpected unindent.
+.sp
+return False
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.IP "System Message: WARNING/2 (/usr/lib/python2.6/BaseHTTPServer.py:, line 279)"
+.
+Block quote ends without a blank line; unexpected unindent.
+.INDENT 7.0
+.TP
+.B elif len(words) == 2:
+.
+[command, path] = words
+self.close_connection = 1
+if command != \(aqGET\(aq:
+.IP "System Message: ERROR/3 (/usr/lib/python2.6/BaseHTTPServer.py:, line 283)"
+.
+Unexpected indentation.
+.INDENT 7.0
+.INDENT 3.5
+.INDENT 0.0
+.TP
+.B self.send_error(400,
+.
+"Bad HTTP/0.9 request type (%r)" % command)
+.UNINDENT
+.IP "System Message: WARNING/2 (/usr/lib/python2.6/BaseHTTPServer.py:, line 285)"
+.
+Definition list ends without a blank line; unexpected unindent.
+.sp
+return False
+.UNINDENT
+.UNINDENT
+.TP
+.B elif not words:
+.
+return False
+.TP
+.B else:
+.
+self.send_error(400, "Bad request syntax (%r)" % requestline)
+return False
+.UNINDENT
+.IP "System Message: WARNING/2 (/usr/lib/python2.6/BaseHTTPServer.py:, line 291)"
+.
+Definition list ends without a blank line; unexpected unindent.
+.sp
+self.command, self.path, self.request_version = command, path, version
+.sp
+# Examine the headers and look for a Connection directive
+self.headers = self.MessageClass(self.rfile, 0)
+.sp
+conntype = self.headers.get(\(aqConnection\(aq, "")
+if conntype.lower() == \(aqclose\(aq:
+.IP "System Message: ERROR/3 (/usr/lib/python2.6/BaseHTTPServer.py:, line 298)"
+.
+Unexpected indentation.
+.INDENT 7.0
+.INDENT 3.5
+.sp
+self.close_connection = 1
+.UNINDENT
+.UNINDENT
+.IP "System Message: WARNING/2 (/usr/lib/python2.6/BaseHTTPServer.py:, line 299)"
+.
+Block quote ends without a blank line; unexpected unindent.
+.INDENT 7.0
+.TP
+.B elif (conntype.lower() == \(aqkeep\-alive\(aq and
+.INDENT 7.0
+.INDENT 3.5
+.sp
+self.protocol_version >= "HTTP/1.1"):
+.UNINDENT
+.UNINDENT
+.IP "System Message: WARNING/2 (/usr/lib/python2.6/BaseHTTPServer.py:, line 301)"
+.
+Block quote ends without a blank line; unexpected unindent.
+.sp
+self.close_connection = 0
+.UNINDENT
+.IP "System Message: WARNING/2 (/usr/lib/python2.6/BaseHTTPServer.py:, line 302)"
+.
+Definition list ends without a blank line; unexpected unindent.
+.sp
+return True
+.TP
+.B def handle_one_request(self):
+.
+"""Handle a single HTTP request.
+.sp
+You normally don\(aqt need to override this method; see the class
+__doc__ string for information on how to handle specific HTTP
+commands such as GET and POST.
+.sp
+"""
+self.raw_requestline = self.rfile.readline()
+if not self.raw_requestline:
+.IP "System Message: ERROR/3 (/usr/lib/python2.6/BaseHTTPServer.py:, line 314)"
+.
+Unexpected indentation.
+.INDENT 7.0
+.INDENT 3.5
+.sp
+self.close_connection = 1
+return
+.UNINDENT
+.UNINDENT
+.IP "System Message: WARNING/2 (/usr/lib/python2.6/BaseHTTPServer.py:, line 316)"
+.
+Block quote ends without a blank line; unexpected unindent.
+.INDENT 7.0
+.TP
+.B if not self.parse_request(): # An error code has been sent, just exit
+.
+return
+.UNINDENT
+.IP "System Message: WARNING/2 (/usr/lib/python2.6/BaseHTTPServer.py:, line 318)"
+.
+Definition list ends without a blank line; unexpected unindent.
+.sp
+mname = \(aq
+.nf
+do_
+.fi
+\(aq + self.command
+if not hasattr(self, mname):
+.IP "System Message: ERROR/3 (/usr/lib/python2.6/BaseHTTPServer.py:, line 320)"
+.
+Unexpected indentation.
+.INDENT 7.0
+.INDENT 3.5
+.sp
+self.send_error(501, "Unsupported method (%r)" % self.command)
+return
+.UNINDENT
+.UNINDENT
+.IP "System Message: WARNING/2 (/usr/lib/python2.6/BaseHTTPServer.py:, line 322)"
+.
+Block quote ends without a blank line; unexpected unindent.
+.sp
+method = getattr(self, mname)
+method()
+.TP
+.B def handle(self):
+.
+"""Handle multiple requests if necessary."""
+self.close_connection = 1
+.sp
+self.handle_one_request()
+while not self.close_connection:
+.IP "System Message: ERROR/3 (/usr/lib/python2.6/BaseHTTPServer.py:, line 331)"
+.
+Unexpected indentation.
+.INDENT 7.0
+.INDENT 3.5
+.sp
+self.handle_one_request()
+.UNINDENT
+.UNINDENT
+.TP
+.B def send_error(self, code, message=None):
+.
+"""Send and log an error reply.
+.sp
+Arguments are the error code, and a detailed message.
+The detailed message defaults to the short entry matching the
+response code.
+.sp
+This sends an error response (so it must be called before any
+output has been generated), logs the error, and finally sends
+a piece of HTML explaining the error to the user.
+.sp
+"""
+.INDENT 7.0
+.TP
+.B try:
+.
+short, long = self.responses[code]
+.TP
+.B except KeyError:
+.
+short, long = \(aq???\(aq, \(aq???\(aq
+.TP
+.B if message is None:
+.
+message = short
+.UNINDENT
+.IP "System Message: WARNING/2 (/usr/lib/python2.6/BaseHTTPServer.py:, line 352)"
+.
+Definition list ends without a blank line; unexpected unindent.
+.sp
+explain = long
+self.log_error("code %d, message %s", code, message)
+# using _quote_html to prevent Cross Site Scripting attacks (see bug #1100201)
+content = (self.error_message_format %
+.IP "System Message: ERROR/3 (/usr/lib/python2.6/BaseHTTPServer.py:, line 356)"
+.
+Unexpected indentation.
+.INDENT 7.0
+.INDENT 3.5
+.sp
+{\(aqcode\(aq: code, \(aqmessage\(aq: _quote_html(message), \(aqexplain\(aq: explain})
+.UNINDENT
+.UNINDENT
+.IP "System Message: WARNING/2 (/usr/lib/python2.6/BaseHTTPServer.py:, line 357)"
+.
+Block quote ends without a blank line; unexpected unindent.
+.sp
+self.send_response(code, message)
+self.send_header("Content\-Type", self.error_content_type)
+self.send_header(\(aqConnection\(aq, \(aqclose\(aq)
+self.end_headers()
+if self.command != \(aqHEAD\(aq and code >= 200 and code not in (204, 304):
+.IP "System Message: ERROR/3 (/usr/lib/python2.6/BaseHTTPServer.py:, line 362)"
+.
+Unexpected indentation.
+.INDENT 7.0
+.INDENT 3.5
+.sp
+self.wfile.write(content)
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.sp
+error_message_format = DEFAULT_ERROR_MESSAGE
+error_content_type = DEFAULT_ERROR_CONTENT_TYPE
+.INDENT 0.0
+.TP
+.B def send_response(self, code, message=None):
+.
+"""Send the response header and log the response code.
+.sp
+Also send two standard headers with the server software
+version and the current date.
+.sp
+"""
+self.log_request(code)
+if message is None:
+.IP "System Message: ERROR/3 (/usr/lib/python2.6/BaseHTTPServer.py:, line 376)"
+.
+Unexpected indentation.
+.INDENT 7.0
+.INDENT 3.5
+.INDENT 0.0
+.TP
+.B if code in self.responses:
+.
+message = self.responses[code][0]
+.TP
+.B else:
+.
+message = \(aq\(aq
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.IP "System Message: WARNING/2 (/usr/lib/python2.6/BaseHTTPServer.py:, line 380)"
+.
+Block quote ends without a blank line; unexpected unindent.
+.INDENT 7.0
+.TP
+.B if self.request_version != \(aqHTTP/0.9\(aq:
+.INDENT 7.0
+.TP
+.B self.wfile.write("%s %d %srn" %
+.
+(self.protocol_version, code, message))
+.UNINDENT
+.IP "System Message: WARNING/2 (/usr/lib/python2.6/BaseHTTPServer.py:, line 383)"
+.
+Definition list ends without a blank line; unexpected unindent.
+.sp
+# print (self.protocol_version, code, message)
+.UNINDENT
+.IP "System Message: WARNING/2 (/usr/lib/python2.6/BaseHTTPServer.py:, line 384)"
+.
+Definition list ends without a blank line; unexpected unindent.
+.sp
+self.send_header(\(aqServer\(aq, self.version_string())
+self.send_header(\(aqDate\(aq, self.date_time_string())
+.TP
+.B def send_header(self, keyword, value):
+.
+"""Send a MIME header."""
+if self.request_version != \(aqHTTP/0.9\(aq:
+.IP "System Message: ERROR/3 (/usr/lib/python2.6/BaseHTTPServer.py:, line 390)"
+.
+Unexpected indentation.
+.INDENT 7.0
+.INDENT 3.5
+.sp
+self.wfile.write("%s: %srn" % (keyword, value))
+.UNINDENT
+.UNINDENT
+.INDENT 7.0
+.TP
+.B if keyword.lower() == \(aqconnection\(aq:
+.INDENT 7.0
+.TP
+.B if value.lower() == \(aqclose\(aq:
+.
+self.close_connection = 1
+.TP
+.B elif value.lower() == \(aqkeep\-alive\(aq:
+.
+self.close_connection = 0
+.UNINDENT
+.UNINDENT
+.TP
+.B def end_headers(self):
+.
+"""Send the blank line ending the MIME headers."""
+if self.request_version != \(aqHTTP/0.9\(aq:
+.IP "System Message: ERROR/3 (/usr/lib/python2.6/BaseHTTPServer.py:, line 401)"
+.
+Unexpected indentation.
+.INDENT 7.0
+.INDENT 3.5
+.sp
+self.wfile.write("rn")
+.UNINDENT
+.UNINDENT
+.TP
+.B def log_request(self, code=\(aq\-\(aq, size=\(aq\-\(aq):
+.
+"""Log an accepted request.
+.sp
+This is called by send_response().
+.sp
+"""
+.INDENT 7.0
+.TP
+.B self.log_message(\(aq"%s" %s %s\(aq,
+.
+self.requestline, str(code), str(size))
+.UNINDENT
+.TP
+.B def log_error(self, format, 
+.nf
+*
+.fi
+args):
+.IP "System Message: WARNING/2 (/usr/lib/python2.6/BaseHTTPServer.py:, line 425)"
+.
+Inline emphasis start\-string without end\-string.
+.sp
+"""Log an error.
+.sp
+This is called when a request cannot be fulfilled.  By
+default it passes the message on to log_message().
+.sp
+Arguments are the same as for log_message().
+.sp
+XXX This should go to the separate error log.
+.sp
+"""
+.sp
+self.log_message(format, 
+.nf
+*
+.fi
+args)
+.IP "System Message: WARNING/2 (/usr/lib/python2.6/BaseHTTPServer.py:, line 425)"
+.
+Inline emphasis start\-string without end\-string.
+.TP
+.B def log_message(self, format, 
+.nf
+*
+.fi
+args):
+.IP "System Message: WARNING/2 (/usr/lib/python2.6/BaseHTTPServer.py:, line 447)"
+.
+Inline emphasis start\-string without end\-string.
+.sp
+"""Log an arbitrary message.
+.sp
+This is used by all other logging functions.  Override
+it if you have specific logging wishes.
+.sp
+The first argument, FORMAT, is a format string for the
+message to be logged.  If the format string contains
+any % escapes requiring parameters, they should be
+specified as subsequent arguments (it\(aqs just like
+printf!).
+.sp
+The client host and current date/time are prefixed to
+every message.
+.sp
+"""
+.INDENT 7.0
+.TP
+.B sys.stderr.write("%s \- \- [%s] %sn" %
+.INDENT 7.0
+.TP
+.B (self.address_string(),
+.
+self.log_date_time_string(),
+format%args))
+.UNINDENT
+.UNINDENT
+.TP
+.B def version_string(self):
+.
+"""Return the server software version string."""
+return self.server_version + \(aq \(aq + self.sys_version
+.TP
+.B def date_time_string(self, timestamp=None):
+.
+"""Return the current date and time formatted for a message header."""
+if timestamp is None:
+.IP "System Message: ERROR/3 (/usr/lib/python2.6/BaseHTTPServer.py:, line 456)"
+.
+Unexpected indentation.
+.INDENT 7.0
+.INDENT 3.5
+.sp
+timestamp = time.time()
+.UNINDENT
+.UNINDENT
+.IP "System Message: WARNING/2 (/usr/lib/python2.6/BaseHTTPServer.py:, line 457)"
+.
+Block quote ends without a blank line; unexpected unindent.
+.sp
+year, month, day, hh, mm, ss, wd, y, z = time.gmtime(timestamp)
+s = "%s, %02d %3s %4d %02d:%02d:%02d GMT" % (
+.IP "System Message: ERROR/3 (/usr/lib/python2.6/BaseHTTPServer.py:, line 459)"
+.
+Unexpected indentation.
+.INDENT 7.0
+.INDENT 3.5
+.sp
+self.weekdayname[wd],
+day, self.monthname[month], year,
+hh, mm, ss)
+.UNINDENT
+.UNINDENT
+.IP "System Message: WARNING/2 (/usr/lib/python2.6/BaseHTTPServer.py:, line 462)"
+.
+Block quote ends without a blank line; unexpected unindent.
+.sp
+return s
+.TP
+.B def log_date_time_string(self):
+.
+"""Return the current time formatted for logging."""
+now = time.time()
+year, month, day, hh, mm, ss, x, y, z = time.localtime(now)
+s = "%02d/%3s/%04d %02d:%02d:%02d" % (
+.IP "System Message: ERROR/3 (/usr/lib/python2.6/BaseHTTPServer.py:, line 469)"
+.
+Unexpected indentation.
+.INDENT 7.0
+.INDENT 3.5
+.sp
+day, self.monthname[month], year, hh, mm, ss)
+.UNINDENT
+.UNINDENT
+.IP "System Message: WARNING/2 (/usr/lib/python2.6/BaseHTTPServer.py:, line 470)"
+.
+Block quote ends without a blank line; unexpected unindent.
+.sp
+return s
+.UNINDENT
+.sp
+weekdayname = [\(aqMon\(aq, \(aqTue\(aq, \(aqWed\(aq, \(aqThu\(aq, \(aqFri\(aq, \(aqSat\(aq, \(aqSun\(aq]
+.INDENT 0.0
+.TP
+.B monthname = [None,
+.
+\(aqJan\(aq, \(aqFeb\(aq, \(aqMar\(aq, \(aqApr\(aq, \(aqMay\(aq, \(aqJun\(aq,
+\(aqJul\(aq, \(aqAug\(aq, \(aqSep\(aq, \(aqOct\(aq, \(aqNov\(aq, \(aqDec\(aq]
+.TP
+.B def address_string(self):
+.
+"""Return the client address formatted for logging.
+.sp
+This version looks up the full hostname using gethostbyaddr(),
+and tries to find a name that contains at least one dot.
+.sp
+"""
+.sp
+host, port = self.client_address[:2]
+return socket.getfqdn(host)
+.UNINDENT
+.sp
+# Essentially static class variables
+.sp
+# The version of the HTTP protocol we support.
+# Set this to HTTP/1.1 to enable automatic keepalive
+protocol_version = "HTTP/1.0"
+.sp
+# The Message\-like class used to parse headers
+MessageClass = mimetools.Message
+.sp
+# Table mapping response codes to messages; entries have the
+# form {code: (shortmessage, longmessage)}.
+# See RFC 2616.
+responses = {
+.IP "System Message: ERROR/3 (/usr/lib/python2.6/BaseHTTPServer.py:, line 502)"
+.
+Unexpected indentation.
+.INDENT 0.0
+.INDENT 3.5
+.sp
+100: (\(aqContinue\(aq, \(aqRequest received, please continue\(aq),
+101: (\(aqSwitching Protocols\(aq,
+.IP "System Message: ERROR/3 (/usr/lib/python2.6/BaseHTTPServer.py:, line 504)"
+.
+Unexpected indentation.
+.INDENT 0.0
+.INDENT 3.5
+.sp
+\(aqSwitching to new protocol; obey Upgrade header\(aq),
+.UNINDENT
+.UNINDENT
+.sp
+200: (\(aqOK\(aq, \(aqRequest fulfilled, document follows\(aq),
+201: (\(aqCreated\(aq, \(aqDocument created, URL follows\(aq),
+202: (\(aqAccepted\(aq,
+.IP "System Message: ERROR/3 (/usr/lib/python2.6/BaseHTTPServer.py:, line 509)"
+.
+Unexpected indentation.
+.INDENT 0.0
+.INDENT 3.5
+.sp
+\(aqRequest accepted, processing continues off\-line\(aq),
+.UNINDENT
+.UNINDENT
+.IP "System Message: WARNING/2 (/usr/lib/python2.6/BaseHTTPServer.py:, line 510)"
+.
+Block quote ends without a blank line; unexpected unindent.
+.sp
+203: (\(aqNon\-Authoritative Information\(aq, \(aqRequest fulfilled from cache\(aq),
+204: (\(aqNo Content\(aq, \(aqRequest fulfilled, nothing follows\(aq),
+205: (\(aqReset Content\(aq, \(aqClear input form for further input.\(aq),
+206: (\(aqPartial Content\(aq, \(aqPartial content follows.\(aq),
+.INDENT 0.0
+.TP
+.B 300: (\(aqMultiple Choices\(aq,
+.
+\(aqObject has several resources \-\- see URI list\(aq),
+.UNINDENT
+.IP "System Message: WARNING/2 (/usr/lib/python2.6/BaseHTTPServer.py:, line 517)"
+.
+Definition list ends without a blank line; unexpected unindent.
+.sp
+301: (\(aqMoved Permanently\(aq, \(aqObject moved permanently \-\- see URI list\(aq),
+302: (\(aqFound\(aq, \(aqObject moved temporarily \-\- see URI list\(aq),
+303: (\(aqSee Other\(aq, \(aqObject moved \-\- see Method and URL list\(aq),
+304: (\(aqNot Modified\(aq,
+.IP "System Message: ERROR/3 (/usr/lib/python2.6/BaseHTTPServer.py:, line 521)"
+.
+Unexpected indentation.
+.INDENT 0.0
+.INDENT 3.5
+.sp
+\(aqDocument has not changed since given time\(aq),
+.UNINDENT
+.UNINDENT
+.IP "System Message: WARNING/2 (/usr/lib/python2.6/BaseHTTPServer.py:, line 522)"
+.
+Block quote ends without a blank line; unexpected unindent.
+.INDENT 0.0
+.TP
+.B 305: (\(aqUse Proxy\(aq,
+.
+\(aqYou must use proxy specified in Location to access this \(aq
+\(aqresource.\(aq),
+.TP
+.B 307: (\(aqTemporary Redirect\(aq,
+.
+\(aqObject moved temporarily \-\- see URI list\(aq),
+.TP
+.B 400: (\(aqBad Request\(aq,
+.
+\(aqBad request syntax or unsupported method\(aq),
+.TP
+.B 401: (\(aqUnauthorized\(aq,
+.
+\(aqNo permission \-\- see authorization schemes\(aq),
+.TP
+.B 402: (\(aqPayment Required\(aq,
+.
+\(aqNo payment \-\- see charging schemes\(aq),
+.TP
+.B 403: (\(aqForbidden\(aq,
+.
+\(aqRequest forbidden \-\- authorization will not help\(aq),
+.UNINDENT
+.IP "System Message: WARNING/2 (/usr/lib/python2.6/BaseHTTPServer.py:, line 536)"
+.
+Definition list ends without a blank line; unexpected unindent.
+.sp
+404: (\(aqNot Found\(aq, \(aqNothing matches the given URI\(aq),
+405: (\(aqMethod Not Allowed\(aq,
+.IP "System Message: ERROR/3 (/usr/lib/python2.6/BaseHTTPServer.py:, line 538)"
+.
+Unexpected indentation.
+.INDENT 0.0
+.INDENT 3.5
+.sp
+\(aqSpecified method is invalid for this resource.\(aq),
+.UNINDENT
+.UNINDENT
+.IP "System Message: WARNING/2 (/usr/lib/python2.6/BaseHTTPServer.py:, line 539)"
+.
+Block quote ends without a blank line; unexpected unindent.
+.sp
+406: (\(aqNot Acceptable\(aq, \(aqURI not available in preferred format.\(aq),
+407: (\(aqProxy Authentication Required\(aq, \(aqYou must authenticate with \(aq
+.IP "System Message: ERROR/3 (/usr/lib/python2.6/BaseHTTPServer.py:, line 541)"
+.
+Unexpected indentation.
+.INDENT 0.0
+.INDENT 3.5
+.sp
+\(aqthis proxy before proceeding.\(aq),
+.UNINDENT
+.UNINDENT
+.IP "System Message: WARNING/2 (/usr/lib/python2.6/BaseHTTPServer.py:, line 542)"
+.
+Block quote ends without a blank line; unexpected unindent.
+.sp
+408: (\(aqRequest Timeout\(aq, \(aqRequest timed out; try again later.\(aq),
+409: (\(aqConflict\(aq, \(aqRequest conflict.\(aq),
+410: (\(aqGone\(aq,
+.IP "System Message: ERROR/3 (/usr/lib/python2.6/BaseHTTPServer.py:, line 545)"
+.
+Unexpected indentation.
+.INDENT 0.0
+.INDENT 3.5
+.sp
+\(aqURI no longer exists and has been permanently removed.\(aq),
+.UNINDENT
+.UNINDENT
+.IP "System Message: WARNING/2 (/usr/lib/python2.6/BaseHTTPServer.py:, line 546)"
+.
+Block quote ends without a blank line; unexpected unindent.
+.sp
+411: (\(aqLength Required\(aq, \(aqClient must specify Content\-Length.\(aq),
+412: (\(aqPrecondition Failed\(aq, \(aqPrecondition in headers is false.\(aq),
+413: (\(aqRequest Entity Too Large\(aq, \(aqEntity is too large.\(aq),
+414: (\(aqRequest\-URI Too Long\(aq, \(aqURI is too long.\(aq),
+415: (\(aqUnsupported Media Type\(aq, \(aqEntity body in unsupported format.\(aq),
+416: (\(aqRequested Range Not Satisfiable\(aq,
+.IP "System Message: ERROR/3 (/usr/lib/python2.6/BaseHTTPServer.py:, line 552)"
+.
+Unexpected indentation.
+.INDENT 0.0
+.INDENT 3.5
+.sp
+\(aqCannot satisfy request range.\(aq),
+.UNINDENT
+.UNINDENT
+.IP "System Message: WARNING/2 (/usr/lib/python2.6/BaseHTTPServer.py:, line 553)"
+.
+Block quote ends without a blank line; unexpected unindent.
+.INDENT 0.0
+.TP
+.B 417: (\(aqExpectation Failed\(aq,
+.
+\(aqExpect condition could not be satisfied.\(aq),
+.UNINDENT
+.sp
+500: (\(aqInternal Server Error\(aq, \(aqServer got itself in trouble\(aq),
+501: (\(aqNot Implemented\(aq,
+.IP "System Message: ERROR/3 (/usr/lib/python2.6/BaseHTTPServer.py:, line 558)"
+.
+Unexpected indentation.
+.INDENT 0.0
+.INDENT 3.5
+.sp
+\(aqServer does not support this operation\(aq),
+.UNINDENT
+.UNINDENT
+.IP "System Message: WARNING/2 (/usr/lib/python2.6/BaseHTTPServer.py:, line 559)"
+.
+Block quote ends without a blank line; unexpected unindent.
+.sp
+502: (\(aqBad Gateway\(aq, \(aqInvalid responses from another server/proxy.\(aq),
+503: (\(aqService Unavailable\(aq,
+.IP "System Message: ERROR/3 (/usr/lib/python2.6/BaseHTTPServer.py:, line 561)"
+.
+Unexpected indentation.
+.INDENT 0.0
+.INDENT 3.5
+.sp
+\(aqThe server cannot process the request due to a high load\(aq),
+.UNINDENT
+.UNINDENT
+.IP "System Message: WARNING/2 (/usr/lib/python2.6/BaseHTTPServer.py:, line 562)"
+.
+Block quote ends without a blank line; unexpected unindent.
+.INDENT 0.0
+.TP
+.B 504: (\(aqGateway Timeout\(aq,
+.
+\(aqThe gateway server did not receive a timely response\(aq),
+.UNINDENT
+.IP "System Message: WARNING/2 (/usr/lib/python2.6/BaseHTTPServer.py:, line 564)"
+.
+Definition list ends without a blank line; unexpected unindent.
+.sp
+505: (\(aqHTTP Version Not Supported\(aq, \(aqCannot fulfill request.\(aq),
+}
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B def test(HandlerClass = BaseHTTPRequestHandler,
+.INDENT 7.0
+.INDENT 3.5
+.sp
+ServerClass = HTTPServer, protocol="HTTP/1.0"):
+.UNINDENT
+.UNINDENT
+.IP "System Message: WARNING/2 (/usr/lib/python2.6/BaseHTTPServer.py:, line 570)"
+.
+Block quote ends without a blank line; unexpected unindent.
+.sp
+"""Test the HTTP request handler class.
+.sp
+This runs an HTTP server on port 8000 (or the first command line
+argument).
+.sp
+"""
+.INDENT 7.0
+.TP
+.B if sys.argv[1:]:
+.
+port = int(sys.argv[1])
+.TP
+.B else:
+.
+port = 8000
+.UNINDENT
+.IP "System Message: WARNING/2 (/usr/lib/python2.6/BaseHTTPServer.py:, line 581)"
+.
+Definition list ends without a blank line; unexpected unindent.
+.sp
+server_address = (\(aq\(aq, port)
+.sp
+HandlerClass.protocol_version = protocol
+httpd = ServerClass(server_address, HandlerClass)
+.sp
+sa = httpd.socket.getsockname()
+print "Serving HTTP on", sa[0], "port", sa[1], "..."
+httpd.serve_forever()
+.TP
+.B if __name__ == \(aq__main__\(aq:
+.
+test()
+.UNINDENT
+.SH Docutils System Messages
+.IP "System Message: ERROR/3 (/usr/lib/python2.6/BaseHTTPServer.py:, line 318)"
+.
+Unknown target name: "do".
+.\" Generated by docutils manpage writer.
+.\" 
+.

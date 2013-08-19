@@ -1,0 +1,8 @@
+;FTI Report
+;Interfaces   Internal/External
+;Author       Author
+;Version      Version
+;Date         06 Aug 2012 09:03:18 
+
+_SSPC__Pull                             , 001028a000000000,    32, FFFFFFFF 
+_SSPC__SetCollar                        , 0010297400000000,    32, FFFFFFFF 

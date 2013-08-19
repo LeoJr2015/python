@@ -1,0 +1,18 @@
+Data Field Name          |Size |Format | Data
+Destination MAC Address  |6    |MAC    |             00:23:5b:00:02:01
+Source MAC Address       |6    |MAC    |             00:e0:4c:68:1a:7e
+Type                     |2    |Hex    |                        0x0800
+Version / Header Length  |1    |Hex    |                          0x45
+DSF                      |1    |Hex    |                          0x00
+Total Length             |2    |Int    |                           304
+Identification           |2    |Hex    |                        0xb8d1
+Flags / Fragment Offset  |2    |Bin    |                      10101010
+TTL                      |1    |Int    |                           128
+Protocol                 |1    |Bin    |                         10001
+Header Checksum          |2    |Hex    |                        0xdf8e
+Source IP Address        |4    |IP     |                  192.168.16.1
+Destination IP Address   |4    |IP     |                 192.168.16.11
+Source Port              |2    |Int    |                          2100
+Destination Port         |2    |Int    |                          2100
+Length                   |2    |Int    |                           284
+Checksum                 |2    |Hex    |                        0xbadb

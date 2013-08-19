@@ -1,0 +1,3884 @@
+Wind River DLD V5.2.1.0		Wed Jul 11 10:53:49 2012
+
+Command line:
+C:/WindRiver/diab/5.2.1.0/WIN32/bin/dld -o
+D:\TomWoolfrey\APMS\ESC-OFP\Build\SMC00-0000-0000.elf -tMCF548xFN
+D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk -m6 Objs\MPT.o Objs\SSPC.o
+Objs\LoadShed.o Objs\FTI.o Objs\ConfigMgr.o Objs\ESC_Scheduler.o
+Objs\PLAT_Discretes.o Objs\PLAT_GPT.o Objs\PLAT_INTC.o
+Objs\PLAT_Resources.o Objs\PLAT_PSC.o Objs\PLAT_SLT.o
+Objs\Plat_INTC__Vectors.o Objs\PLAT_A664_ES.o Objs\PLAT_PSU.o
+Objs\PLAT_Watchdog.o Objs\PLAT_SBC.o Objs\PLAT_NVM.o Objs\PLAT_Utils.o
+Objs\PLAT_VMS.o Objs\PLAT_ARINC429.o Objs\PLAT_RS485.o
+Objs\PLAT_Ethernet.o Objs\PLAT_ARINC664.o Objs\C_64BIT_UNSIGNED_ADD.o
+Objs\C_64BIT_UNSIGNED_SUBTRACT.o Objs\C_ARP.o Objs\C_Burst_Copy.o
+Objs\C_Burst_Copy_32.o Objs\C_Calculate_crc.o Objs\C_clock.o
+Objs\C_Default_Exception_Handler.o Objs\C_DMA_UTILS.o
+Objs\C_Error_Handler.o Objs\C_ETHERNET.o Objs\C_fatal_error.o
+Objs\C_FEC_BD.o Objs\C_FEC_DRV.o Objs\C_FIFO.o Objs\C_Global.o
+Objs\C_IP.o Objs\C_MCD_API.o Objs\C_MCD_TASKS.o Objs\C_MEM.o
+Objs\C_NET_BUFFERS.o Objs\C_NET_QUEUES.o Objs\C_NETWORK.o Objs\C_NVM.o
+Objs\C_PHY_DRV.o Objs\C_Set_IPL.o Objs\C_UDP.o
+Objs\C_uint16_to_real_string.o Objs\C_Wordswap_To_Little_Endian.o
+Objs\L_DMA_Initialise.o Objs\L_DSPI_Start.o Objs\L_NETWORK.o
+Objs\L_PCI_ADDR_SPACE_CONFIG.o Objs\L_PCI_WINDOWS_CONFIG.o
+Objs\L_RAM_Init.o Objs\L_Slice_timer_0_init.o Objs\L_AFDX_BIT.o
+Objs\L_AFDX_LOCKING.o Objs\L_AFDX_LOOPBACK.o Objs\L_AFDX_MDIO_WRITE.o
+Objs\L_AFDX_MIB_GET.o Objs\L_AFDX_RESET_PHY.o Objs\L_AFDX_RX.o
+Objs\L_AFDX_TX.o
+
+Output file name   : D:\TomWoolfrey\APMS\ESC-OFP\Build\SMC00-0000-0000.elf
+Output file format : ELF
+Target machine type: MC68K
+
+		Link Editor Memory Map
+
+
+output		input		virtual
+section		section		address		size	 file
+
+.vectors        		00100000	00000400
+		.vectors        00100000	00000400 Objs\Plat_INTC__Vectors.o
+			 INITSP 00100000	00000000
+		    OFP_VECTORS 00100000	00000000
+		   _OFP_VECTORS 00100000	00000000
+			 INITPC 00100004	00000000
+		      vector002 00100008	00000000
+		      vector003 0010000c	00000000
+		      vector004 00100010	00000000
+		      vector005 00100014	00000000
+		      vector006 00100018	00000000
+		      vector007 0010001c	00000000
+		      vector008 00100020	00000000
+		      vector009 00100024	00000000
+		      vector010 00100028	00000000
+		      vector011 0010002c	00000000
+		      vector012 00100030	00000000
+		      vector013 00100034	00000000
+		      vector014 00100038	00000000
+		      vector015 0010003c	00000000
+		      vector016 00100040	00000000
+		      vector017 00100044	00000000
+		      vector018 00100048	00000000
+		      vector019 0010004c	00000000
+		      vector020 00100050	00000000
+		      vector021 00100054	00000000
+		      vector022 00100058	00000000
+		      vector023 0010005c	00000000
+		      vector024 00100060	00000000
+		      vector025 00100064	00000000
+		      vector026 00100068	00000000
+		      vector027 0010006c	00000000
+		      vector028 00100070	00000000
+		      vector029 00100074	00000000
+		      vector030 00100078	00000000
+		      vector031 0010007c	00000000
+		      vector032 00100080	00000000
+		      vector033 00100084	00000000
+		      vector034 00100088	00000000
+		      vector035 0010008c	00000000
+		      vector036 00100090	00000000
+		      vector037 00100094	00000000
+		      vector038 00100098	00000000
+		      vector039 0010009c	00000000
+		      vector040 001000a0	00000000
+		      vector041 001000a4	00000000
+		      vector042 001000a8	00000000
+		      vector043 001000ac	00000000
+		      vector044 001000b0	00000000
+		      vector045 001000b4	00000000
+		      vector046 001000b8	00000000
+		      vector047 001000bc	00000000
+		      vector048 001000c0	00000000
+		      vector049 001000c4	00000000
+		      vector050 001000c8	00000000
+		      vector051 001000cc	00000000
+		      vector052 001000d0	00000000
+		      vector053 001000d4	00000000
+		      vector054 001000d8	00000000
+		      vector055 001000dc	00000000
+		      vector056 001000e0	00000000
+		      vector057 001000e4	00000000
+		      vector058 001000e8	00000000
+		      vector059 001000ec	00000000
+		      vector060 001000f0	00000000
+		      vector061 001000f4	00000000
+		      vector062 001000f8	00000000
+		      vector063 001000fc	00000000
+		      vector064 00100100	00000000
+		      vector065 00100104	00000000
+		      vector066 00100108	00000000
+		      vector067 0010010c	00000000
+		      vector068 00100110	00000000
+		      vector069 00100114	00000000
+		      vector070 00100118	00000000
+		      vector071 0010011c	00000000
+		      vector072 00100120	00000000
+		      vector073 00100124	00000000
+		      vector074 00100128	00000000
+		      vector075 0010012c	00000000
+		      vector076 00100130	00000000
+		      vector077 00100134	00000000
+		      vector078 00100138	00000000
+		      vector079 0010013c	00000000
+		      vector080 00100140	00000000
+		      vector081 00100144	00000000
+		      vector082 00100148	00000000
+		      vector083 0010014c	00000000
+		      vector084 00100150	00000000
+		      vector085 00100154	00000000
+		      vector086 00100158	00000000
+		      vector087 0010015c	00000000
+		      vector088 00100160	00000000
+		      vector089 00100164	00000000
+		      vector090 00100168	00000000
+		      vector091 0010016c	00000000
+		      vector092 00100170	00000000
+		      vector093 00100174	00000000
+		      vector094 00100178	00000000
+		      vector095 0010017c	00000000
+		      vector096 00100180	00000000
+		      vector097 00100184	00000000
+		      vector098 00100188	00000000
+		      vector099 0010018c	00000000
+		      vector100 00100190	00000000
+		      vector101 00100194	00000000
+		      vector102 00100198	00000000
+		      vector103 0010019c	00000000
+		      vector104 001001a0	00000000
+		      vector105 001001a4	00000000
+		      vector106 001001a8	00000000
+		      vector107 001001ac	00000000
+		      vector108 001001b0	00000000
+		      vector109 001001b4	00000000
+		      vector110 001001b8	00000000
+		      vector111 001001bc	00000000
+		      vector112 001001c0	00000000
+		      vector113 001001c4	00000000
+		      vector114 001001c8	00000000
+		      vector115 001001cc	00000000
+		      vector116 001001d0	00000000
+		      vector117 001001d4	00000000
+		      vector118 001001d8	00000000
+		      vector119 001001dc	00000000
+		      vector120 001001e0	00000000
+		      vector121 001001e4	00000000
+		      vector122 001001e8	00000000
+		      vector123 001001ec	00000000
+		      vector124 001001f0	00000000
+		      vector125 001001f4	00000000
+		      vector126 001001f8	00000000
+		      vector127 001001fc	00000000
+		      vector128 00100200	00000000
+		      vector129 00100204	00000000
+		      vector130 00100208	00000000
+		      vector131 0010020c	00000000
+		      vector132 00100210	00000000
+		      vector133 00100214	00000000
+		      vector134 00100218	00000000
+		      vector135 0010021c	00000000
+		      vector136 00100220	00000000
+		      vector137 00100224	00000000
+		      vector138 00100228	00000000
+		      vector139 0010022c	00000000
+		      vector140 00100230	00000000
+		      vector141 00100234	00000000
+		      vector142 00100238	00000000
+		      vector143 0010023c	00000000
+		      vector144 00100240	00000000
+		      vector145 00100244	00000000
+		      vector146 00100248	00000000
+		      vector147 0010024c	00000000
+		      vector148 00100250	00000000
+		      vector149 00100254	00000000
+		      vector150 00100258	00000000
+		      vector151 0010025c	00000000
+		      vector152 00100260	00000000
+		      vector153 00100264	00000000
+		      vector154 00100268	00000000
+		      vector155 0010026c	00000000
+		      vector156 00100270	00000000
+		      vector157 00100274	00000000
+		      vector158 00100278	00000000
+		      vector159 0010027c	00000000
+		      vector160 00100280	00000000
+		      vector161 00100284	00000000
+		      vector162 00100288	00000000
+		      vector163 0010028c	00000000
+		      vector164 00100290	00000000
+		      vector165 00100294	00000000
+		      vector166 00100298	00000000
+		      vector167 0010029c	00000000
+		      vector168 001002a0	00000000
+		      vector169 001002a4	00000000
+		      vector170 001002a8	00000000
+		      vector171 001002ac	00000000
+		      vector172 001002b0	00000000
+		      vector173 001002b4	00000000
+		      vector174 001002b8	00000000
+		      vector175 001002bc	00000000
+		      vector176 001002c0	00000000
+		      vector177 001002c4	00000000
+		      vector178 001002c8	00000000
+		      vector179 001002cc	00000000
+		      vector180 001002d0	00000000
+		      vector181 001002d4	00000000
+		      vector182 001002d8	00000000
+		      vector183 001002dc	00000000
+		      vector184 001002e0	00000000
+		      vector185 001002e4	00000000
+		      vector186 001002e8	00000000
+		      vector187 001002ec	00000000
+		      vector188 001002f0	00000000
+		      vector189 001002f4	00000000
+		      vector190 001002f8	00000000
+		      vector191 001002fc	00000000
+		      vector192 00100300	00000000
+		      vector193 00100304	00000000
+		      vector194 00100308	00000000
+		      vector195 0010030c	00000000
+		      vector196 00100310	00000000
+		      vector197 00100314	00000000
+		      vector198 00100318	00000000
+		      vector199 0010031c	00000000
+		      vector200 00100320	00000000
+		      vector201 00100324	00000000
+		      vector202 00100328	00000000
+		      vector203 0010032c	00000000
+		      vector204 00100330	00000000
+		      vector205 00100334	00000000
+		      vector206 00100338	00000000
+		      vector207 0010033c	00000000
+		      vector208 00100340	00000000
+		      vector209 00100344	00000000
+		      vector210 00100348	00000000
+		      vector211 0010034c	00000000
+		      vector212 00100350	00000000
+		      vector213 00100354	00000000
+		      vector214 00100358	00000000
+		      vector215 0010035c	00000000
+		      vector216 00100360	00000000
+		      vector217 00100364	00000000
+		      vector218 00100368	00000000
+		      vector219 0010036c	00000000
+		      vector220 00100370	00000000
+		      vector221 00100374	00000000
+		      vector222 00100378	00000000
+		      vector223 0010037c	00000000
+		      vector224 00100380	00000000
+		      vector225 00100384	00000000
+		      vector226 00100388	00000000
+		      vector227 0010038c	00000000
+		      vector228 00100390	00000000
+		      vector229 00100394	00000000
+		      vector230 00100398	00000000
+		      vector231 0010039c	00000000
+		      vector232 001003a0	00000000
+		      vector233 001003a4	00000000
+		      vector234 001003a8	00000000
+		      vector235 001003ac	00000000
+		      vector236 001003b0	00000000
+		      vector237 001003b4	00000000
+		      vector238 001003b8	00000000
+		      vector239 001003bc	00000000
+		      vector240 001003c0	00000000
+		      vector241 001003c4	00000000
+		      vector242 001003c8	00000000
+		      vector243 001003cc	00000000
+		      vector244 001003d0	00000000
+		      vector245 001003d4	00000000
+		      vector246 001003d8	00000000
+		      vector247 001003dc	00000000
+		      vector248 001003e0	00000000
+		      vector249 001003e4	00000000
+		      vector250 001003e8	00000000
+		      vector251 001003ec	00000000
+		      vector252 001003f0	00000000
+		      vector253 001003f4	00000000
+		      vector254 001003f8	00000000
+		      vector255 001003fc	00000000
+
+
+.sdata2         		00100400	00000000
+
+.text           		00100400	00012690
+		.text           00100400	000002b8 Objs\MPT.o
+  _MAP_MPT_TO_DEVICE_DESCRIPTOR 00100400	00000070
+	       _MAP_PSC_TO_MPTS 00100470	00000020
+       _MPT_SOURCE_SELECT_TABLE 00100490	00000100
+	   _MPT_SS_STICKY_COUNT 00100590	00000001
+	     _MPT_VMS_BAUD_RATE 00100594	00000004
+     _MAP_FRAME_TO_TX_DEV_INDEX 00100598	00000010
+     _MAP_FRAME_TO_RX_DEV_INDEX 001005a8	00000010
+	_MAP_FRAME_TO_TX_ACTION 001005b8	00000080
+	_MAP_FRAME_TO_RX_ACTION 00100638	00000080
+
+		.text           001006b8	0000016c Objs\MPT.o
+	       _MPT__Initialise 001006b8	0000016c
+
+		.text           00100824	000000da Objs\MPT.o
+		 _MPT__Schedule 00100824	000000da
+
+		.text           00100900	000001ea Objs\MPT.o
+    _MPT__PerformServicePhaseTx 00100900	000001ea
+
+		.text           00100aec	000001e4 Objs\MPT.o
+    _MPT__PerformServicePhaseRx 00100aec	000001e4
+
+		.text           00100cd0	000000ba Objs\MPT.o
+	    _MPT__SetAircraftID 00100cd0	000000ba
+
+		.text           00100d8c	000005e4 Objs\MPT.o
+	    _MPT__GetConfigInfo 00100d8c	000005e4
+
+		.text           00101370	0000002e Objs\MPT.o
+	   _MPT__SetCommandData 00101370	0000002e
+
+		.text           001013a0	00000066 Objs\MPT.o
+	    _MPT__GetStatusData 001013a0	00000066
+
+		.text           00101408	00000282 Objs\MPT.o
+	_MPT__ProcessStatusData 00101408	00000282
+
+		.text           0010168c	00000022 Objs\MPT.o
+	_MPT__GetBusVoltageInfo 0010168c	00000022
+
+		.text           001016b0	00000024 Objs\MPT.o
+	 _MPT__SetCommandEnable 001016b0	00000024
+
+		.text           001016d4	0000101e Objs\SSPC.o
+      _SSPC_SOURCE_SELECT_TABLE 001016d4	00001000
+	 _MAP_MPT_TO_SSPC_RANGE 001026d4	0000001c
+	  _SSPC_SS_STICKY_COUNT 001026f0	00000001
+     _SSPC_PULL_RESET_CLR_INTVL 001026f1	00000001
+
+		.text           001026f4	000000b8 Objs\SSPC.o
+	      _SSPC__Initialise 001026f4	000000b8
+
+		.text           001027ac	000000f2 Objs\SSPC.o
+		_SSPC__Schedule 001027ac	000000f2
+
+		.text           001028a0	00000080 Objs\SSPC.o
+		    _SSPC__Pull 001028a0	00000080
+
+		.text           00102920	00000052 Objs\SSPC.o
+		   _SSPC__Reset 00102920	00000052
+
+		.text           00102974	00000052 Objs\SSPC.o
+	       _SSPC__SetCollar 00102974	00000052
+
+		.text           001029c8	00000020 Objs\SSPC.o
+	_SSPC__SetLoadShedFlags 001029c8	00000020
+
+		.text           001029e8	0000006c Objs\SSPC.o
+	    _SSPC__SetSwitchCmd 001029e8	0000006c
+
+		.text           00102a54	000000e0 Objs\SSPC.o
+	   _SSPC__GetSSPCStatus 00102a54	000000e0
+
+		.text           00102b34	00000142 Objs\SSPC.o
+	_SSPC__GenerateCommands 00102b34	00000142
+
+		.text           00102c78	0000035c Objs\SSPC.o
+	   _SSPC__ProcessStatus 00102c78	0000035c
+
+		.text           00102fd4	00000064 Objs\SSPC.o
+   _SSPC__DetermineSwitchStatus 00102fd4	00000064
+
+		.text           00103038	0000005a Objs\SSPC.o
+       _SSPC__DetermineCBStatus 00103038	0000005a
+
+		.text           00103094	00000026 Objs\SSPC.o
+	  _SSPC__ConvertCurrent 00103094	00000026
+
+		.text           001030ba	00000000 Objs\LoadShed.o
+
+		.text           001030bc	0000000e Objs\LoadShed.o
+	  _LoadShed__Initialise 001030bc	0000000e
+
+		.text           001030cc	00000094 Objs\LoadShed.o
+	      _LoadShed__Update 001030cc	00000094
+
+		.text           00103160	0000000c Objs\LoadShed.o
+       _LoadShed__DetermineMode 00103160	0000000c
+
+		.text           0010316c	00000004 Objs\FTI.o
+	     _SLAVE_HB_INTERVAL 0010316c	00000002
+	_SLAVE_TIMEOUT_INTERVAL 0010316e	00000002
+
+		.text           00103170	000000ce Objs\FTI.o
+	       _FTI__Initialise 00103170	000000ce
+
+		.text           00103240	0000018c Objs\FTI.o
+		 _FTI__Schedule 00103240	0000018c
+
+		.text           001033cc	00000088 Objs\FTI.o
+		 _FTI__Transmit 001033cc	00000088
+
+		.text           00103454	00000180 Objs\FTI.o
+		  _FTI__Receive 00103454	00000180
+
+		.text           001035d4	00000246 Objs\FTI.o
+	     _FTI__ParseMessage 001035d4	00000246
+
+		.text           0010381c	00000162 Objs\FTI.o
+	    _FTI__GenRspPayload 0010381c	00000162
+
+		.text           00103980	000000bc Objs\FTI.o
+	  _FTI__ParseDataReqPkt 00103980	000000bc
+
+		.text           00103a3c	000000c4 Objs\FTI.o
+	  _FTI__ParseSetDataPkt 00103a3c	000000c4
+
+		.text           00103b00	000000ba Objs\FTI.o
+	 _FTI__ParseSSPCProtPkt 00103b00	000000ba
+
+		.text           00103bbc	0000000e Objs\FTI.o
+	 _FTI__SetFTIAuthorised 00103bbc	0000000e
+
+		.text           00103bcc	00000048 Objs\FTI.o
+	  _FTI__ValidateAddress 00103bcc	00000048
+
+		.text           00103c14	0000005c Objs\FTI.o
+		_FTI__WriteData 00103c14	0000005c
+
+		.text           00103c70	00000080 Objs\ConfigMgr.o
+	_MAP_PIN_VAL_TO_LANE_ID 00103c70	00000040
+	_MAP_PIN_VAL_TO_CHAN_ID 00103cb0	00000040
+
+		.text           00103cf0	0000000c Objs\ConfigMgr.o
+	 _ConfigMgr__GetESCMode 00103cf0	0000000c
+
+		.text           00103cfc	00000090 Objs\ConfigMgr.o
+       _ConfigMgr__GetChannelID 00103cfc	00000090
+
+		.text           00103d8c	0000000e Objs\ESC_Scheduler.o
+	       _FRAME_TIMER_GPT 00103d8c	00000004
+  _MINOR_FRAMES_PER_MAJOR_FRAME 00103d90	00000002
+	  _WDOG_KICK_FRAME_MASK 00103d92	00000001
+		   _FTI_MACAddr 00103d94	00000006
+
+		.text           00103d9c	000000a6 Objs\ESC_Scheduler.o
+	   _ESC_Scheduler__main 00103d9c	000000a6
+
+		.text           00103e44	000000d0 Objs\ESC_Scheduler.o
+       _ESC_Scheduler__Schedule 00103e44	000000d0
+
+		.text           00103f14	0000004e Objs\ESC_Scheduler.o
+     _ESC_Scheduler__StartFrame 00103f14	0000004e
+
+		.text           00103f64	00000036 Objs\ESC_Scheduler.o
+       _ESC_Scheduler__EndFrame 00103f64	00000036
+
+		.text           00103f9c	0000000c Objs\ESC_Scheduler.o
+  _ESC_Scheduler__GetSystemTime 00103f9c	0000000c
+
+		.text           00103fa8	00000d50 Objs\PLAT_Discretes.o
+   _MAP_APP_PIN_TO_INTERNAL_PIN 00103fa8	0000015c
+	       _PIN_DESCRIPTORS 00104104	00000bec
+     _FLEXBUS_CS3_LATCH_ADDRESS 00104cf0	00000004
+     _FLEXBUS_CS4_LATCH_ADDRESS 00104cf4	00000004
+
+		.text           00104cf8	0000008c Objs\PLAT_Discretes.o
+    _Plat_Discretes__Initialise 00104cf8	0000008c
+
+		.text           00104d84	000000a6 Objs\PLAT_Discretes.o
+       _Plat_Discretes__ReadPin 00104d84	000000a6
+
+		.text           00104e2c	000000ee Objs\PLAT_Discretes.o
+      _Plat_Discretes__WritePin 00104e2c	000000ee
+
+		.text           00104f1c	00000032 Objs\PLAT_Discretes.o
+    _Plat_Discretes__ReadAppPin 00104f1c	00000032
+
+		.text           00104f50	0000002a Objs\PLAT_Discretes.o
+   _Plat_Discretes__WriteAppPin 00104f50	0000002a
+
+		.text           00104f7c	0000006e Objs\PLAT_Discretes.o
+     _Plat_Discretes__RWFlexBus 00104f7c	0000006e
+
+		.text           00104fec	0000004c Objs\PLAT_Discretes.o
+      _Plat_Discretes__ReadPort 00104fec	0000004c
+
+		.text           00105038	0000002c Objs\PLAT_Discretes.o
+     _Plat_Discretes__WritePort 00105038	0000002c
+
+		.text           00105064	00000016 Objs\PLAT_GPT.o
+	_MAP_TIMER_TO_GPT_VALUE 00105064	00000002
+	  _MAP_TIMER_TO_INT_SRC 00105068	00000008
+       _GPT_TIMER_INTERRUPT_LVL 00105070	00000001
+   _MAP_TIMER_TO_INTERRUPT_PRIO 00105074	00000002
+	   _GPT_PRESCALER_VALUE 00105076	00000002
+     _MAX_TIMER_DURATION_MICROS 00105078	00000002
+
+		.text           0010507c	00000022 Objs\PLAT_GPT.o
+	  _Plat_GPT__Initialise 0010507c	00000022
+
+		.text           001050a0	00000022 Objs\PLAT_GPT.o
+      _Plat_GPT__AttachCallback 001050a0	00000022
+
+		.text           001050c4	00000034 Objs\PLAT_GPT.o
+	   _Plat_GPT__IsExpired 001050c4	00000034
+
+		.text           001050f8	00000054 Objs\PLAT_GPT.o
+	  _Plat_GPT__SetEnabled 001050f8	00000054
+
+		.text           0010514c	000000c6 Objs\PLAT_GPT.o
+ _Plat_GPT__SetInterruptEnabled 0010514c	000000c6
+
+		.text           00105214	00000096 Objs\PLAT_GPT.o
+	  _Plat_GPT__SetRunMode 00105214	00000096
+
+		.text           001052ac	00000060 Objs\PLAT_GPT.o
+	 _Plat_GPT__SetDuration 001052ac	00000060
+
+		.text           0010530c	0000001c Objs\PLAT_GPT.o
+	  _Plat_GPT__Timer1_ISR 0010530c	0000001c
+
+		.text           00105328	00000020 Objs\PLAT_GPT.o
+	  _Plat_GPT__Timer2_ISR 00105328	00000020
+
+		.text           00105348	00000036 Objs\PLAT_INTC.o
+	   _MAX_INTERRUPT_LEVEL 00105348	00000001
+	_MAX_INTERRUPT_PRIORITY 00105349	00000001
+_MAP_INTERRUPT_SOURCE_TO_SRC_NUM 0010534c	00000032
+
+		.text           00105380	00000012 Objs\PLAT_INTC.o
+   _Plat_INTC__SetupVectorTable 00105380	00000012
+
+		.text           00105394	0000009a Objs\PLAT_INTC.o
+_Plat_INTC__SetInterruptEnabled 00105394	0000009a
+
+		.text           00105430	00000052 Objs\PLAT_INTC.o
+_Plat_INTC__SetInterruptPriority 00105430	00000052
+
+		.text           00105484	0000000e Objs\PLAT_Resources.o
+	   _DMA_INTERRUPT_LEVEL 00105484	00000001
+	_DMA_INTERRUPT_PRIORITY 00105485	00000001
+    _FLEX_BUS_CS3_INITIAL_VALUE 00105488	00000004
+	   _STARTUP_DELAY_SCALE 0010548c	00000002
+	  _STARTUP_DELAY_PERIOD 0010548e	00000002
+    _RAM_INIT_FIXED_WAIT_MICROS 00105490	00000002
+
+		.text           00105494	000000e6 Objs\PLAT_Resources.o
+    _Plat_Resources__Initialise 00105494	000000e6
+
+		.text           0010557c	000000e6 Objs\PLAT_Resources.o
+    _Plat_Resources__SDRAM_Init 0010557c	000000e6
+
+		.text           00105664	00000026 Objs\PLAT_Resources.o
+    _Plat_Resources__Cache_Init 00105664	00000026
+
+		.text           0010568c	00000032 Objs\PLAT_Resources.o
+_Plat_Resources__InitStaticData 0010568c	00000032
+
+		.text           001056c0	00000004 Objs\PLAT_PSC.o
+		     _SYSCLK_HZ 001056c0	00000004
+
+		.text           001056c4	00000058 Objs\PLAT_PSC.o
+	    _Plat_PSC__PutBytes 001056c4	00000058
+
+		.text           0010571c	00000058 Objs\PLAT_PSC.o
+	    _Plat_PSC__GetBytes 0010571c	00000058
+
+		.text           00105774	0000015e Objs\PLAT_PSC.o
+	  _Plat_PSC__Initialise 00105774	0000015e
+
+		.text           001058d4	0000004c Objs\PLAT_PSC.o
+      _Plat_PSC__IsFIFOAlarmSet 001058d4	0000004c
+
+		.text           00105920	00000028 Objs\PLAT_PSC.o
+ _Plat_PSC__SetActiveInterrupts 00105920	00000028
+
+		.text           00105948	0000006a Objs\PLAT_PSC.o
+    _Plat_PSC__SetMultiDropMode 00105948	0000006a
+
+		.text           001059b4	0000004c Objs\PLAT_PSC.o
+   _Plat_PSC__SetFIFOAlarmLevel 001059b4	0000004c
+
+		.text           00105a00	0000002e Objs\PLAT_PSC.o
+	       _Plat_PSC__Reset 00105a00	0000002e
+
+		.text           00105a30	00000024 Objs\PLAT_PSC.o
+	   _Plat_PSC__IsTxEmpty 00105a30	00000024
+
+		.text           00105a54	0000004c Objs\PLAT_PSC.o
+	   _Plat_PSC__SetEnable 00105a54	0000004c
+
+		.text           00105aa0	00000014 Objs\PLAT_SLT.o
+	_MAP_TIMER_TO_SLT_VALUE 00105aa0	00000001
+	  _MAP_TIMER_TO_INT_SRC 00105aa4	00000004
+     _SLICE_TIMER_INTERRUPT_LVL 00105aa8	00000001
+	_SLICE_TIMER_0_INT_PRIO 00105aa9	00000001
+	 _MAP_TIMER_TO_INT_PRIO 00105aac	00000001
+      _SLICE_TIMER_0_TICK_COUNT 00105ab0	00000004
+
+		.text           00105ab4	00000058 Objs\PLAT_SLT.o
+	  _Plat_SLT__Initialise 00105ab4	00000058
+
+		.text           00105b0c	00000020 Objs\PLAT_SLT.o
+      _Plat_SLT__AttachCallback 00105b0c	00000020
+
+		.text           00105b2c	00000032 Objs\PLAT_SLT.o
+	   _Plat_SLT__IsExpired 00105b2c	00000032
+
+		.text           00105b60	0000003a Objs\PLAT_SLT.o
+	 _Plat_SLT__SetDuration 00105b60	0000003a
+
+		.text           00105b9c	00000052 Objs\PLAT_SLT.o
+	  _Plat_SLT__SetEnabled 00105b9c	00000052
+
+		.text           00105bf0	000000a6 Objs\PLAT_SLT.o
+ _Plat_SLT__SetInterruptEnabled 00105bf0	000000a6
+
+		.text           00105c98	00000058 Objs\PLAT_SLT.o
+	  _Plat_SLT__SetRunMode 00105c98	00000058
+
+		.text           00105cf0	00000028 Objs\PLAT_SLT.o
+	  _Plat_SLT__Timer1_ISR 00105cf0	00000028
+
+		.text           00105d18	00000000 Objs\Plat_INTC__Vectors.o
+
+		.text           00105d18	00000000 Objs\PLAT_A664_ES.o
+
+		.text           00105d18	00000580 Objs\PLAT_A664_ES.o
+      _Plat_A664_ES__Initialise 00105d18	00000580
+
+		.text           00106298	00000250 Objs\PLAT_A664_ES.o
+	 _Plat_A664_ES__Program 00106298	00000250
+
+		.text           001064e8	00000000 Objs\PLAT_PSU.o
+
+		.text           001064e8	00000064 Objs\PLAT_PSU.o
+	  _Plat_PSU__Initialise 001064e8	00000064
+
+		.text           0010654c	0000000e Objs\PLAT_PSU.o
+  _Plat_PSU__RegisterPFIHandler 0010654c	0000000e
+
+		.text           0010655c	00000034 Objs\PLAT_PSU.o
+       _Plat_PSU__PowerFail_ISR 0010655c	00000034
+
+		.text           00106590	00000004 Objs\PLAT_Watchdog.o
+	_SYSCLK_TICKS_PER_MICRO 00106590	00000004
+
+		.text           00106594	00000032 Objs\PLAT_Watchdog.o
+     _Plat_Watchdog__Initialise 00106594	00000032
+
+		.text           001065c8	0000003a Objs\PLAT_Watchdog.o
+	   _Plat_Watchdog__Kick 001065c8	0000003a
+
+		.text           00106604	00000058 Objs\PLAT_Watchdog.o
+_Plat_Watchdog__GetRefFrequency 00106604	00000058
+
+		.text           0010665c	00000160 Objs\PLAT_SBC.o
+     _INTERFACE_RX_ONLY_SETTING 0010665c	00000018
+	  _DEFAULT_CONFIG_WORDS 00106674	00000014
+       _MAP_DEVICE_TO_RESET_PIN 00106688	0000000c
+	_MAP_DEVICE_TO_DSBL_PIN 00106694	0000000c
+      _MAP_DEVICE_TO_SRCDEST_ID 001066a0	00000006
+    _MAP_DEVICE_TO_SPI_CMD_WORD 001066a8	0000000c
+  _MAP_INTERFACE_TO_SF_CFG_WORD 001066b4	00000006
+	     _BIT_REVERSE_TABLE 001066bc	00000100
+
+		.text           001067bc	000001e4 Objs\PLAT_SBC.o
+	  _Plat_SBC__Initialise 001067bc	000001e4
+
+		.text           001069a0	000001d0 Objs\PLAT_SBC.o
+      _Plat_SBC__GetFromPayload 001069a0	000001d0
+
+		.text           00106b70	000001a0 Objs\PLAT_SBC.o
+	     _Plat_SBC__Service 00106b70	000001a0
+
+		.text           00106d10	00000234 Objs\PLAT_SBC.o
+	_Plat_SBC__AddToPayload 00106d10	00000234
+
+		.text           00106f44	00000260 Objs\PLAT_SBC.o
+  _Plat_SBC__ConfigureInterface 00106f44	00000260
+
+		.text           001071a4	000003ba Objs\PLAT_SBC.o
+     _Plat_SBC__FormatTxMessage 001071a4	000003ba
+
+		.text           00107560	0000024e Objs\PLAT_SBC.o
+    _Plat_SBC__ProcessRxMessage 00107560	0000024e
+
+		.text           001077b0	000000a2 Objs\PLAT_SBC.o
+     _Plat_SBC__GetDeviceStatus 001077b0	000000a2
+
+		.text           00107854	000000e6 Objs\PLAT_SBC.o
+  _Plat_SBC__GetInterfaceStatus 00107854	000000e6
+
+		.text           0010793a	00000000 Objs\PLAT_NVM.o
+
+		.text           0010793c	00000080 Objs\PLAT_NVM.o
+	       _Plat_NVM__Store 0010793c	00000080
+
+		.text           001079bc	00000080 Objs\PLAT_NVM.o
+	      _Plat_NVM__Recall 001079bc	00000080
+
+		.text           00107a3c	00000000 Objs\PLAT_Utils.o
+
+		.text           00107a3c	0000001e Objs\PLAT_Utils.o
+	 _Plat_Utils__BurstCopy 00107a3c	0000001e
+
+		.text           00107a5c	00000026 Objs\PLAT_Utils.o
+	  _Plat_Utils__ByteSwap 00107a5c	00000026
+
+		.text           00107a84	0000001e Objs\PLAT_Utils.o
+      _Plat_Utils__CalculateCRC 00107a84	0000001e
+
+		.text           00107aa4	0000002e Objs\PLAT_Utils.o
+   _Plat_Utils__ConvertValToStr 00107aa4	0000002e
+
+		.text           00107ad4	0000001c Objs\PLAT_Utils.o
+   _Plat_Utils__FixedPeriodWait 00107ad4	0000001c
+
+		.text           00107af0	00000008 Objs\PLAT_Utils.o
+    _Plat_Utils__ReadTripleCopy 00107af0	00000008
+
+		.text           00107af8	00000014 Objs\PLAT_Utils.o
+	  _Plat_Utils__WordSwap 00107af8	00000014
+
+		.text           00107b0c	00000008 Objs\PLAT_Utils.o
+   _Plat_Utils__WriteTripleCopy 00107b0c	00000008
+
+		.text           00107b14	0000003a Objs\PLAT_VMS.o
+ _MAP_PACKET_TYPE_TO_HDR_LENGTH 00107b14	00000002
+       _MAP_PACKET_TYPE_TO_MASK 00107b18	00000002
+      _MAP_PSC_TO_TX_ENABLE_PIN 00107b1c	00000010
+   _MAP_PSC_TO_INTERRUPT_SOURCE 00107b2c	00000010
+	   _PSC_INTERRUPT_LEVEL 00107b3c	00000001
+     _MAP_PSC_TO_INTERRUPT_PRIO 00107b40	00000004
+	     _VMS_BAUD_RATE_MAX 00107b44	00000004
+	     _VMS_BAUD_RATE_MIN 00107b48	00000004
+	 _TX_EMPTY_WAIT_TIMEOUT 00107b4c	00000002
+
+		.text           00107b50	00000168 Objs\PLAT_VMS.o
+	  _Plat_VMS__Initialise 00107b50	00000168
+
+		.text           00107cb8	00000042 Objs\PLAT_VMS.o
+  _Plat_VMS__PerformVMSChecksum 00107cb8	00000042
+
+		.text           00107cfc	00000192 Objs\PLAT_VMS.o
+     _Plat_VMS__ProcessResponse 00107cfc	00000192
+
+		.text           00107e90	00000020 Objs\PLAT_VMS.o
+	    _Plat_VMS__PSC0_ISR 00107e90	00000020
+
+		.text           00107eb0	00000020 Objs\PLAT_VMS.o
+	    _Plat_VMS__PSC1_ISR 00107eb0	00000020
+
+		.text           00107ed0	00000020 Objs\PLAT_VMS.o
+	    _Plat_VMS__PSC2_ISR 00107ed0	00000020
+
+		.text           00107ef0	00000020 Objs\PLAT_VMS.o
+	    _Plat_VMS__PSC3_ISR 00107ef0	00000020
+
+		.text           00107f10	00000154 Objs\PLAT_VMS.o
+ _Plat_VMS__PSCInterruptHandler 00107f10	00000154
+
+		.text           00108064	000000b6 Objs\PLAT_VMS.o
+	     _Plat_VMS__Service 00108064	000000b6
+
+		.text           0010811c	000002be Objs\PLAT_VMS.o
+	    _Plat_VMS__Transmit 0010811c	000002be
+
+		.text           001083dc	00000060 Objs\PLAT_ARINC429.o
+     _MAP_CHANNEL_TO_SBC_DEVICE 001083dc	00000030
+  _MAP_CHANNEL_TO_SBC_INTERFACE 0010840c	00000030
+
+		.text           0010843c	00000046 Objs\PLAT_ARINC429.o
+	_Plat_ARINC429__Receive 0010843c	00000046
+
+		.text           00108484	00000050 Objs\PLAT_ARINC429.o
+       _Plat_ARINC429__Transmit 00108484	00000050
+
+		.text           001084d4	00000064 Objs\PLAT_ARINC429.o
+_Plat_ARINC429__ConfigureChannel 001084d4	00000064
+
+		.text           00108538	000000b2 Objs\PLAT_ARINC429.o
+_Plat_ARINC429__GetChannelStatus 00108538	000000b2
+
+		.text           001085ec	00000030 Objs\PLAT_RS485.o
+     _MAP_CHANNEL_TO_SBC_DEVICE 001085ec	00000018
+  _MAP_CHANNEL_TO_SBC_INTERFACE 00108604	00000018
+
+		.text           0010861c	0000004a Objs\PLAT_RS485.o
+	  _Plat_RS485__PutBytes 0010861c	0000004a
+
+		.text           00108668	00000044 Objs\PLAT_RS485.o
+	  _Plat_RS485__GetBytes 00108668	00000044
+
+		.text           001086ac	00000076 Objs\PLAT_RS485.o
+  _Plat_RS485__ConfigureChannel 001086ac	00000076
+
+		.text           00108724	000000b2 Objs\PLAT_RS485.o
+  _Plat_RS485__GetChannelStatus 00108724	000000b2
+
+		.text           001087d6	00000000 Objs\PLAT_Ethernet.o
+
+		.text           001087d8	00000292 Objs\PLAT_Ethernet.o
+     _Plat_Ethernet__Initialise 001087d8	00000292
+
+		.text           00108a6c	000000bc Objs\PLAT_Ethernet.o
+       _Plat_Ethernet__Transmit 00108a6c	000000bc
+
+		.text           00108b28	0000010a Objs\PLAT_Ethernet.o
+	_Plat_Ethernet__Receive 00108b28	0000010a
+
+		.text           00108c34	000001f6 Objs\PLAT_Ethernet.o
+	_Plat_Ethernet__Service 00108c34	000001f6
+
+		.text           00108e2c	00000078 Objs\PLAT_Ethernet.o
+      _Plat_Ethernet__Timer_ISR 00108e2c	00000078
+
+		.text           00108ea4	00000000 Objs\PLAT_ARINC664.o
+
+		.text           00108ea4	00000060 Objs\PLAT_ARINC664.o
+	    _Plat_Arinc664__Bit 00108ea4	00000060
+
+		.text           00108f04	0000084c Objs\PLAT_ARINC664.o
+     _Plat_Arinc664__Initialise 00108f04	0000084c
+
+		.text           00109750	00000098 Objs\PLAT_ARINC664.o
+       _Plat_Arinc664__Loopback 00109750	00000098
+
+		.text           001097e8	00000056 Objs\PLAT_ARINC664.o
+	_Plat_Arinc664__Mib_Get 001097e8	00000056
+
+		.text           00109840	0000002e Objs\PLAT_ARINC664.o
+      _Plat_Arinc664__Reset_Phy 00109840	0000002e
+
+		.text           00109870	0000004c Objs\PLAT_ARINC664.o
+	     _Plat_Arinc664__Rx 00109870	0000004c
+
+		.text           001098bc	00000072 Objs\PLAT_ARINC664.o
+	     _Plat_Arinc664__Tx 001098bc	00000072
+
+		.text           0010992e	00000000 Objs\C_64BIT_UNSIGNED_ADD.o
+
+		.text           00109930	00000142 Objs\C_64BIT_UNSIGNED_ADD.o
+		  _add_longlong 00109930	00000142
+
+		.text           00109a72	00000000 Objs\C_64BIT_UNSIGNED_SUBTRACT.o
+
+		.text           00109a74	0000005c Objs\C_64BIT_UNSIGNED_SUBTRACT.o
+	     _subtract_longlong 00109a74	0000005c
+
+		.text           00109ad0	00000000 Objs\C_ARP.o
+
+		.text           00109ad0	00000222 Objs\C_ARP.o
+	_C_ARP__Maintain_timers 00109ad0	00000222
+
+		.text           00109cf4	000000fc Objs\C_ARP.o
+	    _C_ARP__Reset_cache 00109cf4	000000fc
+
+		.text           00109df0	000000fe Objs\C_ARP.o
+	_C_ARP__Send_IP_via_ARP 00109df0	000000fe
+
+		.text           00109ef0	000001b4 Objs\C_ARP.o
+	    _C_ARP__Send_packet 00109ef0	000001b4
+
+		.text           0010a0a4	0000044e Objs\C_ARP.o
+	   _C_ARP__Update_cache 0010a0a4	0000044e
+
+		.text           0010a4f4	0000028a Objs\C_ARP.o
+     _C_ARP__Create_cache_entry 0010a4f4	0000028a
+
+		.text           0010a780	000000f6 Objs\C_ARP.o
+    _C_ARP__Translate_IP_to_MAC 0010a780	000000f6
+
+		.text           0010a878	0000006c Objs\C_Burst_Copy.o
+	   C_BURST_COPY_MSP17_D 0010a878	00000000
+	    _asm_burst_mem_copy 0010a878	00000000
+	     asm_burst_mem_copy 0010a878	00000000
+	     C_BURST_COPY_MSP18 0010a884	00000000
+	     C_BURST_COPY_MSP23 0010a894	00000000
+		     burst_loop 0010a894	00000000
+	   C_BURST_COPY_MSP24_D 0010a8b2	00000000
+		      longwords 0010a8ba	00000000
+	     C_BURST_COPY_MSP19 0010a8ba	00000000
+	     C_BURST_COPY_MSP25 0010a8c2	00000000
+		 longwords_loop 0010a8c2	00000000
+			  bytes 0010a8ce	00000000
+	     C_BURST_COPY_MSP20 0010a8ce	00000000
+	     C_BURST_COPY_MSP27 0010a8d6	00000000
+		     bytes_loop 0010a8d6	00000000
+			   done 0010a8e2	00000000
+
+		.text           0010a8e4	00000072 Objs\C_Burst_Copy_32.o
+       C_BURST_COPY_32_MSP_70_D 0010a8e4	00000000
+	 _asm_burst_mem_copy_32 0010a8e4	00000000
+	  asm_burst_mem_copy_32 0010a8e4	00000000
+	 C_BURST_COPY_32_MSP_72 0010a8f0	00000000
+	 C_BURST_COPY_32_MSP_73 0010a900	00000000
+		     burst_loop 0010a900	00000000
+       C_BURST_COPY_32_MSP_74_D 0010a91e	00000000
+		      longwords 0010a926	00000000
+	 C_BURST_COPY_32_MSP_75 0010a926	00000000
+	 C_BURST_COPY_32_MSP_76 0010a92e	00000000
+		 longwords_loop 0010a92e	00000000
+			  bytes 0010a93a	00000000
+	 C_BURST_COPY_32_MSP_77 0010a93a	00000000
+	 C_BURST_COPY_32_MSP_78 0010a942	00000000
+			   done 0010a954	00000000
+
+		.text           0010a956	00000040 Objs\C_Calculate_crc.o
+		   _CRC_table_A 0010a956	00000020
+		   _CRC_table_B 0010a976	00000020
+
+		.text           0010a998	00000066 Objs\C_Calculate_crc.o
+	       _C_Calculate_CRC 0010a998	00000066
+
+		.text           0010aa00	00000018 Objs\C_clock.o
+		      _GMS0_ptr 0010aa00	00000004
+		     _GCIR0_ptr 0010aa04	00000004
+		      _GSR0_ptr 0010aa08	00000004
+		      _GSR3_ptr 0010aa0c	00000004
+		      _GMS3_ptr 0010aa10	00000004
+		     _GCIR3_ptr 0010aa14	00000004
+
+		.text           0010aa18	00000046 Objs\C_clock.o
+		   _start_frame 0010aa18	00000046
+
+		.text           0010aa60	0000007c Objs\C_clock.o
+	    _wait_for_frame_end 0010aa60	0000007c
+
+		.text           0010aadc	0000005c Objs\C_clock.o
+	     _fixed_period_wait 0010aadc	0000005c
+
+		.text           0010ab38	00000000 Objs\C_Default_Exception_Handler.o
+
+		.text           0010ab38	00000060 Objs\C_Default_Exception_Handler.o
+     _default_exception_handler 0010ab38	00000060
+
+		.text           0010ab98	000000a0 Objs\C_DMA_UTILS.o
+	 _const_used_requestors 0010ab98	00000020
+	     _const_DMA_channel 0010abb8	00000080
+
+		.text           0010ac38	00000084 Objs\C_DMA_UTILS.o
+_C_DMA_UTILS__Enable_disable_IRQ 0010ac38	00000084
+
+		.text           0010acbc	00000058 Objs\C_DMA_UTILS.o
+     _C_DMA_UTILS__Free_channel 0010acbc	00000058
+
+		.text           0010ad14	00000044 Objs\C_DMA_UTILS.o
+   _C_DMA_UTILS__Free_initiator 0010ad14	00000044
+
+		.text           0010ad58	00000044 Objs\C_DMA_UTILS.o
+      _C_DMA_UTILS__Get_channel 0010ad58	00000044
+
+		.text           0010ad9c	00000042 Objs\C_DMA_UTILS.o
+    _C_DMA_UTILS__Get_initiator 0010ad9c	00000042
+
+		.text           0010ade0	0000003c Objs\C_DMA_UTILS.o
+       _C_DMA_UTILS__Initialise 0010ade0	0000003c
+
+		.text           0010ae1c	00000078 Objs\C_DMA_UTILS.o
+      _C_DMA_UTILS__Set_channel 0010ae1c	00000078
+
+		.text           0010ae94	000004cc Objs\C_DMA_UTILS.o
+    _C_DMA_UTILS__Set_initiator 0010ae94	000004cc
+
+		.text           0010b360	0000007c Objs\C_DMA_UTILS.o
+_C_DMA_UTILS__Interrupt_handler 0010b360	0000007c
+
+		.text           0010b3dc	00000000 Objs\C_Error_Handler.o
+
+		.text           0010b3dc	0000003a Objs\C_Error_Handler.o
+	       _c_error_handler 0010b3dc	0000003a
+
+		.text           0010b418	00000006 Objs\C_ETHERNET.o
+    _Ethernet_broadcast_address 0010b418	00000006
+
+		.text           0010b420	0000003e Objs\C_ETHERNET.o
+       _C_ETHERNET__Send_packet 0010b420	0000003e
+
+		.text           0010b45e	00000000 Objs\C_fatal_error.o
+
+		.text           0010b460	0000000a Objs\C_fatal_error.o
+		   _fatal_error 0010b460	0000000a
+
+		.text           0010b46a	00000000 Objs\C_FEC_BD.o
+
+		.text           0010b46c	0000002c Objs\C_FEC_BD.o
+	_C_FEC_BD__Get_start_BD 0010b46c	0000002c
+
+		.text           0010b498	00000160 Objs\C_FEC_BD.o
+	  _C_FEC_BD__Initialise 0010b498	00000160
+
+		.text           0010b5f8	00000078 Objs\C_FEC_BD.o
+	 _C_FEC_BD__Rx_allocate 0010b5f8	00000078
+
+		.text           0010b670	00000098 Objs\C_FEC_BD.o
+	 _C_FEC_BD__Tx_allocate 0010b670	00000098
+
+		.text           0010b708	0000008e Objs\C_FEC_BD.o
+	     _C_FEC_BD__Tx_free 0010b708	0000008e
+
+		.text           0010b796	00000000 Objs\C_FEC_DRV.o
+
+		.text           0010b798	00000020 Objs\C_FEC_DRV.o
+	   _C_FEC_DRV__FEC0_isr 0010b798	00000020
+
+		.text           0010b7b8	00000020 Objs\C_FEC_DRV.o
+	   _C_FEC_DRV__FEC1_isr 0010b7b8	00000020
+
+		.text           0010b7d8	000001dc Objs\C_FEC_DRV.o
+	 _C_FEC_DRV__Initialise 0010b7d8	000001dc
+
+		.text           0010b9b4	00000036 Objs\C_FEC_DRV.o
+	_C_FEC_DRV__IRQ_disable 0010b9b4	00000036
+
+		.text           0010b9ec	00000094 Objs\C_FEC_DRV.o
+	 _C_FEC_DRV__IRQ_enable 0010b9ec	00000094
+
+		.text           0010ba80	0000008c Objs\C_FEC_DRV.o
+	  _C_FEC_DRV__Reset_FEC 0010ba80	0000008c
+
+		.text           0010bb0c	000000e0 Objs\C_FEC_DRV.o
+	   _C_FEC_DRV__Rx_start 0010bb0c	000000e0
+
+		.text           0010bbec	000000ac Objs\C_FEC_DRV.o
+	       _C_FEC_DRV__Send 0010bbec	000000ac
+
+		.text           0010bc98	00000072 Objs\C_FEC_DRV.o
+      _C_FEC_DRV__Stop_ethernet 0010bc98	00000072
+
+		.text           0010bd0c	000000e0 Objs\C_FEC_DRV.o
+	   _C_FEC_DRV__Tx_start 0010bd0c	000000e0
+
+		.text           0010bdec	00000062 Objs\C_FEC_DRV.o
+	     _C_FEC_DRV__Duplex 0010bdec	00000062
+
+		.text           0010be50	00000062 Objs\C_FEC_DRV.o
+      _C_FEC_DRV__Generate_hash 0010be50	00000062
+
+		.text           0010beb4	00000086 Objs\C_FEC_DRV.o
+	_C_FEC_DRV__IRQ_handler 0010beb4	00000086
+
+		.text           0010bf3c	00000038 Objs\C_FEC_DRV.o
+	_C_FEC_DRV__Rx_continue 0010bf3c	00000038
+
+		.text           0010bf74	00000016 Objs\C_FEC_DRV.o
+      _C_FEC_DRV__Rx_frame_FEC0 0010bf74	00000016
+
+		.text           0010bf8c	00000012 Objs\C_FEC_DRV.o
+      _C_FEC_DRV__Rx_frame_FEC1 0010bf8c	00000012
+
+		.text           0010bfa0	00000238 Objs\C_FEC_DRV.o
+   _C_FEC_DRV__Rx_frame_handler 0010bfa0	00000238
+
+		.text           0010c1d8	0000009e Objs\C_FEC_DRV.o
+	    _C_FEC_DRV__Rx_stop 0010c1d8	0000009e
+
+		.text           0010c278	000000ce Objs\C_FEC_DRV.o
+    _C_FEC_DRV__Set_net_address 0010c278	000000ce
+
+		.text           0010c348	00000038 Objs\C_FEC_DRV.o
+	_C_FEC_DRV__Tx_continue 0010c348	00000038
+
+		.text           0010c380	00000012 Objs\C_FEC_DRV.o
+      _C_FEC_DRV__Tx_frame_FEC0 0010c380	00000012
+
+		.text           0010c394	00000012 Objs\C_FEC_DRV.o
+      _C_FEC_DRV__Tx_frame_FEC1 0010c394	00000012
+
+		.text           0010c3a8	00000052 Objs\C_FEC_DRV.o
+   _C_FEC_DRV__Tx_frame_handler 0010c3a8	00000052
+
+		.text           0010c3fc	0000011e Objs\C_FEC_DRV.o
+	    _C_FEC_DRV__Tx_stop 0010c3fc	0000011e
+
+		.text           0010c51a	00000000 Objs\C_FIFO.o
+
+		.text           0010c51c	000000da Objs\C_FIFO.o
+       _C_FIFO__direct_fifo_get 0010c51c	000000da
+
+		.text           0010c5f8	000000e6 Objs\C_FIFO.o
+       _C_FIFO__direct_fifo_put 0010c5f8	000000e6
+
+		.text           0010c6e0	00000020 Objs\C_FIFO.o
+_C_FIFO__direct_fifo_initialise 0010c6e0	00000020
+
+		.text           0010c700	00000000 Objs\C_Global.o
+
+		.text           0010c700	00000000 Objs\C_IP.o
+
+		.text           0010c700	000000be Objs\C_IP.o
+	     _C_IP__Send_packet 0010c700	000000be
+
+		.text           0010c7c0	0000006a Objs\C_IP.o
+	 _C_IP__Checksum_header 0010c7c0	0000006a
+
+		.text           0010c82a	00000000 Objs\C_MCD_API.o
+
+		.text           0010c82c	0000003e Objs\C_MCD_API.o
+       _C_MCD_API__Continue_DMA 0010c82c	0000003e
+
+		.text           0010c86c	0000002c Objs\C_MCD_API.o
+	_C_MCD_API__Disable_DMA 0010c86c	0000002c
+
+		.text           0010c898	00000210 Objs\C_MCD_API.o
+	   _C_MCD_API__Init_DMA 0010c898	00000210
+
+		.text           0010caa8	000005c0 Objs\C_MCD_API.o
+	  _C_MCD_API__Start_DMA 0010caa8	000005c0
+
+		.text           0010d068	000000f2 Objs\C_MCD_API.o
+     _C_MCD_API__Start_DSPI_DMA 0010d068	000000f2
+
+		.text           0010d15c	0000238c Objs\C_MCD_TASKS.o
+		   _MCD_varTab0 0010d15c	00000080
+		   _MCD_varTab1 0010d1dc	00000080
+		   _MCD_varTab2 0010d25c	00000080
+		   _MCD_varTab3 0010d2dc	00000080
+		   _MCD_varTab4 0010d35c	00000080
+		   _MCD_varTab5 0010d3dc	00000080
+		   _MCD_varTab6 0010d45c	00000080
+		   _MCD_varTab7 0010d4dc	00000080
+		   _MCD_varTab8 0010d55c	00000080
+		   _MCD_varTab9 0010d5dc	00000080
+		  _MCD_varTab10 0010d65c	00000080
+		  _MCD_varTab11 0010d6dc	00000080
+		  _MCD_varTab12 0010d75c	00000080
+		  _MCD_varTab13 0010d7dc	00000080
+		  _MCD_varTab14 0010d85c	00000080
+		  _MCD_varTab15 0010d8dc	00000080
+	      _MCD_funcDescTab0 0010d95c	00000100
+	      _MCD_funcDescTab1 0010da5c	00000100
+	      _MCD_funcDescTab2 0010db5c	00000100
+	      _MCD_funcDescTab3 0010dc5c	00000100
+	      _MCD_funcDescTab4 0010dd5c	00000100
+	      _MCD_funcDescTab5 0010de5c	00000100
+	      _MCD_funcDescTab6 0010df5c	00000100
+	      _MCD_funcDescTab7 0010e05c	00000100
+	      _MCD_funcDescTab8 0010e15c	00000100
+	      _MCD_funcDescTab9 0010e25c	00000100
+	     _MCD_funcDescTab10 0010e35c	00000100
+	     _MCD_funcDescTab11 0010e45c	00000100
+	     _MCD_funcDescTab12 0010e55c	00000100
+	     _MCD_funcDescTab13 0010e65c	00000100
+	     _MCD_funcDescTab14 0010e75c	00000100
+	     _MCD_funcDescTab15 0010e85c	00000100
+	     _MCD_ChainNoEu_TDT 0010e95c	00000170
+	    _MCD_SingleNoEu_TDT 0010eacc	000000d8
+	       _MCD_ChainEu_TDT 0010eba4	000001b8
+	      _MCD_SingleEu_TDT 0010ed5c	00000128
+	      _MCD_ENetRcv0_TDT 0010ee84	000000a8
+	      _MCD_ENetRcv1_TDT 0010ef2c	000000a8
+	     _MCD_ENetXmit0_TDT 0010efd4	000000d4
+	     _MCD_ENetXmit1_TDT 0010f0a8	000000d4
+	    _MCD_DSPI_Tx_Rx_TDT 0010f17c	0000004c
+	  _MCD_realTaskTableSrc 0010f1c8	00000200
+	 _MCD_modelTaskTableSrc 0010f3c8	00000120
+
+		.text           0010f4e8	000000e4 Objs\C_MCD_TASKS.o
+_C_MCD_TASKS__Start_chain_no_EU 0010f4e8	000000e4
+
+		.text           0010f5cc	000000c0 Objs\C_MCD_TASKS.o
+_C_MCD_TASKS__Start_single_no_EU 0010f5cc	000000c0
+
+		.text           0010f68c	000000f6 Objs\C_MCD_TASKS.o
+   _C_MCD_TASKS__Start_chain_EU 0010f68c	000000f6
+
+		.text           0010f784	000000dc Objs\C_MCD_TASKS.o
+  _C_MCD_TASKS__Start_single_EU 0010f784	000000dc
+
+		.text           0010f860	0000009e Objs\C_MCD_TASKS.o
+_C_MCD_TASKS__Start_ethernet_rx 0010f860	0000009e
+
+		.text           0010f900	000000ca Objs\C_MCD_TASKS.o
+_C_MCD_TASKS__Start_ethernet_tx 0010f900	000000ca
+
+		.text           0010f9cc	0000008a Objs\C_MCD_TASKS.o
+    _C_MCD_TASKS__Start_DSPI_EU 0010f9cc	0000008a
+
+		.text           0010fa56	00000000 Objs\C_MEM.o
+
+		.text           0010fa58	0000009e Objs\C_MEM.o
+		       _put_bit 0010fa58	0000009e
+
+		.text           0010faf8	0000007a Objs\C_MEM.o
+		     _put_2_bit 0010faf8	0000007a
+
+		.text           0010fb74	000000a8 Objs\C_MEM.o
+		       _get_bit 0010fb74	000000a8
+
+		.text           0010fc1c	00000000 Objs\C_NET_BUFFERS.o
+
+		.text           0010fc1c	0000004e Objs\C_NET_BUFFERS.o
+	    _C_NET_BUFFERS__Add 0010fc1c	0000004e
+
+		.text           0010fc6c	0000004a Objs\C_NET_BUFFERS.o
+       _C_NET_BUFFERS__Allocate 0010fc6c	0000004a
+
+		.text           0010fcb8	00000062 Objs\C_NET_BUFFERS.o
+	  _C_NET_BUFFERS__Flush 0010fcb8	00000062
+
+		.text           0010fd1c	00000064 Objs\C_NET_BUFFERS.o
+	   _C_NET_BUFFERS__Free 0010fd1c	00000064
+
+		.text           0010fd80	000000ca Objs\C_NET_BUFFERS.o
+     _C_NET_BUFFERS__Initialise 0010fd80	000000ca
+
+		.text           0010fe4c	00000052 Objs\C_NET_BUFFERS.o
+	 _C_NET_BUFFERS__Remove 0010fe4c	00000052
+
+		.text           0010fea0	0000005e Objs\C_NET_BUFFERS.o
+	  _C_NET_BUFFERS__Reset 0010fea0	0000005e
+
+		.text           0010fefe	00000000 Objs\C_NET_QUEUES.o
+
+		.text           0010ff00	0000003c Objs\C_NET_QUEUES.o
+	     _C_NET_QUEUES__Add 0010ff00	0000003c
+
+		.text           0010ff3c	0000000e Objs\C_NET_QUEUES.o
+      _C_NET_QUEUES__Initialise 0010ff3c	0000000e
+
+		.text           0010ff4c	00000034 Objs\C_NET_QUEUES.o
+	  _C_NET_QUEUES__Remove 0010ff4c	00000034
+
+		.text           0010ff80	0000001c Objs\C_NET_QUEUES.o
+_C_NET_QUEUES__Test_queue_empty 0010ff80	0000001c
+
+		.text           0010ff9c	00000003 Objs\C_NETWORK.o
+		  _FTI_preamble 0010ff9c	00000003
+
+		.text           0010ffa0	00000164 Objs\C_NETWORK.o
+  _C_NETWORK__FTI_message_parse 0010ffa0	00000164
+
+		.text           00110104	000000f2 Objs\C_NETWORK.o
+  _C_NETWORK__GAP_message_parse 00110104	000000f2
+
+		.text           001101f8	0000005e Objs\C_NETWORK.o
+ _C_NETWORK__TFTP_message_parse 001101f8	0000005e
+
+		.text           00110258	00000052 Objs\C_NETWORK.o
+    _C_NETWORK__message_extract 00110258	00000052
+
+		.text           001102aa	00000000 Objs\C_NVM.o
+
+		.text           001102ac	0000008c Objs\C_NVM.o
+			   _nvm 001102ac	0000008c
+
+		.text           00110338	00000000 Objs\C_PHY_DRV.o
+
+		.text           00110338	0000029e Objs\C_PHY_DRV.o
+	   _C_PHY_DRV__Phy_init 00110338	0000029e
+
+		.text           001105d8	00000058 Objs\C_PHY_DRV.o
+     _C_PHY_DRV__MII_initialise 001105d8	00000058
+
+		.text           00110630	00000104 Objs\C_PHY_DRV.o
+	   _C_PHY_DRV__MII_read 00110630	00000104
+
+		.text           00110734	000000f0 Objs\C_PHY_DRV.o
+	  _C_PHY_DRV__MII_write 00110734	000000f0
+
+		.text           00110824	00000036 Objs\C_Set_IPL.o
+		   _asm_set_ipl 00110824	00000000
+		    asm_set_ipl 00110824	00000000
+
+		.text           0011085a	00000000 Objs\C_UDP.o
+
+		.text           0011085c	0000008e Objs\C_UDP.o
+	       _C_UDP__Checksum 0011085c	0000008e
+
+		.text           001108ec	0000017c Objs\C_UDP.o
+	    _C_UDP__Send_packet 001108ec	0000017c
+
+		.text           00110a68	000000b8 Objs\C_UDP.o
+		_C_UDP__Connect 00110a68	000000b8
+
+		.text           00110b20	0000007a Objs\C_UDP.o
+		    _C_UDP__New 00110b20	0000007a
+
+		.text           00110b9c	000000ac Objs\C_UDP.o
+		   _C_UDP__Bind 00110b9c	000000ac
+
+		.text           00110c48	00000012 Objs\C_UDP.o
+	   _C_UDP__Set_callback 00110c48	00000012
+
+		.text           00110c5c	0000000a Objs\C_uint16_to_real_string.o
+
+		.text           00110c68	000000d8 Objs\C_uint16_to_real_string.o
+	 _uint16_to_real_string 00110c68	000000d8
+
+		.text           00110d40	00000000 Objs\C_Wordswap_To_Little_Endian.o
+
+		.text           00110d40	00000024 Objs\C_Wordswap_To_Little_Endian.o
+     _wordswap_to_little_endian 00110d40	00000024
+
+		.text           00110d64	00000000 Objs\L_DMA_Initialise.o
+
+		.text           00110d64	00000086 Objs\L_DMA_Initialise.o
+		_DMA_Initialise 00110d64	00000086
+
+		.text           00110dea	00000000 Objs\L_DSPI_Start.o
+
+		.text           00110dec	00000120 Objs\L_DSPI_Start.o
+		    _DSPI_Start 00110dec	00000120
+
+		.text           00110f0c	00000000 Objs\L_NETWORK.o
+
+		.text           00110f0c	0000025c Objs\L_NETWORK.o
+    _NETWORK_API_format_message 00110f0c	0000025c
+
+		.text           00111168	00000306 Objs\L_NETWORK.o
+	    _NETWORK_Initialise 00111168	00000306
+
+		.text           00111470	00000102 Objs\L_NETWORK.o
+     _NETWORK_Process_API_layer 00111470	00000102
+
+		.text           00111574	00000170 Objs\L_NETWORK.o
+     _NETWORK_Process_ARP_layer 00111574	00000170
+
+		.text           001116e4	000000a6 Objs\L_NETWORK.o
+     _NETWORK_Process_ETH_layer 001116e4	000000a6
+
+		.text           0011178c	000001e2 Objs\L_NETWORK.o
+      _NETWORK_Process_IP_layer 0011178c	000001e2
+
+		.text           00111970	00000352 Objs\L_NETWORK.o
+     _NETWORK_Process_UDP_layer 00111970	00000352
+
+		.text           00111cc2	00000000 Objs\L_PCI_ADDR_SPACE_CONFIG.o
+
+		.text           00111cc4	000001ec Objs\L_PCI_ADDR_SPACE_CONFIG.o
+	 _pci_addr_space_config 00111cc4	000001ec
+
+		.text           00111eb0	00000000 Objs\L_PCI_WINDOWS_CONFIG.o
+
+		.text           00111eb0	00000114 Objs\L_PCI_WINDOWS_CONFIG.o
+	    _pci_windows_config 00111eb0	00000114
+
+		.text           00111fc4	00000000 Objs\L_RAM_Init.o
+
+		.text           00111fc4	0000002a Objs\L_RAM_Init.o
+		      _RAM_init 00111fc4	0000002a
+
+		.text           00111fee	00000000 Objs\L_Slice_timer_0_init.o
+
+		.text           00111ff0	0000005a Objs\L_Slice_timer_0_init.o
+	    _Slice_timer_0_init 00111ff0	0000005a
+
+		.text           0011204a	00000000 Objs\L_AFDX_BIT.o
+
+		.text           0011204c	00000268 Objs\L_AFDX_BIT.o
+		      _afdx_bit 0011204c	00000268
+
+		.text           001122b4	00000000 Objs\L_AFDX_LOCKING.o
+
+		.text           001122b4	00000090 Objs\L_AFDX_LOCKING.o
+		  _afdx_locking 001122b4	00000090
+
+		.text           00112344	00000000 Objs\L_AFDX_LOOPBACK.o
+
+		.text           00112344	00000228 Objs\L_AFDX_LOOPBACK.o
+		 _afdx_loopback 00112344	00000228
+
+		.text           0011256c	00000000 Objs\L_AFDX_MDIO_WRITE.o
+
+		.text           0011256c	00000066 Objs\L_AFDX_MDIO_WRITE.o
+	       _afdx_mdio_write 0011256c	00000066
+
+		.text           001125d2	00000000 Objs\L_AFDX_MIB_GET.o
+
+		.text           001125d4	00000058 Objs\L_AFDX_MIB_GET.o
+		  _afdx_mib_get 001125d4	00000058
+
+		.text           0011262c	00000000 Objs\L_AFDX_RESET_PHY.o
+
+		.text           0011262c	0000009e Objs\L_AFDX_RESET_PHY.o
+		_afdx_reset_phy 0011262c	0000009e
+
+		.text           001126ca	00000000 Objs\L_AFDX_RX.o
+
+		.text           001126cc	00000212 Objs\L_AFDX_RX.o
+		       _afdx_rx 001126cc	00000212
+
+		.text           001128e0	00000010 Objs\L_AFDX_TX.o
+
+		.text           001128f0	000001a0 Objs\L_AFDX_TX.o
+		       _afdx_tx 001128f0	000001a0
+
+
+.sbc_txrx_queues		10014100	00002490
+		.sbc_txrx_queues 10014100	00002490 Objs\PLAT_SBC.o
+		     _TxQueue_m 10014100	00001248
+		     _RxQueue_m 10015348	00001248
+
+
+.sdata          		00112a90	00000030
+		.sdata          70000000	0000000c Objs\C_FEC_DRV.o
+			 _Rxed1 70000000	00000004
+			 _Rxed2 70000004	00000004
+			_Rxed2a 70000008	00000004
+
+		.sdata          7000000c	00000024 Objs\L_NETWORK.o
+			 _Rxed3 7000000c	00000004
+			_Rxed3a 70000010	00000004
+			_Rxed3b 70000014	00000004
+			_Rxed3c 70000018	00000004
+			_Rxed3d 7000001c	00000004
+			 _Rxed4 70000020	00000004
+			_Rxed4a 70000024	00000004
+			_Rxed4b 70000028	00000004
+			_Rxed4c 7000002c	00000004
+
+
+.data           		00112ac0	00000000
+
+.ct_cleared_ram 		70000030	0000016c
+		.ct_cleared_ram 70000030	00000018 Objs\C_ARP.o
+	     _ARP_timer_matured 70000030	00000008
+		     _ARP_timer 70000038	00000008
+		     _ARP_ticks 70000040	00000008
+
+		.ct_cleared_ram 70000048	00000008 Objs\C_IP.o
+		  _Unique_IP_id 70000048	00000008
+
+		.ct_cleared_ram 70000050	0000014c Objs\C_UDP.o
+	     _pFirst_connection 70000050	00000008
+		     _UDP_index 70000058	00000002
+	       _UDP_connections 7000005c	00000140
+
+
+.sbss           		7000019c	00000124
+		.sbss           7000019c	0000003b Objs\MPT.o
+		    _SPDSLane_m 7000019c	00000004
+	 _MPT_SSStaleCounters_m 700001a0	00000007
+	     _CmdMsgFreshness_m 700001a8	00000007
+	     _StsMsgFreshness_m 700001b0	00000007
+	  _MPTnConfigRspCount_m 700001b8	00000007
+	_MPTnAircraftRspCount_m 700001c0	00000007
+	 _MPTnCommandRspCount_m 700001c8	00000007
+	  _MPTnStatusRspCount_m 700001d0	00000007
+
+		.sbss           700001d8	00000004 Objs\SSPC.o
+		    _SPDSLane_m 700001d8	00000004
+
+		.sbss           700001dc	00000004 Objs\LoadShed.o
+	_LoadShedTableAddress_m 700001dc	00000004
+
+		.sbss           700001e0	00000008 Objs\FTI.o
+	       _FTIAuthorised_m 700001e0	00000004
+	       _ESC_IPAddress_m 700001e4	00000004
+
+		.sbss           700001e8	00000014 Objs\ESC_Scheduler.o
+	     _MinorFrameCount_m 700001e8	00000001
+	     _MajorFrameCount_m 700001ec	00000004
+		     _SysTime_m 700001f0	00000004
+		   _SSPCFrame_m 700001f4	00000004
+		    _MPTFrame_m 700001f8	00000004
+
+		.sbss           700001fc	00000008 Objs\PLAT_Discretes.o
+  _CurrentFB3OutputLatchValue_m 700001fc	00000004
+  _CurrentFB4OutputLatchValue_m 70000200	00000004
+
+		.sbss           70000204	00000008 Objs\PLAT_GPT.o
+	   _GPTTimerCallbacks_m 70000204	00000008
+
+		.sbss           7000020c	00000004 Objs\PLAT_SLT.o
+	   _SLTTimerCallbacks_m 7000020c	00000004
+
+		.sbss           70000210	00000018 Objs\PLAT_A664_ES.o
+	  _es_master_source_ptr 70000210	00000004
+		  _table_length 70000214	00000004
+		    _page_count 70000218	00000004
+		_hw_table_index 7000021c	00000002
+		    _page_index 70000220	00000004
+		    _word_count 70000224	00000004
+
+		.sbss           70000228	00000004 Objs\PLAT_PSU.o
+	    _PowerFailHandler_m 70000228	00000004
+
+		.sbss           7000022c	00000006 Objs\PLAT_SBC.o
+	    _CurrentFreshness_m 7000022c	00000006
+
+		.sbss           70000232	00000001 Objs\PLAT_Ethernet.o
+	   _RxDataReadPointer_m 70000232	00000001
+
+		.sbss           70000234	00000008 Objs\PLAT_ARINC664.o
+	       _current_es_mode 70000234	00000004
+		     _es_status 70000238	00000004
+
+		.sbss           7000023c	0000001a Objs\C_FEC_BD.o
+	_pvRx_buffer_descriptor 7000023c	00000008
+	_pvTx_buffer_descriptor 70000244	00000008
+	       _Tx_BD_new_index 7000024c	00000002
+	       _Tx_BD_old_index 70000250	00000002
+		   _Rx_BD_index 70000254	00000002
+
+		.sbss           70000256	00000002 Objs\C_Global.o
+	   _DMA_interrupt_level 70000256	00000001
+	  _SLT0_interrupt_level 70000257	00000001
+
+		.sbss           70000258	00000010 Objs\C_MCD_API.o
+		  _pMCD_dma_bar 70000258	00000004
+	  _pMCD_real_task_table 7000025c	00000004
+	 _pMCD_model_task_table 70000260	00000004
+_pMCD_Relocated_buffer_descriptors 70000264	00000004
+
+		.sbss           70000268	00000054 Objs\L_NETWORK.o
+		    _Active_FEC 70000268	00000001
+	  _pNetwork_UDP_RX_FIFO 7000026c	00000008
+	   _pNetwork_IP_RX_FIFO 70000274	00000008
+	  _pNetwork_ARP_RX_FIFO 7000027c	00000008
+	  _pNetwork_API_RX_FIFO 70000284	00000008
+	  _pNetwork_UDP_TX_FIFO 7000028c	00000008
+	   _pNetwork_IP_TX_FIFO 70000294	00000008
+	  _pNetwork_ETH_TX_FIFO 7000029c	00000008
+	   _RIU_host_IP_address 700002a4	00000008
+    _Local_broadcast_IP_address 700002ac	00000008
+	     _RIU_transmit_port 700002b4	00000004
+	       _RIU_listen_port 700002b8	00000004
+
+		.sbss		700002bc	00000000 [SCOMMON]
+
+.bss            		700002c0	00022968
+		.bss            700002c0	00001510 Objs\MPT.o
+       _MPTCommandMessageData_m 700002c0	00000302
+	_MPTStatusMessageData_m 700005c4	00000620
+	_MPTConfigMessageData_m 70000be4	00000245
+    _MPTAircraftIDMessageData_m 70000e2c	000000a8
+		  _VMSTxQueue_m 70000ed4	00000400
+		  _VMSRxQueue_m 700012d4	00000400
+       _MPTStatusDataValidity_m 700016d4	0000001c
+      _MPTStatusDataFreshness_m 700016f0	0000001c
+       _MPTConfigDataValidity_m 7000170c	0000001c
+	   _MPTBusVoltageInfo_m 70001728	00000070
+		    _InitDone_m 70001798	0000001c
+	   _PendingAIDRequest_m 700017b4	0000001c
+
+		.bss            700017d0	00003fc0 Objs\SSPC.o
+	      _SwitchCommands_m 700017d0	00000110
+	      _CollarCommands_m 700018e0	00000440
+		_PullCommands_m 70001d20	00000110
+	       _ResetCommands_m 70001e30	00000110
+	       _LoadShedFlags_m 70001f40	00000440
+	   _OwnLaneSSPCStatus_m 70002380	00001980
+	 _OtherLaneSSPCStatus_m 70003d00	00001980
+	_SSPC_SSStaleCounters_m 70005680	00000110
+
+		.bss            70005790	00000270 Objs\FTI.o
+	       _SessionParams_m 70005790	00000270
+
+		.bss            70005a00	0000001c Objs\ESC_Scheduler.o
+		 _MPT_AID_Set_m 70005a00	0000001c
+
+		.bss            70005a1c	0000255c Objs\PLAT_SBC.o
+	    _InterfaceConfigs_m 70005a1c	000000d8
+		 _StatusWords_m 70005af4	00000024
+		 _ConfigWords_m 70005b18	0000003c
+	       _SubFrmLengths_m 70005b54	00000024
+	    _BufferDescriptor_m 70005b78	00000030
+		      _TxFIFO_m 70005ba8	000011dc
+		      _RxFIFO_m 70006d84	000011dc
+	       _FirstTimeDone_m 70007f60	0000000c
+		_LastRxStatus_m 70007f6c	0000000c
+
+		.bss            70007f78	00000070 Objs\PLAT_VMS.o
+	      _VMSDescriptors_m 70007f78	00000060
+		    _VMSState_m 70007fd8	00000010
+
+		.bss            70007fe8	000001f4 Objs\PLAT_Ethernet.o
+		       _FIFOs_m 70007fe8	000001a4
+	 _RxSourceIPAddresses_m 7000818c	00000028
+	    _RxSourceUDPPorts_m 700081b4	00000014
+	      _RxDestUDPPorts_m 700081c8	00000014
+
+		.bss		700081dc	0001aa4c [COMMON]
+	             _ARP_table 700081dc	00000300
+	_RIU_channel_MAC_address 700084dc	0000000c
+	     _core_fault_record 700084e8	00000010
+	           _DMA_channel 700084f8	00000080
+	       _Used_requestors 70008578	00000020
+	 _Unaligned_Rx_BD_store 70008598	00000090
+	 _Unaligned_Tx_BD_store 70008628	00000050
+	    _MCD_singleBufDescs 70008678	00000020
+	      _MCD_contextSave0 70008698	00000200
+	      _MCD_contextSave1 70008898	00000200
+	      _MCD_contextSave2 70008a98	00000200
+	      _MCD_contextSave3 70008c98	00000200
+	      _MCD_contextSave4 70008e98	00000200
+	      _MCD_contextSave5 70009098	00000200
+	      _MCD_contextSave6 70009298	00000200
+	      _MCD_contextSave7 70009498	00000200
+	      _MCD_contextSave8 70009698	00000200
+	      _MCD_contextSave9 70009898	00000200
+	     _MCD_contextSave10 70009a98	00000200
+	     _MCD_contextSave11 70009c98	00000200
+	     _MCD_contextSave12 70009e98	00000200
+	     _MCD_contextSave13 7000a098	00000200
+	     _MCD_contextSave14 7000a298	00000200
+	     _MCD_contextSave15 7000a498	00000200
+	      _Net_buffer_queue 7000a698	00000030
+	       _Network_buffers 7000a6c8	00000540
+	_Unaligned_data_buffers 7000ac08	00018020
+
+.debug_line     		00000000	0000b24c
+		.debug_line     00000000	00000027 Objs\MPT.o
+
+		.debug_line     00000027	000000a0 Objs\MPT.o
+
+		.debug_line     000000c7	00000074 Objs\MPT.o
+
+		.debug_line     0000013b	0000009c Objs\MPT.o
+
+		.debug_line     000001d7	000000b7 Objs\MPT.o
+
+		.debug_line     0000028e	00000079 Objs\MPT.o
+
+		.debug_line     00000307	000000a6 Objs\MPT.o
+
+		.debug_line     000003ad	00000060 Objs\MPT.o
+
+		.debug_line     0000040d	00000064 Objs\MPT.o
+
+		.debug_line     00000471	0000009a Objs\MPT.o
+
+		.debug_line     0000050b	00000063 Objs\MPT.o
+
+		.debug_line     0000056e	000000e3 Objs\MPT.o
+
+		.debug_line     00000651	00000027 Objs\SSPC.o
+
+		.debug_line     00000678	00000071 Objs\SSPC.o
+
+		.debug_line     000006e9	0000007b Objs\SSPC.o
+
+		.debug_line     00000764	00000068 Objs\SSPC.o
+
+		.debug_line     000007cc	00000063 Objs\SSPC.o
+
+		.debug_line     0000082f	00000063 Objs\SSPC.o
+
+		.debug_line     00000892	00000064 Objs\SSPC.o
+
+		.debug_line     000008f6	00000073 Objs\SSPC.o
+
+		.debug_line     00000969	0000007b Objs\SSPC.o
+
+		.debug_line     000009e4	00000097 Objs\SSPC.o
+
+		.debug_line     00000a7b	000000c3 Objs\SSPC.o
+
+		.debug_line     00000b3e	0000008a Objs\SSPC.o
+
+		.debug_line     00000bc8	00000080 Objs\SSPC.o
+
+		.debug_line     00000c48	000000dc Objs\SSPC.o
+
+		.debug_line     00000d24	00000027 Objs\LoadShed.o
+
+		.debug_line     00000d4b	00000066 Objs\LoadShed.o
+
+		.debug_line     00000db1	00000085 Objs\LoadShed.o
+
+		.debug_line     00000e36	000000dc Objs\LoadShed.o
+
+		.debug_line     00000f12	00000027 Objs\FTI.o
+
+		.debug_line     00000f39	0000007f Objs\FTI.o
+
+		.debug_line     00000fb8	00000086 Objs\FTI.o
+
+		.debug_line     0000103e	0000006c Objs\FTI.o
+
+		.debug_line     000010aa	0000007d Objs\FTI.o
+
+		.debug_line     00001127	000000c2 Objs\FTI.o
+
+		.debug_line     000011e9	000000ad Objs\FTI.o
+
+		.debug_line     00001296	0000009a Objs\FTI.o
+
+		.debug_line     00001330	0000008c Objs\FTI.o
+
+		.debug_line     000013bc	0000009a Objs\FTI.o
+
+		.debug_line     00001456	00000062 Objs\FTI.o
+
+		.debug_line     000014b8	0000006a Objs\FTI.o
+
+		.debug_line     00001522	000000c4 Objs\FTI.o
+
+		.debug_line     000015e6	00000027 Objs\ConfigMgr.o
+
+		.debug_line     0000160d	00000069 Objs\ConfigMgr.o
+
+		.debug_line     00001676	000000b0 Objs\ConfigMgr.o
+
+		.debug_line     00001726	00000027 Objs\ESC_Scheduler.o
+
+		.debug_line     0000174d	00000089 Objs\ESC_Scheduler.o
+
+		.debug_line     000017d6	0000008e Objs\ESC_Scheduler.o
+
+		.debug_line     00001864	00000079 Objs\ESC_Scheduler.o
+
+		.debug_line     000018dd	00000075 Objs\ESC_Scheduler.o
+
+		.debug_line     00001952	000000fb Objs\ESC_Scheduler.o
+
+		.debug_line     00001a4d	00000027 Objs\PLAT_Discretes.o
+
+		.debug_line     00001a74	00000092 Objs\PLAT_Discretes.o
+
+		.debug_line     00001b06	00000093 Objs\PLAT_Discretes.o
+
+		.debug_line     00001b99	000000a0 Objs\PLAT_Discretes.o
+
+		.debug_line     00001c39	00000079 Objs\PLAT_Discretes.o
+
+		.debug_line     00001cb2	00000074 Objs\PLAT_Discretes.o
+
+		.debug_line     00001d26	00000082 Objs\PLAT_Discretes.o
+
+		.debug_line     00001da8	0000007d Objs\PLAT_Discretes.o
+
+		.debug_line     00001e25	000000bd Objs\PLAT_Discretes.o
+
+		.debug_line     00001ee2	00000027 Objs\PLAT_GPT.o
+
+		.debug_line     00001f09	0000006f Objs\PLAT_GPT.o
+
+		.debug_line     00001f78	0000006b Objs\PLAT_GPT.o
+
+		.debug_line     00001fe3	0000006f Objs\PLAT_GPT.o
+
+		.debug_line     00002052	0000006f Objs\PLAT_GPT.o
+
+		.debug_line     000020c1	00000086 Objs\PLAT_GPT.o
+
+		.debug_line     00002147	0000007d Objs\PLAT_GPT.o
+
+		.debug_line     000021c4	00000074 Objs\PLAT_GPT.o
+
+		.debug_line     00002238	00000066 Objs\PLAT_GPT.o
+
+		.debug_line     0000229e	000000c6 Objs\PLAT_GPT.o
+
+		.debug_line     00002364	00000027 Objs\PLAT_INTC.o
+
+		.debug_line     0000238b	0000006f Objs\PLAT_INTC.o
+
+		.debug_line     000023fa	00000088 Objs\PLAT_INTC.o
+
+		.debug_line     00002482	000000a6 Objs\PLAT_INTC.o
+
+		.debug_line     00002528	00000027 Objs\PLAT_Resources.o
+
+		.debug_line     0000254f	000000a5 Objs\PLAT_Resources.o
+
+		.debug_line     000025f4	000000b6 Objs\PLAT_Resources.o
+
+		.debug_line     000026aa	0000007d Objs\PLAT_Resources.o
+
+		.debug_line     00002727	00000172 Objs\PLAT_Resources.o
+
+		.debug_line     00002899	00000027 Objs\PLAT_PSC.o
+
+		.debug_line     000028c0	0000006b Objs\PLAT_PSC.o
+
+		.debug_line     0000292b	0000006b Objs\PLAT_PSC.o
+
+		.debug_line     00002996	00000091 Objs\PLAT_PSC.o
+
+		.debug_line     00002a27	00000079 Objs\PLAT_PSC.o
+
+		.debug_line     00002aa0	00000074 Objs\PLAT_PSC.o
+
+		.debug_line     00002b14	0000007f Objs\PLAT_PSC.o
+
+		.debug_line     00002b93	00000074 Objs\PLAT_PSC.o
+
+		.debug_line     00002c07	00000069 Objs\PLAT_PSC.o
+
+		.debug_line     00002c70	0000006a Objs\PLAT_PSC.o
+
+		.debug_line     00002cda	000000a1 Objs\PLAT_PSC.o
+
+		.debug_line     00002d7b	00000027 Objs\PLAT_SLT.o
+
+		.debug_line     00002da2	00000079 Objs\PLAT_SLT.o
+
+		.debug_line     00002e1b	0000006b Objs\PLAT_SLT.o
+
+		.debug_line     00002e86	0000006f Objs\PLAT_SLT.o
+
+		.debug_line     00002ef5	00000070 Objs\PLAT_SLT.o
+
+		.debug_line     00002f65	0000006f Objs\PLAT_SLT.o
+
+		.debug_line     00002fd4	0000007f Objs\PLAT_SLT.o
+
+		.debug_line     00003053	00000070 Objs\PLAT_SLT.o
+
+		.debug_line     000030c3	000000e5 Objs\PLAT_SLT.o
+
+		.debug_line     000031a8	00000027 Objs\PLAT_A664_ES.o
+
+		.debug_line     000031cf	000001d3 Objs\PLAT_A664_ES.o
+
+		.debug_line     000033a2	00000143 Objs\PLAT_A664_ES.o
+
+		.debug_line     000034e5	00000027 Objs\PLAT_PSU.o
+
+		.debug_line     0000350c	00000074 Objs\PLAT_PSU.o
+
+		.debug_line     00003580	0000006e Objs\PLAT_PSU.o
+
+		.debug_line     000035ee	000000ad Objs\PLAT_PSU.o
+
+		.debug_line     0000369b	00000027 Objs\PLAT_Watchdog.o
+
+		.debug_line     000036c2	00000079 Objs\PLAT_Watchdog.o
+
+		.debug_line     0000373b	00000071 Objs\PLAT_Watchdog.o
+
+		.debug_line     000037ac	000000bd Objs\PLAT_Watchdog.o
+
+		.debug_line     00003869	00000027 Objs\PLAT_SBC.o
+
+		.debug_line     00003890	000000ab Objs\PLAT_SBC.o
+
+		.debug_line     0000393b	0000008e Objs\PLAT_SBC.o
+
+		.debug_line     000039c9	000000a5 Objs\PLAT_SBC.o
+
+		.debug_line     00003a6e	0000009d Objs\PLAT_SBC.o
+
+		.debug_line     00003b0b	000000c0 Objs\PLAT_SBC.o
+
+		.debug_line     00003bcb	000000cc Objs\PLAT_SBC.o
+
+		.debug_line     00003c97	000000b9 Objs\PLAT_SBC.o
+
+		.debug_line     00003d50	0000008d Objs\PLAT_SBC.o
+
+		.debug_line     00003ddd	0000012d Objs\PLAT_SBC.o
+
+		.debug_line     00003f0a	00000027 Objs\PLAT_NVM.o
+
+		.debug_line     00003f31	0000006f Objs\PLAT_NVM.o
+
+		.debug_line     00003fa0	00000089 Objs\PLAT_NVM.o
+
+		.debug_line     00004029	00000027 Objs\PLAT_Utils.o
+
+		.debug_line     00004050	00000069 Objs\PLAT_Utils.o
+
+		.debug_line     000040b9	00000069 Objs\PLAT_Utils.o
+
+		.debug_line     00004122	0000006c Objs\PLAT_Utils.o
+
+		.debug_line     0000418e	0000006f Objs\PLAT_Utils.o
+
+		.debug_line     000041fd	0000006f Objs\PLAT_Utils.o
+
+		.debug_line     0000426c	0000006d Objs\PLAT_Utils.o
+
+		.debug_line     000042d9	00000068 Objs\PLAT_Utils.o
+
+		.debug_line     00004341	00000087 Objs\PLAT_Utils.o
+
+		.debug_line     000043c8	00000027 Objs\PLAT_VMS.o
+
+		.debug_line     000043ef	00000084 Objs\PLAT_VMS.o
+
+		.debug_line     00004473	00000079 Objs\PLAT_VMS.o
+
+		.debug_line     000044ec	000000ae Objs\PLAT_VMS.o
+
+		.debug_line     0000459a	00000064 Objs\PLAT_VMS.o
+
+		.debug_line     000045fe	00000064 Objs\PLAT_VMS.o
+
+		.debug_line     00004662	00000064 Objs\PLAT_VMS.o
+
+		.debug_line     000046c6	00000064 Objs\PLAT_VMS.o
+
+		.debug_line     0000472a	00000093 Objs\PLAT_VMS.o
+
+		.debug_line     000047bd	00000085 Objs\PLAT_VMS.o
+
+		.debug_line     00004842	0000015f Objs\PLAT_VMS.o
+
+		.debug_line     000049a1	00000027 Objs\PLAT_ARINC429.o
+
+		.debug_line     000049c8	00000074 Objs\PLAT_ARINC429.o
+
+		.debug_line     00004a3c	00000075 Objs\PLAT_ARINC429.o
+
+		.debug_line     00004ab1	0000007b Objs\PLAT_ARINC429.o
+
+		.debug_line     00004b2c	000000e9 Objs\PLAT_ARINC429.o
+
+		.debug_line     00004c15	00000027 Objs\PLAT_RS485.o
+
+		.debug_line     00004c3c	0000006f Objs\PLAT_RS485.o
+
+		.debug_line     00004cab	0000006f Objs\PLAT_RS485.o
+
+		.debug_line     00004d1a	00000076 Objs\PLAT_RS485.o
+
+		.debug_line     00004d90	000000e3 Objs\PLAT_RS485.o
+
+		.debug_line     00004e73	00000027 Objs\PLAT_Ethernet.o
+
+		.debug_line     00004e9a	000000e1 Objs\PLAT_Ethernet.o
+
+		.debug_line     00004f7b	0000008a Objs\PLAT_Ethernet.o
+
+		.debug_line     00005005	00000093 Objs\PLAT_Ethernet.o
+
+		.debug_line     00005098	000000dc Objs\PLAT_Ethernet.o
+
+		.debug_line     00005174	0000015f Objs\PLAT_Ethernet.o
+
+		.debug_line     000052d3	00000027 Objs\PLAT_ARINC664.o
+
+		.debug_line     000052fa	00000081 Objs\PLAT_ARINC664.o
+
+		.debug_line     0000537b	0000026c Objs\PLAT_ARINC664.o
+
+		.debug_line     000055e7	00000092 Objs\PLAT_ARINC664.o
+
+		.debug_line     00005679	00000085 Objs\PLAT_ARINC664.o
+
+		.debug_line     000056fe	0000007e Objs\PLAT_ARINC664.o
+
+		.debug_line     0000577c	0000007d Objs\PLAT_ARINC664.o
+
+		.debug_line     000057f9	00000144 Objs\PLAT_ARINC664.o
+
+		.debug_line     0000593d	00000027 Objs\C_64BIT_UNSIGNED_ADD.o
+
+		.debug_line     00005964	000000b9 Objs\C_64BIT_UNSIGNED_ADD.o
+
+		.debug_line     00005a1d	00000027 Objs\C_64BIT_UNSIGNED_SUBTRACT.o
+
+		.debug_line     00005a44	000000af Objs\C_64BIT_UNSIGNED_SUBTRACT.o
+
+		.debug_line     00005af3	00000027 Objs\C_ARP.o
+
+		.debug_line     00005b1a	00000090 Objs\C_ARP.o
+
+		.debug_line     00005baa	0000007d Objs\C_ARP.o
+
+		.debug_line     00005c27	00000096 Objs\C_ARP.o
+
+		.debug_line     00005cbd	000000af Objs\C_ARP.o
+
+		.debug_line     00005d6c	000000fd Objs\C_ARP.o
+
+		.debug_line     00005e69	000000b9 Objs\C_ARP.o
+
+		.debug_line     00005f22	00000133 Objs\C_ARP.o
+
+		.debug_line     00006055	00000027 Objs\C_Calculate_crc.o
+
+		.debug_line     0000607c	000000af Objs\C_Calculate_crc.o
+
+		.debug_line     0000612b	00000027 Objs\C_clock.o
+
+		.debug_line     00006152	00000073 Objs\C_clock.o
+
+		.debug_line     000061c5	00000088 Objs\C_clock.o
+
+		.debug_line     0000624d	000000ce Objs\C_clock.o
+
+		.debug_line     0000631b	00000027 Objs\C_Default_Exception_Handler.o
+
+		.debug_line     00006342	000000c5 Objs\C_Default_Exception_Handler.o
+
+		.debug_line     00006407	00000027 Objs\C_DMA_UTILS.o
+
+		.debug_line     0000642e	00000093 Objs\C_DMA_UTILS.o
+
+		.debug_line     000064c1	00000081 Objs\C_DMA_UTILS.o
+
+		.debug_line     00006542	00000082 Objs\C_DMA_UTILS.o
+
+		.debug_line     000065c4	00000081 Objs\C_DMA_UTILS.o
+
+		.debug_line     00006645	00000083 Objs\C_DMA_UTILS.o
+
+		.debug_line     000066c8	00000073 Objs\C_DMA_UTILS.o
+
+		.debug_line     0000673b	00000089 Objs\C_DMA_UTILS.o
+
+		.debug_line     000067c4	000001c6 Objs\C_DMA_UTILS.o
+
+		.debug_line     0000698a	000000ae Objs\C_DMA_UTILS.o
+
+		.debug_line     00006a38	00000027 Objs\C_Error_Handler.o
+
+		.debug_line     00006a5f	000000ab Objs\C_Error_Handler.o
+
+		.debug_line     00006b0a	00000027 Objs\C_ETHERNET.o
+
+		.debug_line     00006b31	000000aa Objs\C_ETHERNET.o
+
+		.debug_line     00006bdb	00000027 Objs\C_fatal_error.o
+
+		.debug_line     00006c02	00000092 Objs\C_fatal_error.o
+
+		.debug_line     00006c94	00000027 Objs\C_FEC_BD.o
+
+		.debug_line     00006cbb	00000073 Objs\C_FEC_BD.o
+
+		.debug_line     00006d2e	000000bf Objs\C_FEC_BD.o
+
+		.debug_line     00006ded	00000078 Objs\C_FEC_BD.o
+
+		.debug_line     00006e65	0000007a Objs\C_FEC_BD.o
+
+		.debug_line     00006edf	000000f5 Objs\C_FEC_BD.o
+
+		.debug_line     00006fd4	00000027 Objs\C_FEC_DRV.o
+
+		.debug_line     00006ffb	0000006a Objs\C_FEC_DRV.o
+
+		.debug_line     00007065	0000006a Objs\C_FEC_DRV.o
+
+		.debug_line     000070cf	000000b8 Objs\C_FEC_DRV.o
+
+		.debug_line     00007187	00000076 Objs\C_FEC_DRV.o
+
+		.debug_line     000071fd	00000081 Objs\C_FEC_DRV.o
+
+		.debug_line     0000727e	00000081 Objs\C_FEC_DRV.o
+
+		.debug_line     000072ff	0000008b Objs\C_FEC_DRV.o
+
+		.debug_line     0000738a	00000096 Objs\C_FEC_DRV.o
+
+		.debug_line     00007420	0000007f Objs\C_FEC_DRV.o
+
+		.debug_line     0000749f	0000008b Objs\C_FEC_DRV.o
+
+		.debug_line     0000752a	00000074 Objs\C_FEC_DRV.o
+
+		.debug_line     0000759e	0000008e Objs\C_FEC_DRV.o
+
+		.debug_line     0000762c	00000088 Objs\C_FEC_DRV.o
+
+		.debug_line     000076b4	00000071 Objs\C_FEC_DRV.o
+
+		.debug_line     00007725	00000070 Objs\C_FEC_DRV.o
+
+		.debug_line     00007795	0000006f Objs\C_FEC_DRV.o
+
+		.debug_line     00007804	00000107 Objs\C_FEC_DRV.o
+
+		.debug_line     0000790b	0000007e Objs\C_FEC_DRV.o
+
+		.debug_line     00007989	0000008a Objs\C_FEC_DRV.o
+
+		.debug_line     00007a13	00000071 Objs\C_FEC_DRV.o
+
+		.debug_line     00007a84	0000006f Objs\C_FEC_DRV.o
+
+		.debug_line     00007af3	0000006f Objs\C_FEC_DRV.o
+
+		.debug_line     00007b62	0000007d Objs\C_FEC_DRV.o
+
+		.debug_line     00007bdf	00000176 Objs\C_FEC_DRV.o
+
+		.debug_line     00007d55	00000027 Objs\C_FIFO.o
+
+		.debug_line     00007d7c	0000009f Objs\C_FIFO.o
+
+		.debug_line     00007e1b	000000a7 Objs\C_FIFO.o
+
+		.debug_line     00007ec2	0000008e Objs\C_FIFO.o
+
+		.debug_line     00007f50	00000053 Objs\C_Global.o
+
+		.debug_line     00007fa3	00000027 Objs\C_IP.o
+
+		.debug_line     00007fca	0000007f Objs\C_IP.o
+
+		.debug_line     00008049	000000f9 Objs\C_IP.o
+
+		.debug_line     00008142	00000027 Objs\C_MCD_API.o
+
+		.debug_line     00008169	0000007c Objs\C_MCD_API.o
+
+		.debug_line     000081e5	00000077 Objs\C_MCD_API.o
+
+		.debug_line     0000825c	00000106 Objs\C_MCD_API.o
+
+		.debug_line     00008362	00000130 Objs\C_MCD_API.o
+
+		.debug_line     00008492	000000bf Objs\C_MCD_API.o
+
+		.debug_line     00008551	00000027 Objs\C_MCD_TASKS.o
+
+		.debug_line     00008578	00000093 Objs\C_MCD_TASKS.o
+
+		.debug_line     0000860b	0000008d Objs\C_MCD_TASKS.o
+
+		.debug_line     00008698	00000093 Objs\C_MCD_TASKS.o
+
+		.debug_line     0000872b	0000008e Objs\C_MCD_TASKS.o
+
+		.debug_line     000087b9	0000008c Objs\C_MCD_TASKS.o
+
+		.debug_line     00008845	00000094 Objs\C_MCD_TASKS.o
+
+		.debug_line     000088d9	000000c5 Objs\C_MCD_TASKS.o
+
+		.debug_line     0000899e	00000027 Objs\C_MEM.o
+
+		.debug_line     000089c5	00000086 Objs\C_MEM.o
+
+		.debug_line     00008a4b	0000006f Objs\C_MEM.o
+
+		.debug_line     00008aba	00000090 Objs\C_MEM.o
+
+		.debug_line     00008b4a	00000027 Objs\C_NET_BUFFERS.o
+
+		.debug_line     00008b71	00000071 Objs\C_NET_BUFFERS.o
+
+		.debug_line     00008be2	00000077 Objs\C_NET_BUFFERS.o
+
+		.debug_line     00008c59	00000079 Objs\C_NET_BUFFERS.o
+
+		.debug_line     00008cd2	00000079 Objs\C_NET_BUFFERS.o
+
+		.debug_line     00008d4b	00000099 Objs\C_NET_BUFFERS.o
+
+		.debug_line     00008de4	00000075 Objs\C_NET_BUFFERS.o
+
+		.debug_line     00008e59	000000cb Objs\C_NET_BUFFERS.o
+
+		.debug_line     00008f24	00000027 Objs\C_NET_QUEUES.o
+
+		.debug_line     00008f4b	00000074 Objs\C_NET_QUEUES.o
+
+		.debug_line     00008fbf	00000070 Objs\C_NET_QUEUES.o
+
+		.debug_line     0000902f	00000077 Objs\C_NET_QUEUES.o
+
+		.debug_line     000090a6	000000a9 Objs\C_NET_QUEUES.o
+
+		.debug_line     0000914f	00000027 Objs\C_NETWORK.o
+
+		.debug_line     00009176	000000d7 Objs\C_NETWORK.o
+
+		.debug_line     0000924d	000000c0 Objs\C_NETWORK.o
+
+		.debug_line     0000930d	00000080 Objs\C_NETWORK.o
+
+		.debug_line     0000938d	000000cf Objs\C_NETWORK.o
+
+		.debug_line     0000945c	00000027 Objs\C_NVM.o
+
+		.debug_line     00009483	000000a4 Objs\C_NVM.o
+
+		.debug_line     00009527	00000027 Objs\C_PHY_DRV.o
+
+		.debug_line     0000954e	00000107 Objs\C_PHY_DRV.o
+
+		.debug_line     00009655	00000079 Objs\C_PHY_DRV.o
+
+		.debug_line     000096ce	00000092 Objs\C_PHY_DRV.o
+
+		.debug_line     00009760	000000d6 Objs\C_PHY_DRV.o
+
+		.debug_line     00009836	00000027 Objs\C_UDP.o
+
+		.debug_line     0000985d	00000086 Objs\C_UDP.o
+
+		.debug_line     000098e3	000000ba Objs\C_UDP.o
+
+		.debug_line     0000999d	00000098 Objs\C_UDP.o
+
+		.debug_line     00009a35	0000006b Objs\C_UDP.o
+
+		.debug_line     00009aa0	000000a1 Objs\C_UDP.o
+
+		.debug_line     00009b41	000000b8 Objs\C_UDP.o
+
+		.debug_line     00009bf9	00000027 Objs\C_uint16_to_real_string.o
+
+		.debug_line     00009c20	000000d4 Objs\C_uint16_to_real_string.o
+
+		.debug_line     00009cf4	00000027 Objs\C_Wordswap_To_Little_Endian.o
+
+		.debug_line     00009d1b	0000009e Objs\C_Wordswap_To_Little_Endian.o
+
+		.debug_line     00009db9	00000027 Objs\L_DMA_Initialise.o
+
+		.debug_line     00009de0	000000bc Objs\L_DMA_Initialise.o
+
+		.debug_line     00009e9c	00000027 Objs\L_DSPI_Start.o
+
+		.debug_line     00009ec3	000000cd Objs\L_DSPI_Start.o
+
+		.debug_line     00009f90	00000027 Objs\L_NETWORK.o
+
+		.debug_line     00009fb7	00000106 Objs\L_NETWORK.o
+
+		.debug_line     0000a0bd	000000ec Objs\L_NETWORK.o
+
+		.debug_line     0000a1a9	000000a4 Objs\L_NETWORK.o
+
+		.debug_line     0000a24d	000000bd Objs\L_NETWORK.o
+
+		.debug_line     0000a30a	0000008a Objs\L_NETWORK.o
+
+		.debug_line     0000a394	000000d5 Objs\L_NETWORK.o
+
+		.debug_line     0000a469	00000234 Objs\L_NETWORK.o
+
+		.debug_line     0000a69d	00000027 Objs\L_PCI_ADDR_SPACE_CONFIG.o
+
+		.debug_line     0000a6c4	00000127 Objs\L_PCI_ADDR_SPACE_CONFIG.o
+
+		.debug_line     0000a7eb	00000027 Objs\L_PCI_WINDOWS_CONFIG.o
+
+		.debug_line     0000a812	000000ad Objs\L_PCI_WINDOWS_CONFIG.o
+
+		.debug_line     0000a8bf	00000027 Objs\L_RAM_Init.o
+
+		.debug_line     0000a8e6	00000084 Objs\L_RAM_Init.o
+
+		.debug_line     0000a96a	00000027 Objs\L_Slice_timer_0_init.o
+
+		.debug_line     0000a991	000000b2 Objs\L_Slice_timer_0_init.o
+
+		.debug_line     0000aa43	00000027 Objs\L_AFDX_BIT.o
+
+		.debug_line     0000aa6a	0000010d Objs\L_AFDX_BIT.o
+
+		.debug_line     0000ab77	00000027 Objs\L_AFDX_LOCKING.o
+
+		.debug_line     0000ab9e	000000d4 Objs\L_AFDX_LOCKING.o
+
+		.debug_line     0000ac72	00000027 Objs\L_AFDX_LOOPBACK.o
+
+		.debug_line     0000ac99	00000103 Objs\L_AFDX_LOOPBACK.o
+
+		.debug_line     0000ad9c	00000027 Objs\L_AFDX_MDIO_WRITE.o
+
+		.debug_line     0000adc3	000000b5 Objs\L_AFDX_MDIO_WRITE.o
+
+		.debug_line     0000ae78	00000027 Objs\L_AFDX_MIB_GET.o
+
+		.debug_line     0000ae9f	000000aa Objs\L_AFDX_MIB_GET.o
+
+		.debug_line     0000af49	00000027 Objs\L_AFDX_RESET_PHY.o
+
+		.debug_line     0000af70	0000009f Objs\L_AFDX_RESET_PHY.o
+
+		.debug_line     0000b00f	00000027 Objs\L_AFDX_RX.o
+
+		.debug_line     0000b036	00000116 Objs\L_AFDX_RX.o
+
+		.debug_line     0000b14c	00000027 Objs\L_AFDX_TX.o
+
+		.debug_line     0000b173	000000d9 Objs\L_AFDX_TX.o
+
+
+.debug_abbrev   		00000000	000036dc
+		.debug_abbrev   00000000	000000f8 Objs\MPT.o
+
+		.debug_abbrev   000000f8	0000010d Objs\SSPC.o
+
+		.debug_abbrev   00000205	000000f8 Objs\LoadShed.o
+
+		.debug_abbrev   000002fd	00000101 Objs\FTI.o
+
+		.debug_abbrev   000003fe	000000d8 Objs\ConfigMgr.o
+
+		.debug_abbrev   000004d6	000000e9 Objs\ESC_Scheduler.o
+
+		.debug_abbrev   000005bf	000000e7 Objs\PLAT_Discretes.o
+
+		.debug_abbrev   000006a6	000000e7 Objs\PLAT_GPT.o
+
+		.debug_abbrev   0000078d	000000d0 Objs\PLAT_INTC.o
+
+		.debug_abbrev   0000085d	000000b0 Objs\PLAT_Resources.o
+
+		.debug_abbrev   0000090d	000000cc Objs\PLAT_PSC.o
+
+		.debug_abbrev   000009d9	000000f0 Objs\PLAT_SLT.o
+
+		.debug_abbrev   00000ac9	000000da Objs\PLAT_A664_ES.o
+
+		.debug_abbrev   00000ba3	000000b5 Objs\PLAT_PSU.o
+
+		.debug_abbrev   00000c58	000000c1 Objs\PLAT_Watchdog.o
+
+		.debug_abbrev   00000d19	0000010d Objs\PLAT_SBC.o
+
+		.debug_abbrev   00000e26	0000009f Objs\PLAT_NVM.o
+
+		.debug_abbrev   00000ec5	000000cc Objs\PLAT_Utils.o
+
+		.debug_abbrev   00000f91	00000118 Objs\PLAT_VMS.o
+
+		.debug_abbrev   000010a9	000000f8 Objs\PLAT_ARINC429.o
+
+		.debug_abbrev   000011a1	000000f8 Objs\PLAT_RS485.o
+
+		.debug_abbrev   00001299	0000010c Objs\PLAT_Ethernet.o
+
+		.debug_abbrev   000013a5	00000100 Objs\PLAT_ARINC664.o
+
+		.debug_abbrev   000014a5	000000ae Objs\C_64BIT_UNSIGNED_ADD.o
+
+		.debug_abbrev   00001553	000000ae Objs\C_64BIT_UNSIGNED_SUBTRACT.o
+
+		.debug_abbrev   00001601	00000131 Objs\C_ARP.o
+
+		.debug_abbrev   00001732	000000d6 Objs\C_Calculate_crc.o
+
+		.debug_abbrev   00001808	000000dd Objs\C_clock.o
+
+		.debug_abbrev   000018e5	0000009f Objs\C_Default_Exception_Handler.o
+
+		.debug_abbrev   00001984	000000ed Objs\C_DMA_UTILS.o
+
+		.debug_abbrev   00001a71	000000c9 Objs\C_Error_Handler.o
+
+		.debug_abbrev   00001b3a	000000dc Objs\C_ETHERNET.o
+
+		.debug_abbrev   00001c16	00000090 Objs\C_fatal_error.o
+
+		.debug_abbrev   00001ca6	00000102 Objs\C_FEC_BD.o
+
+		.debug_abbrev   00001da8	0000012b Objs\C_FEC_DRV.o
+
+		.debug_abbrev   00001ed3	000000c1 Objs\C_FIFO.o
+
+		.debug_abbrev   00001f94	0000008c Objs\C_Global.o
+
+		.debug_abbrev   00002020	000000cb Objs\C_IP.o
+
+		.debug_abbrev   000020eb	000000dc Objs\C_MCD_API.o
+
+		.debug_abbrev   000021c7	000000e1 Objs\C_MCD_TASKS.o
+
+		.debug_abbrev   000022a8	000000ae Objs\C_MEM.o
+
+		.debug_abbrev   00002356	000000f1 Objs\C_NET_BUFFERS.o
+
+		.debug_abbrev   00002447	000000e5 Objs\C_NET_QUEUES.o
+
+		.debug_abbrev   0000252c	00000102 Objs\C_NETWORK.o
+
+		.debug_abbrev   0000262e	000000ae Objs\C_NVM.o
+
+		.debug_abbrev   000026dc	000000f3 Objs\C_PHY_DRV.o
+
+		.debug_abbrev   000027cf	00000109 Objs\C_UDP.o
+
+		.debug_abbrev   000028d8	000000c5 Objs\C_uint16_to_real_string.o
+
+		.debug_abbrev   0000299d	000000b7 Objs\C_Wordswap_To_Little_Endian.o
+
+		.debug_abbrev   00002a54	000000cb Objs\L_DMA_Initialise.o
+
+		.debug_abbrev   00002b1f	000000cb Objs\L_DSPI_Start.o
+
+		.debug_abbrev   00002bea	000000ed Objs\L_NETWORK.o
+
+		.debug_abbrev   00002cd7	000000e5 Objs\L_PCI_ADDR_SPACE_CONFIG.o
+
+		.debug_abbrev   00002dbc	000000d6 Objs\L_PCI_WINDOWS_CONFIG.o
+
+		.debug_abbrev   00002e92	000000c1 Objs\L_RAM_Init.o
+
+		.debug_abbrev   00002f53	000000b0 Objs\L_Slice_timer_0_init.o
+
+		.debug_abbrev   00003003	000000e5 Objs\L_AFDX_BIT.o
+
+		.debug_abbrev   000030e8	000000d8 Objs\L_AFDX_LOCKING.o
+
+		.debug_abbrev   000031c0	000000da Objs\L_AFDX_LOOPBACK.o
+
+		.debug_abbrev   0000329a	000000da Objs\L_AFDX_MDIO_WRITE.o
+
+		.debug_abbrev   00003374	000000da Objs\L_AFDX_MIB_GET.o
+
+		.debug_abbrev   0000344e	000000da Objs\L_AFDX_RESET_PHY.o
+
+		.debug_abbrev   00003528	000000da Objs\L_AFDX_RX.o
+
+		.debug_abbrev   00003602	000000da Objs\L_AFDX_TX.o
+
+
+.debug_info     		00000000	0006accf
+		.debug_info     00000000	00001f51 Objs\MPT.o
+
+		.debug_info     00001f51	000000eb Objs\MPT.o
+
+		.debug_info     0000203c	00000119 Objs\MPT.o
+
+		.debug_info     00002155	00000151 Objs\MPT.o
+
+		.debug_info     000022a6	0000014c Objs\MPT.o
+
+		.debug_info     000023f2	00000157 Objs\MPT.o
+
+		.debug_info     00002549	000000cf Objs\MPT.o
+
+		.debug_info     00002618	000000e1 Objs\MPT.o
+
+		.debug_info     000026f9	00000110 Objs\MPT.o
+
+		.debug_info     00002809	0000017b Objs\MPT.o
+
+		.debug_info     00002984	000000af Objs\MPT.o
+
+		.debug_info     00002a33	00000e28 Objs\MPT.o
+
+		.debug_info     0000385b	0000230e Objs\SSPC.o
+
+		.debug_info     00005b69	000000cd Objs\SSPC.o
+
+		.debug_info     00005c36	000000a3 Objs\SSPC.o
+
+		.debug_info     00005cd9	000000ba Objs\SSPC.o
+
+		.debug_info     00005d93	000000a3 Objs\SSPC.o
+
+		.debug_info     00005e36	000000be Objs\SSPC.o
+
+		.debug_info     00005ef4	000000b8 Objs\SSPC.o
+
+		.debug_info     00005fac	00000108 Objs\SSPC.o
+
+		.debug_info     000060b4	000000c4 Objs\SSPC.o
+
+		.debug_info     00006178	00000188 Objs\SSPC.o
+
+		.debug_info     00006300	000002fc Objs\SSPC.o
+
+		.debug_info     000065fc	00000112 Objs\SSPC.o
+
+		.debug_info     0000670e	0000010c Objs\SSPC.o
+
+		.debug_info     0000681a	00000b23 Objs\SSPC.o
+
+		.debug_info     0000733d	000023eb Objs\LoadShed.o
+
+		.debug_info     00009728	000000d4 Objs\LoadShed.o
+
+		.debug_info     000097fc	000001b4 Objs\LoadShed.o
+
+		.debug_info     000099b0	000008b2 Objs\LoadShed.o
+
+		.debug_info     0000a262	000026ff Objs\FTI.o
+
+		.debug_info     0000c961	0000014d Objs\FTI.o
+
+		.debug_info     0000caae	00000180 Objs\FTI.o
+
+		.debug_info     0000cc2e	000000de Objs\FTI.o
+
+		.debug_info     0000cd0c	00000199 Objs\FTI.o
+
+		.debug_info     0000cea5	000001e9 Objs\FTI.o
+
+		.debug_info     0000d08e	0000013d Objs\FTI.o
+
+		.debug_info     0000d1cb	00000161 Objs\FTI.o
+
+		.debug_info     0000d32c	00000124 Objs\FTI.o
+
+		.debug_info     0000d450	00000140 Objs\FTI.o
+
+		.debug_info     0000d590	000000ad Objs\FTI.o
+
+		.debug_info     0000d63d	000000be Objs\FTI.o
+
+		.debug_info     0000d6fb	000009c9 Objs\FTI.o
+
+		.debug_info     0000e0c4	00001a08 Objs\ConfigMgr.o
+
+		.debug_info     0000facc	000000af Objs\ConfigMgr.o
+
+		.debug_info     0000fb7b	000008e5 Objs\ConfigMgr.o
+
+		.debug_info     00010460	00002436 Objs\ESC_Scheduler.o
+
+		.debug_info     00012896	0000009c Objs\ESC_Scheduler.o
+
+		.debug_info     00012932	000000d9 Objs\ESC_Scheduler.o
+
+		.debug_info     00012a0b	000000a2 Objs\ESC_Scheduler.o
+
+		.debug_info     00012aad	000000a0 Objs\ESC_Scheduler.o
+
+		.debug_info     00012b4d	00000a16 Objs\ESC_Scheduler.o
+
+		.debug_info     00013563	00001caf Objs\PLAT_Discretes.o
+
+		.debug_info     00015212	00000148 Objs\PLAT_Discretes.o
+
+		.debug_info     0001535a	00000103 Objs\PLAT_Discretes.o
+
+		.debug_info     0001545d	0000015a Objs\PLAT_Discretes.o
+
+		.debug_info     000155b7	000000cc Objs\PLAT_Discretes.o
+
+		.debug_info     00015683	000000cf Objs\PLAT_Discretes.o
+
+		.debug_info     00015752	0000010b Objs\PLAT_Discretes.o
+
+		.debug_info     0001585d	000000ee Objs\PLAT_Discretes.o
+
+		.debug_info     0001594b	00000579 Objs\PLAT_Discretes.o
+
+		.debug_info     00015ec4	0000074e Objs\PLAT_GPT.o
+
+		.debug_info     00016612	000000ab Objs\PLAT_GPT.o
+
+		.debug_info     000166bd	000000e0 Objs\PLAT_GPT.o
+
+		.debug_info     0001679d	000000c1 Objs\PLAT_GPT.o
+
+		.debug_info     0001685e	000000c1 Objs\PLAT_GPT.o
+
+		.debug_info     0001691f	0000010a Objs\PLAT_GPT.o
+
+		.debug_info     00016a29	000000e8 Objs\PLAT_GPT.o
+
+		.debug_info     00016b11	000000ff Objs\PLAT_GPT.o
+
+		.debug_info     00016c10	00000098 Objs\PLAT_GPT.o
+
+		.debug_info     00016ca8	00000516 Objs\PLAT_GPT.o
+
+		.debug_info     000171be	000006a8 Objs\PLAT_INTC.o
+
+		.debug_info     00017866	000000a0 Objs\PLAT_INTC.o
+
+		.debug_info     00017906	00000119 Objs\PLAT_INTC.o
+
+		.debug_info     00017a1f	00000456 Objs\PLAT_INTC.o
+
+		.debug_info     00017e75	0000235e Objs\PLAT_Resources.o
+
+		.debug_info     0001a1d3	00000106 Objs\PLAT_Resources.o
+
+		.debug_info     0001a2d9	000000be Objs\PLAT_Resources.o
+
+		.debug_info     0001a397	000000a4 Objs\PLAT_Resources.o
+
+		.debug_info     0001a43b	00000644 Objs\PLAT_Resources.o
+
+		.debug_info     0001aa7f	000001cc Objs\PLAT_PSC.o
+
+		.debug_info     0001ac4b	0000011c Objs\PLAT_PSC.o
+
+		.debug_info     0001ad67	000000ef Objs\PLAT_PSC.o
+
+		.debug_info     0001ae56	00000101 Objs\PLAT_PSC.o
+
+		.debug_info     0001af57	000000d6 Objs\PLAT_PSC.o
+
+		.debug_info     0001b02d	000000dd Objs\PLAT_PSC.o
+
+		.debug_info     0001b10a	000000d7 Objs\PLAT_PSC.o
+
+		.debug_info     0001b1e1	000000d7 Objs\PLAT_PSC.o
+
+		.debug_info     0001b2b8	000000ce Objs\PLAT_PSC.o
+
+		.debug_info     0001b386	000000bf Objs\PLAT_PSC.o
+
+		.debug_info     0001b445	000003f1 Objs\PLAT_PSC.o
+
+		.debug_info     0001b836	000007db Objs\PLAT_SLT.o
+
+		.debug_info     0001c011	000000cf Objs\PLAT_SLT.o
+
+		.debug_info     0001c0e0	000000dc Objs\PLAT_SLT.o
+
+		.debug_info     0001c1bc	000000c1 Objs\PLAT_SLT.o
+
+		.debug_info     0001c27d	00000104 Objs\PLAT_SLT.o
+
+		.debug_info     0001c381	000000c1 Objs\PLAT_SLT.o
+
+		.debug_info     0001c442	000000d3 Objs\PLAT_SLT.o
+
+		.debug_info     0001c515	000000c1 Objs\PLAT_SLT.o
+
+		.debug_info     0001c5d6	00000546 Objs\PLAT_SLT.o
+
+		.debug_info     0001cb1c	00002861 Objs\PLAT_A664_ES.o
+
+		.debug_info     0001f37d	00000510 Objs\PLAT_A664_ES.o
+
+		.debug_info     0001f88d	00000c36 Objs\PLAT_A664_ES.o
+
+		.debug_info     000204c3	000006a7 Objs\PLAT_PSU.o
+
+		.debug_info     00020b6a	00000098 Objs\PLAT_PSU.o
+
+		.debug_info     00020c02	000000c7 Objs\PLAT_PSU.o
+
+		.debug_info     00020cc9	000003ee Objs\PLAT_PSU.o
+
+		.debug_info     000210b7	00001b98 Objs\PLAT_Watchdog.o
+
+		.debug_info     00022c4f	000000a2 Objs\PLAT_Watchdog.o
+
+		.debug_info     00022cf1	000000be Objs\PLAT_Watchdog.o
+
+		.debug_info     00022daf	000004b4 Objs\PLAT_Watchdog.o
+
+		.debug_info     00023263	000027e2 Objs\PLAT_SBC.o
+
+		.debug_info     00025a45	00000121 Objs\PLAT_SBC.o
+
+		.debug_info     00025b66	00000184 Objs\PLAT_SBC.o
+
+		.debug_info     00025cea	000001b6 Objs\PLAT_SBC.o
+
+		.debug_info     00025ea0	00000222 Objs\PLAT_SBC.o
+
+		.debug_info     000260c2	000001fd Objs\PLAT_SBC.o
+
+		.debug_info     000262bf	000001d9 Objs\PLAT_SBC.o
+
+		.debug_info     00026498	000001e2 Objs\PLAT_SBC.o
+
+		.debug_info     0002667a	000000f4 Objs\PLAT_SBC.o
+
+		.debug_info     0002676e	00000adb Objs\PLAT_SBC.o
+
+		.debug_info     00027249	000000df Objs\PLAT_NVM.o
+
+		.debug_info     00027328	000000df Objs\PLAT_NVM.o
+
+		.debug_info     00027407	0000036f Objs\PLAT_NVM.o
+
+		.debug_info     00027776	000000e1 Objs\PLAT_Utils.o
+
+		.debug_info     00027857	000000fa Objs\PLAT_Utils.o
+
+		.debug_info     00027951	000000d9 Objs\PLAT_Utils.o
+
+		.debug_info     00027a2a	00000111 Objs\PLAT_Utils.o
+
+		.debug_info     00027b3b	0000011b Objs\PLAT_Utils.o
+
+		.debug_info     00027c56	000000ca Objs\PLAT_Utils.o
+
+		.debug_info     00027d20	000000a0 Objs\PLAT_Utils.o
+
+		.debug_info     00027dc0	000000b5 Objs\PLAT_Utils.o
+
+		.debug_info     00027e75	00000341 Objs\PLAT_Utils.o
+
+		.debug_info     000281b6	000025dc Objs\PLAT_VMS.o
+
+		.debug_info     0002a792	000000d6 Objs\PLAT_VMS.o
+
+		.debug_info     0002a868	0000012b Objs\PLAT_VMS.o
+
+		.debug_info     0002a993	0000021f Objs\PLAT_VMS.o
+
+		.debug_info     0002abb2	00000097 Objs\PLAT_VMS.o
+
+		.debug_info     0002ac49	00000097 Objs\PLAT_VMS.o
+
+		.debug_info     0002ace0	00000097 Objs\PLAT_VMS.o
+
+		.debug_info     0002ad77	00000097 Objs\PLAT_VMS.o
+
+		.debug_info     0002ae0e	000000dc Objs\PLAT_VMS.o
+
+		.debug_info     0002aeea	000000e4 Objs\PLAT_VMS.o
+
+		.debug_info     0002afce	000007c2 Objs\PLAT_VMS.o
+
+		.debug_info     0002b790	00000950 Objs\PLAT_ARINC429.o
+
+		.debug_info     0002c0e0	00000103 Objs\PLAT_ARINC429.o
+
+		.debug_info     0002c1e3	0000011c Objs\PLAT_ARINC429.o
+
+		.debug_info     0002c2ff	00000131 Objs\PLAT_ARINC429.o
+
+		.debug_info     0002c430	00000641 Objs\PLAT_ARINC429.o
+
+		.debug_info     0002ca71	0000094d Objs\PLAT_RS485.o
+
+		.debug_info     0002d3be	0000011b Objs\PLAT_RS485.o
+
+		.debug_info     0002d4d9	000000e7 Objs\PLAT_RS485.o
+
+		.debug_info     0002d5c0	0000018d Objs\PLAT_RS485.o
+
+		.debug_info     0002d74d	00000629 Objs\PLAT_RS485.o
+
+		.debug_info     0002dd76	00003018 Objs\PLAT_Ethernet.o
+
+		.debug_info     00030d8e	000002cb Objs\PLAT_Ethernet.o
+
+		.debug_info     00031059	0000018b Objs\PLAT_Ethernet.o
+
+		.debug_info     000311e4	000001b1 Objs\PLAT_Ethernet.o
+
+		.debug_info     00031395	00000290 Objs\PLAT_Ethernet.o
+
+		.debug_info     00031625	000008c3 Objs\PLAT_Ethernet.o
+
+		.debug_info     00031ee8	00002a13 Objs\PLAT_ARINC664.o
+
+		.debug_info     000348fb	0000015d Objs\PLAT_ARINC664.o
+
+		.debug_info     00034a58	00000161 Objs\PLAT_ARINC664.o
+
+		.debug_info     00034bb9	0000025a Objs\PLAT_ARINC664.o
+
+		.debug_info     00034e13	00000175 Objs\PLAT_ARINC664.o
+
+		.debug_info     00034f88	0000011d Objs\PLAT_ARINC664.o
+
+		.debug_info     000350a5	0000012f Objs\PLAT_ARINC664.o
+
+		.debug_info     000351d4	00000bb7 Objs\PLAT_ARINC664.o
+
+		.debug_info     00035d8b	000000eb Objs\C_64BIT_UNSIGNED_ADD.o
+
+		.debug_info     00035e76	0000055f Objs\C_64BIT_UNSIGNED_ADD.o
+
+		.debug_info     000363d5	000000f0 Objs\C_64BIT_UNSIGNED_SUBTRACT.o
+
+		.debug_info     000364c5	0000047e Objs\C_64BIT_UNSIGNED_SUBTRACT.o
+
+		.debug_info     00036943	0000090a Objs\C_ARP.o
+
+		.debug_info     0003724d	000000f0 Objs\C_ARP.o
+
+		.debug_info     0003733d	000000d1 Objs\C_ARP.o
+
+		.debug_info     0003740e	00000192 Objs\C_ARP.o
+
+		.debug_info     000375a0	000001da Objs\C_ARP.o
+
+		.debug_info     0003777a	000001d1 Objs\C_ARP.o
+
+		.debug_info     0003794b	0000018b Objs\C_ARP.o
+
+		.debug_info     00037ad6	00000702 Objs\C_ARP.o
+
+		.debug_info     000381d8	00000120 Objs\C_Calculate_crc.o
+
+		.debug_info     000382f8	0000049c Objs\C_Calculate_crc.o
+
+		.debug_info     00038794	000000de Objs\C_clock.o
+
+		.debug_info     00038872	000000c8 Objs\C_clock.o
+
+		.debug_info     0003893a	000000e4 Objs\C_clock.o
+
+		.debug_info     00038a1e	0000041c Objs\C_clock.o
+
+		.debug_info     00038e3a	000002b8 Objs\C_Default_Exception_Handler.o
+
+		.debug_info     000390f2	000003e5 Objs\C_Default_Exception_Handler.o
+
+		.debug_info     000394d7	00000122 Objs\C_DMA_UTILS.o
+
+		.debug_info     000395f9	00000110 Objs\C_DMA_UTILS.o
+
+		.debug_info     00039709	000000e7 Objs\C_DMA_UTILS.o
+
+		.debug_info     000397f0	000000e1 Objs\C_DMA_UTILS.o
+
+		.debug_info     000398d1	000000fe Objs\C_DMA_UTILS.o
+
+		.debug_info     000399cf	000000f1 Objs\C_DMA_UTILS.o
+
+		.debug_info     00039ac0	0000009e Objs\C_DMA_UTILS.o
+
+		.debug_info     00039b5e	0000012a Objs\C_DMA_UTILS.o
+
+		.debug_info     00039c88	000000d8 Objs\C_DMA_UTILS.o
+
+		.debug_info     00039d60	00000467 Objs\C_DMA_UTILS.o
+
+		.debug_info     0003a1c7	00000304 Objs\C_Error_Handler.o
+
+		.debug_info     0003a4cb	00000439 Objs\C_Error_Handler.o
+
+		.debug_info     0003a904	00000293 Objs\C_ETHERNET.o
+
+		.debug_info     0003ab97	000004cb Objs\C_ETHERNET.o
+
+		.debug_info     0003b062	0000011e Objs\C_fatal_error.o
+
+		.debug_info     0003b180	00000381 Objs\C_fatal_error.o
+
+		.debug_info     0003b501	00000675 Objs\C_FEC_BD.o
+
+		.debug_info     0003bb76	00000100 Objs\C_FEC_BD.o
+
+		.debug_info     0003bc76	00000176 Objs\C_FEC_BD.o
+
+		.debug_info     0003bdec	000000f8 Objs\C_FEC_BD.o
+
+		.debug_info     0003bee4	00000107 Objs\C_FEC_BD.o
+
+		.debug_info     0003bfeb	00000680 Objs\C_FEC_BD.o
+
+		.debug_info     0003c66b	000006dd Objs\C_FEC_DRV.o
+
+		.debug_info     0003cd48	00000098 Objs\C_FEC_DRV.o
+
+		.debug_info     0003cde0	00000098 Objs\C_FEC_DRV.o
+
+		.debug_info     0003ce78	00000128 Objs\C_FEC_DRV.o
+
+		.debug_info     0003cfa0	000000b5 Objs\C_FEC_DRV.o
+
+		.debug_info     0003d055	000000ec Objs\C_FEC_DRV.o
+
+		.debug_info     0003d141	000000c1 Objs\C_FEC_DRV.o
+
+		.debug_info     0003d202	000001aa Objs\C_FEC_DRV.o
+
+		.debug_info     0003d3ac	0000013b Objs\C_FEC_DRV.o
+
+		.debug_info     0003d4e7	000000cf Objs\C_FEC_DRV.o
+
+		.debug_info     0003d5b6	0000018c Objs\C_FEC_DRV.o
+
+		.debug_info     0003d742	000000c4 Objs\C_FEC_DRV.o
+
+		.debug_info     0003d806	000000fb Objs\C_FEC_DRV.o
+
+		.debug_info     0003d901	000000c6 Objs\C_FEC_DRV.o
+
+		.debug_info     0003d9c7	000000cd Objs\C_FEC_DRV.o
+
+		.debug_info     0003da94	0000009c Objs\C_FEC_DRV.o
+
+		.debug_info     0003db30	0000009c Objs\C_FEC_DRV.o
+
+		.debug_info     0003dbcc	000001b1 Objs\C_FEC_DRV.o
+
+		.debug_info     0003dd7d	000000da Objs\C_FEC_DRV.o
+
+		.debug_info     0003de57	00000110 Objs\C_FEC_DRV.o
+
+		.debug_info     0003df67	000000cd Objs\C_FEC_DRV.o
+
+		.debug_info     0003e034	0000009c Objs\C_FEC_DRV.o
+
+		.debug_info     0003e0d0	0000009c Objs\C_FEC_DRV.o
+
+		.debug_info     0003e16c	000000f4 Objs\C_FEC_DRV.o
+
+		.debug_info     0003e260	000005c6 Objs\C_FEC_DRV.o
+
+		.debug_info     0003e826	000001b1 Objs\C_FIFO.o
+
+		.debug_info     0003e9d7	00000216 Objs\C_FIFO.o
+
+		.debug_info     0003ebed	000001cd Objs\C_FIFO.o
+
+		.debug_info     0003edba	000003da Objs\C_FIFO.o
+
+		.debug_info     0003f194	00000453 Objs\C_Global.o
+
+		.debug_info     0003f5e7	0000050b Objs\C_IP.o
+
+		.debug_info     0003faf2	00000149 Objs\C_IP.o
+
+		.debug_info     0003fc3b	000004d5 Objs\C_IP.o
+
+		.debug_info     00040110	000003db Objs\C_MCD_API.o
+
+		.debug_info     000404eb	000000d8 Objs\C_MCD_API.o
+
+		.debug_info     000405c3	000000cf Objs\C_MCD_API.o
+
+		.debug_info     00040692	00000296 Objs\C_MCD_API.o
+
+		.debug_info     00040928	00000259 Objs\C_MCD_API.o
+
+		.debug_info     00040b81	00000579 Objs\C_MCD_API.o
+
+		.debug_info     000410fa	000003e2 Objs\C_MCD_TASKS.o
+
+		.debug_info     000414dc	000001f0 Objs\C_MCD_TASKS.o
+
+		.debug_info     000416cc	00000215 Objs\C_MCD_TASKS.o
+
+		.debug_info     000418e1	000001b7 Objs\C_MCD_TASKS.o
+
+		.debug_info     00041a98	00000205 Objs\C_MCD_TASKS.o
+
+		.debug_info     00041c9d	0000015b Objs\C_MCD_TASKS.o
+
+		.debug_info     00041df8	0000015b Objs\C_MCD_TASKS.o
+
+		.debug_info     00041f53	0000102b Objs\C_MCD_TASKS.o
+
+		.debug_info     00042f7e	000000dc Objs\C_MEM.o
+
+		.debug_info     0004305a	00000188 Objs\C_MEM.o
+
+		.debug_info     000431e2	000000df Objs\C_MEM.o
+
+		.debug_info     000432c1	000003cf Objs\C_MEM.o
+
+		.debug_info     00043690	0000022f Objs\C_NET_BUFFERS.o
+
+		.debug_info     000438bf	00000127 Objs\C_NET_BUFFERS.o
+
+		.debug_info     000439e6	000000f7 Objs\C_NET_BUFFERS.o
+
+		.debug_info     00043add	000000fe Objs\C_NET_BUFFERS.o
+
+		.debug_info     00043bdb	000000ef Objs\C_NET_BUFFERS.o
+
+		.debug_info     00043cca	00000116 Objs\C_NET_BUFFERS.o
+
+		.debug_info     00043de0	0000010f Objs\C_NET_BUFFERS.o
+
+		.debug_info     00043eef	00000493 Objs\C_NET_BUFFERS.o
+
+		.debug_info     00044382	00000229 Objs\C_NET_QUEUES.o
+
+		.debug_info     000445ab	000000ca Objs\C_NET_QUEUES.o
+
+		.debug_info     00044675	000000b5 Objs\C_NET_QUEUES.o
+
+		.debug_info     0004472a	000000e4 Objs\C_NET_QUEUES.o
+
+		.debug_info     0004480e	000003e6 Objs\C_NET_QUEUES.o
+
+		.debug_info     00044bf4	0000071c Objs\C_NETWORK.o
+
+		.debug_info     00045310	00000212 Objs\C_NETWORK.o
+
+		.debug_info     00045522	000001c9 Objs\C_NETWORK.o
+
+		.debug_info     000456eb	000000fa Objs\C_NETWORK.o
+
+		.debug_info     000457e5	00000587 Objs\C_NETWORK.o
+
+		.debug_info     00045d6c	000000fa Objs\C_NVM.o
+
+		.debug_info     00045e66	0000047a Objs\C_NVM.o
+
+		.debug_info     000462e0	00000292 Objs\C_PHY_DRV.o
+
+		.debug_info     00046572	000001e8 Objs\C_PHY_DRV.o
+
+		.debug_info     0004675a	000000e0 Objs\C_PHY_DRV.o
+
+		.debug_info     0004683a	00000179 Objs\C_PHY_DRV.o
+
+		.debug_info     000469b3	000004df Objs\C_PHY_DRV.o
+
+		.debug_info     00046e92	0000040e Objs\C_UDP.o
+
+		.debug_info     000472a0	0000017e Objs\C_UDP.o
+
+		.debug_info     0004741e	000001c4 Objs\C_UDP.o
+
+		.debug_info     000475e2	000001fe Objs\C_UDP.o
+
+		.debug_info     000477e0	000000cc Objs\C_UDP.o
+
+		.debug_info     000478ac	000001ad Objs\C_UDP.o
+
+		.debug_info     00047a59	000004d9 Objs\C_UDP.o
+
+		.debug_info     00047f32	000000ee Objs\C_uint16_to_real_string.o
+
+		.debug_info     00048020	000004a2 Objs\C_uint16_to_real_string.o
+
+		.debug_info     000484c2	000000f2 Objs\C_Wordswap_To_Little_Endian.o
+
+		.debug_info     000485b4	000003b7 Objs\C_Wordswap_To_Little_Endian.o
+
+		.debug_info     0004896b	00000484 Objs\L_DMA_Initialise.o
+
+		.debug_info     00048def	0000048e Objs\L_DMA_Initialise.o
+
+		.debug_info     0004927d	000004f6 Objs\L_DSPI_Start.o
+
+		.debug_info     00049773	00000551 Objs\L_DSPI_Start.o
+
+		.debug_info     00049cc4	000013f5 Objs\L_NETWORK.o
+
+		.debug_info     0004b0b9	0000021d Objs\L_NETWORK.o
+
+		.debug_info     0004b2d6	000001f8 Objs\L_NETWORK.o
+
+		.debug_info     0004b4ce	00000195 Objs\L_NETWORK.o
+
+		.debug_info     0004b663	00000264 Objs\L_NETWORK.o
+
+		.debug_info     0004b8c7	0000016f Objs\L_NETWORK.o
+
+		.debug_info     0004ba36	00000204 Objs\L_NETWORK.o
+
+		.debug_info     0004bc3a	00000d19 Objs\L_NETWORK.o
+
+		.debug_info     0004c953	000025f9 Objs\L_PCI_ADDR_SPACE_CONFIG.o
+
+		.debug_info     0004ef4c	00000abc Objs\L_PCI_ADDR_SPACE_CONFIG.o
+
+		.debug_info     0004fa08	000025eb Objs\L_PCI_WINDOWS_CONFIG.o
+
+		.debug_info     00051ff3	00000aa5 Objs\L_PCI_WINDOWS_CONFIG.o
+
+		.debug_info     00052a98	00000141 Objs\L_RAM_Init.o
+
+		.debug_info     00052bd9	000003f3 Objs\L_RAM_Init.o
+
+		.debug_info     00052fcc	0000018e Objs\L_Slice_timer_0_init.o
+
+		.debug_info     0005315a	000003f6 Objs\L_Slice_timer_0_init.o
+
+		.debug_info     00053550	000023a5 Objs\L_AFDX_BIT.o
+
+		.debug_info     000558f5	00000b7b Objs\L_AFDX_BIT.o
+
+		.debug_info     00056470	000024c0 Objs\L_AFDX_LOCKING.o
+
+		.debug_info     00058930	00000a53 Objs\L_AFDX_LOCKING.o
+
+		.debug_info     00059383	000022fb Objs\L_AFDX_LOOPBACK.o
+
+		.debug_info     0005b67e	00000c57 Objs\L_AFDX_LOOPBACK.o
+
+		.debug_info     0005c2d5	000022fd Objs\L_AFDX_MDIO_WRITE.o
+
+		.debug_info     0005e5d2	00000a8c Objs\L_AFDX_MDIO_WRITE.o
+
+		.debug_info     0005f05e	00002378 Objs\L_AFDX_MIB_GET.o
+
+		.debug_info     000613d6	00000a94 Objs\L_AFDX_MIB_GET.o
+
+		.debug_info     00061e6a	000022fc Objs\L_AFDX_RESET_PHY.o
+
+		.debug_info     00064166	00000a9b Objs\L_AFDX_RESET_PHY.o
+
+		.debug_info     00064c01	000024bb Objs\L_AFDX_RX.o
+
+		.debug_info     000670bc	00000c4b Objs\L_AFDX_RX.o
+
+		.debug_info     00067d07	000022f5 Objs\L_AFDX_TX.o
+
+		.debug_info     00069ffc	00000cd3 Objs\L_AFDX_TX.o
+
+
+.line           		00000000	00000d36
+		.line           00000000	00000a08 Objs\Plat_INTC__Vectors.o
+
+		.line           00000a08	0000012a Objs\C_Burst_Copy.o
+
+		.line           00000b32	0000015c Objs\C_Burst_Copy_32.o
+
+		.line           00000c8e	000000a8 Objs\C_Set_IPL.o
+
+
+.debug_sfnames  		00000000	0000004a
+		.debug_sfnames  00000000	00000017 Objs\Plat_INTC__Vectors.o
+
+		.debug_sfnames  00000017	00000011 Objs\C_Burst_Copy.o
+
+		.debug_sfnames  00000028	00000014 Objs\C_Burst_Copy_32.o
+
+		.debug_sfnames  0000003c	0000000e Objs\C_Set_IPL.o
+
+
+.debug_srcinfo  		00000000	00000080
+		.debug_srcinfo  00000000	00000020 Objs\Plat_INTC__Vectors.o
+
+		.debug_srcinfo  00000020	00000020 Objs\C_Burst_Copy.o
+
+		.debug_srcinfo  00000040	00000020 Objs\C_Burst_Copy_32.o
+
+		.debug_srcinfo  00000060	00000020 Objs\C_Set_IPL.o
+
+
+.debug          		00000000	000001dc
+		.debug          00000000	0000007c Objs\Plat_INTC__Vectors.o
+
+		.debug          0000007c	00000074 Objs\C_Burst_Copy.o
+
+		.debug          000000f0	00000078 Objs\C_Burst_Copy_32.o
+
+		.debug          00000168	00000074 Objs\C_Set_IPL.o
+
+
+Link editor command file symbols
+                ___INITDATA_ROM 00112a90
+                ___INITDATA_RAM 70000000
+            ___INITDATA_RAM_END 70000030
+           ___CLEARED_RAM_START 70000030
+             ___CLEARED_RAM_END 7000019c
+                     _SDA_BASE_ 70000000
+                    __SDA_BASE_ 70000000
+                 __VECTORS_BASE 00100000
+                        ___MBAR 10000000
+                      ___RAMBAR ffffe000
+                     ___STARTUP 00000400
+                      __SP_INIT fffffffc
+                      ___SP_END ffffe000
+                  ___FLASH_BASE 00000000
+                   ___FLASH_END 02000000
+                    ___RAM_BASE 20000000
+                     ___RAM_END 24000000
+                  ___NVRAM_BASE 70000000
+                   ___NVRAM_END 7007fc00
+            ___SYSTEM_SRAM_BASE 10010000
+             ___SYSTEM_SRAM_END 10018000
+
+                                Cross Reference Table
+
+Symbol                          Output          Input           Referenced
+                                Section         Section         (* - Defined)
+
+OFP_VECTORS                     .vectors	.vectors	* Objs\Plat_INTC__Vectors.o
+_ARP_table                      .bss    	.bss    	* Objs\C_ARP.o
+                                                                * D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk
+_ARP_ticks                      .ct_cleared_ram	.ct_cleared_ram	* Objs\C_ARP.o
+_ARP_timer                      .ct_cleared_ram	.ct_cleared_ram	* Objs\C_ARP.o
+                                                                  Objs\PLAT_Ethernet.o
+_ARP_timer_matured              .ct_cleared_ram	.ct_cleared_ram	* Objs\C_ARP.o
+                                                                  Objs\PLAT_Ethernet.o
+_Active_FEC                     .sbss   	.sbss   	* Objs\L_NETWORK.o
+                                                                  Objs\PLAT_Ethernet.o
+_CRC_table_A                    .text   	.text   	* Objs\C_Calculate_crc.o
+_CRC_table_B                    .text   	.text   	* Objs\C_Calculate_crc.o
+_C_ARP__Maintain_timers         .text   	.text   	  Objs\L_NETWORK.o
+                                                                * Objs\C_ARP.o
+_C_ARP__Reset_cache             .text   	.text   	  Objs\L_NETWORK.o
+                                                                * Objs\C_ARP.o
+_C_ARP__Send_IP_via_ARP         .text   	.text   	  Objs\C_IP.o
+                                                                * Objs\C_ARP.o
+_C_ARP__Send_packet             .text   	.text   	  Objs\L_NETWORK.o
+                                                                * Objs\C_ARP.o
+_C_ARP__Update_cache            .text   	.text   	  Objs\L_NETWORK.o
+                                                                * Objs\C_ARP.o
+_C_Calculate_CRC                .text   	.text   	* Objs\C_Calculate_crc.o
+                                                                  Objs\PLAT_Utils.o
+_C_DMA_UTILS__Enable_disable_IRQ .text   	.text   	  Objs\L_DMA_Initialise.o
+                                                                * Objs\C_DMA_UTILS.o
+_C_DMA_UTILS__Free_channel      .text   	.text   	  Objs\C_FEC_DRV.o
+                                                                * Objs\C_DMA_UTILS.o
+_C_DMA_UTILS__Free_initiator    .text   	.text   	  Objs\C_FEC_DRV.o
+                                                                * Objs\C_DMA_UTILS.o
+_C_DMA_UTILS__Get_channel       .text   	.text   	  Objs\C_FEC_DRV.o
+                                                                * Objs\C_DMA_UTILS.o
+_C_DMA_UTILS__Get_initiator     .text   	.text   	  Objs\C_FEC_DRV.o
+                                                                * Objs\C_DMA_UTILS.o
+_C_DMA_UTILS__Initialise        .text   	.text   	  Objs\L_DMA_Initialise.o
+                                                                * Objs\C_DMA_UTILS.o
+_C_DMA_UTILS__Interrupt_handler .text   	.text   	* Objs\C_DMA_UTILS.o
+                                                                  Objs\Plat_INTC__Vectors.o
+_C_DMA_UTILS__Set_channel       .text   	.text   	  Objs\L_DSPI_Start.o
+                                                                  Objs\C_FEC_DRV.o
+                                                                * Objs\C_DMA_UTILS.o
+_C_DMA_UTILS__Set_initiator     .text   	.text   	  Objs\C_FEC_DRV.o
+                                                                * Objs\C_DMA_UTILS.o
+_C_ETHERNET__Send_packet        .text   	.text   	  Objs\L_NETWORK.o
+                                                                * Objs\C_ETHERNET.o
+_C_FEC_BD__Get_start_BD         .text   	.text   	  Objs\L_NETWORK.o
+                                                                * Objs\C_FEC_BD.o
+_C_FEC_BD__Initialise           .text   	.text   	  Objs\L_NETWORK.o
+                                                                * Objs\C_FEC_BD.o
+_C_FEC_BD__Rx_allocate          .text   	.text   	  Objs\C_FEC_DRV.o
+                                                                * Objs\C_FEC_BD.o
+_C_FEC_BD__Tx_allocate          .text   	.text   	  Objs\C_FEC_DRV.o
+                                                                * Objs\C_FEC_BD.o
+_C_FEC_BD__Tx_free              .text   	.text   	  Objs\C_FEC_DRV.o
+                                                                * Objs\C_FEC_BD.o
+_C_FEC_DRV__Duplex              .text   	.text   	  Objs\C_PHY_DRV.o
+                                                                * Objs\C_FEC_DRV.o
+_C_FEC_DRV__FEC0_isr            .text   	.text   	* Objs\C_FEC_DRV.o
+                                                                  Objs\Plat_INTC__Vectors.o
+_C_FEC_DRV__FEC1_isr            .text   	.text   	* Objs\C_FEC_DRV.o
+                                                                  Objs\Plat_INTC__Vectors.o
+_C_FEC_DRV__IRQ_disable         .text   	.text   	  Objs\L_NETWORK.o
+                                                                * Objs\C_FEC_DRV.o
+_C_FEC_DRV__IRQ_enable          .text   	.text   	  Objs\L_NETWORK.o
+                                                                * Objs\C_FEC_DRV.o
+_C_FEC_DRV__Initialise          .text   	.text   	  Objs\L_NETWORK.o
+                                                                * Objs\C_FEC_DRV.o
+_C_FEC_DRV__Reset_FEC           .text   	.text   	  Objs\L_NETWORK.o
+                                                                * Objs\C_FEC_DRV.o
+_C_FEC_DRV__Rx_start            .text   	.text   	  Objs\L_NETWORK.o
+                                                                * Objs\C_FEC_DRV.o
+_C_FEC_DRV__Send                .text   	.text   	* Objs\C_FEC_DRV.o
+                                                                  Objs\C_ETHERNET.o
+_C_FEC_DRV__Stop_ethernet       .text   	.text   	* Objs\C_FEC_DRV.o
+_C_FEC_DRV__Tx_start            .text   	.text   	  Objs\L_NETWORK.o
+                                                                * Objs\C_FEC_DRV.o
+_C_FIFO__direct_fifo_get        .text   	.text   	  Objs\L_NETWORK.o
+                                                                * Objs\C_FIFO.o
+                                                                  Objs\PLAT_Ethernet.o
+_C_FIFO__direct_fifo_initialise .text   	.text   	* Objs\C_FIFO.o
+                                                                  Objs\PLAT_Ethernet.o
+_C_FIFO__direct_fifo_put        .text   	.text   	  Objs\L_NETWORK.o
+                                                                  Objs\C_UDP.o
+                                                                * Objs\C_FIFO.o
+                                                                  Objs\C_FEC_DRV.o
+                                                                  Objs\C_ARP.o
+                                                                  Objs\PLAT_Ethernet.o
+_C_IP__Checksum_header          .text   	.text   	  Objs\L_NETWORK.o
+                                                                * Objs\C_IP.o
+_C_IP__Send_packet              .text   	.text   	  Objs\L_NETWORK.o
+                                                                * Objs\C_IP.o
+_C_MCD_API__Continue_DMA        .text   	.text   	* Objs\C_MCD_API.o
+                                                                  Objs\C_FEC_DRV.o
+_C_MCD_API__Disable_DMA         .text   	.text   	* Objs\C_MCD_API.o
+                                                                  Objs\C_FEC_DRV.o
+_C_MCD_API__Init_DMA            .text   	.text   	  Objs\L_DMA_Initialise.o
+                                                                * Objs\C_MCD_API.o
+_C_MCD_API__Start_DMA           .text   	.text   	* Objs\C_MCD_API.o
+                                                                  Objs\C_FEC_DRV.o
+_C_MCD_API__Start_DSPI_DMA      .text   	.text   	  Objs\L_DSPI_Start.o
+                                                                * Objs\C_MCD_API.o
+_C_MCD_TASKS__Start_DSPI_EU     .text   	.text   	* Objs\C_MCD_TASKS.o
+                                                                  Objs\C_MCD_API.o
+_C_MCD_TASKS__Start_chain_EU    .text   	.text   	* Objs\C_MCD_TASKS.o
+                                                                  Objs\C_MCD_API.o
+_C_MCD_TASKS__Start_chain_no_EU .text   	.text   	* Objs\C_MCD_TASKS.o
+                                                                  Objs\C_MCD_API.o
+_C_MCD_TASKS__Start_ethernet_rx .text   	.text   	* Objs\C_MCD_TASKS.o
+                                                                  Objs\C_MCD_API.o
+_C_MCD_TASKS__Start_ethernet_tx .text   	.text   	* Objs\C_MCD_TASKS.o
+                                                                  Objs\C_MCD_API.o
+_C_MCD_TASKS__Start_single_EU   .text   	.text   	* Objs\C_MCD_TASKS.o
+                                                                  Objs\C_MCD_API.o
+_C_MCD_TASKS__Start_single_no_EU .text   	.text   	* Objs\C_MCD_TASKS.o
+                                                                  Objs\C_MCD_API.o
+_C_NETWORK__FTI_message_parse   .text   	.text   	  Objs\L_NETWORK.o
+                                                                * Objs\C_NETWORK.o
+_C_NETWORK__GAP_message_parse   .text   	.text   	  Objs\L_NETWORK.o
+                                                                * Objs\C_NETWORK.o
+_C_NETWORK__TFTP_message_parse  .text   	.text   	  Objs\L_NETWORK.o
+                                                                * Objs\C_NETWORK.o
+_C_NETWORK__message_extract     .text   	.text   	  Objs\L_NETWORK.o
+                                                                * Objs\C_NETWORK.o
+_C_NET_BUFFERS__Add             .text   	.text   	* Objs\C_NET_BUFFERS.o
+                                                                  Objs\C_FEC_DRV.o
+                                                                  Objs\C_FEC_BD.o
+_C_NET_BUFFERS__Allocate        .text   	.text   	  Objs\L_NETWORK.o
+                                                                * Objs\C_NET_BUFFERS.o
+                                                                  Objs\C_FEC_DRV.o
+                                                                  Objs\C_FEC_BD.o
+                                                                  Objs\C_ARP.o
+                                                                  Objs\PLAT_Ethernet.o
+_C_NET_BUFFERS__Flush           .text   	.text   	* Objs\C_NET_BUFFERS.o
+                                                                  Objs\C_FEC_DRV.o
+_C_NET_BUFFERS__Free            .text   	.text   	  Objs\L_NETWORK.o
+                                                                  Objs\C_UDP.o
+                                                                * Objs\C_NET_BUFFERS.o
+                                                                  Objs\C_FEC_DRV.o
+                                                                  Objs\C_ETHERNET.o
+                                                                  Objs\C_ARP.o
+                                                                  Objs\PLAT_Ethernet.o
+_C_NET_BUFFERS__Initialise      .text   	.text   	  Objs\L_NETWORK.o
+                                                                * Objs\C_NET_BUFFERS.o
+_C_NET_BUFFERS__Remove          .text   	.text   	* Objs\C_NET_BUFFERS.o
+                                                                  Objs\C_FEC_DRV.o
+_C_NET_BUFFERS__Reset           .text   	.text   	* Objs\C_NET_BUFFERS.o
+_C_NET_QUEUES__Add              .text   	.text   	* Objs\C_NET_QUEUES.o
+                                                                  Objs\C_NET_BUFFERS.o
+_C_NET_QUEUES__Initialise       .text   	.text   	* Objs\C_NET_QUEUES.o
+                                                                  Objs\C_NET_BUFFERS.o
+_C_NET_QUEUES__Remove           .text   	.text   	* Objs\C_NET_QUEUES.o
+                                                                  Objs\C_NET_BUFFERS.o
+_C_PHY_DRV__Phy_init            .text   	.text   	  Objs\L_NETWORK.o
+                                                                * Objs\C_PHY_DRV.o
+_C_UDP__Bind                    .text   	.text   	  Objs\L_NETWORK.o
+                                                                * Objs\C_UDP.o
+_C_UDP__Checksum                .text   	.text   	  Objs\L_NETWORK.o
+                                                                * Objs\C_UDP.o
+_C_UDP__Connect                 .text   	.text   	* Objs\C_UDP.o
+_C_UDP__New                     .text   	.text   	  Objs\L_NETWORK.o
+                                                                * Objs\C_UDP.o
+_C_UDP__Send_packet             .text   	.text   	  Objs\L_NETWORK.o
+                                                                * Objs\C_UDP.o
+_C_UDP__Set_callback            .text   	.text   	  Objs\L_NETWORK.o
+                                                                * Objs\C_UDP.o
+_ConfigMgr__GetChannelID        .text   	.text   	* Objs\ConfigMgr.o
+                                                                  Objs\FTI.o
+_ConfigMgr__GetESCMode          .text   	.text   	* Objs\ConfigMgr.o
+                                                                  Objs\SSPC.o
+_DMA_Initialise                 .text   	.text   	* Objs\L_DMA_Initialise.o
+                                                                  Objs\PLAT_Resources.o
+_DMA_channel                    .bss    	.bss    	* Objs\C_DMA_UTILS.o
+                                                                * D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk
+_DMA_interrupt_level            .sbss   	.sbss   	  Objs\L_NETWORK.o
+                                                                  Objs\L_DMA_Initialise.o
+                                                                * Objs\C_Global.o
+                                                                  Objs\C_FEC_DRV.o
+                                                                  Objs\C_FEC_BD.o
+_DSPI_Start                     .text   	.text   	* Objs\L_DSPI_Start.o
+                                                                  Objs\PLAT_SBC.o
+_ESC_Scheduler__EndFrame        .text   	.text   	* Objs\ESC_Scheduler.o
+_ESC_Scheduler__GetSystemTime   .text   	.text   	* Objs\ESC_Scheduler.o
+                                                                  Objs\FTI.o
+_ESC_Scheduler__Schedule        .text   	.text   	* Objs\ESC_Scheduler.o
+_ESC_Scheduler__StartFrame      .text   	.text   	* Objs\ESC_Scheduler.o
+_ESC_Scheduler__main            .text   	.text   	  Objs\Plat_INTC__Vectors.o
+                                                                * Objs\ESC_Scheduler.o
+_Ethernet_broadcast_address     .text   	.text   	* Objs\C_ETHERNET.o
+                                                                  Objs\C_ARP.o
+_FTI__GenRspPayload             .text   	.text   	* Objs\FTI.o
+_FTI__Initialise                .text   	.text   	  Objs\ESC_Scheduler.o
+                                                                * Objs\FTI.o
+_FTI__ParseDataReqPkt           .text   	.text   	* Objs\FTI.o
+_FTI__ParseMessage              .text   	.text   	* Objs\FTI.o
+_FTI__ParseSSPCProtPkt          .text   	.text   	* Objs\FTI.o
+_FTI__ParseSetDataPkt           .text   	.text   	* Objs\FTI.o
+_FTI__Receive                   .text   	.text   	* Objs\FTI.o
+_FTI__Schedule                  .text   	.text   	  Objs\ESC_Scheduler.o
+                                                                * Objs\FTI.o
+_FTI__SetFTIAuthorised          .text   	.text   	  Objs\ESC_Scheduler.o
+                                                                * Objs\FTI.o
+_FTI__Transmit                  .text   	.text   	* Objs\FTI.o
+_FTI__ValidateAddress           .text   	.text   	* Objs\FTI.o
+_FTI__WriteData                 .text   	.text   	* Objs\FTI.o
+_FTI_preamble                   .text   	.text   	  Objs\L_NETWORK.o
+                                                                * Objs\C_NETWORK.o
+_GCIR0_ptr                      .text   	.text   	* Objs\C_clock.o
+_GCIR3_ptr                      .text   	.text   	* Objs\C_clock.o
+_GMS0_ptr                       .text   	.text   	* Objs\C_clock.o
+_GMS3_ptr                       .text   	.text   	* Objs\C_clock.o
+_GSR0_ptr                       .text   	.text   	* Objs\C_clock.o
+_GSR3_ptr                       .text   	.text   	* Objs\C_clock.o
+_LoadShed__DetermineMode        .text   	.text   	* Objs\LoadShed.o
+_LoadShed__Initialise           .text   	.text   	  Objs\ESC_Scheduler.o
+                                                                * Objs\LoadShed.o
+_LoadShed__Update               .text   	.text   	* Objs\LoadShed.o
+_Local_broadcast_IP_address     .sbss   	.sbss   	* Objs\L_NETWORK.o
+                                                                  Objs\C_ARP.o
+_MCD_ChainEu_TDT                .text   	.text   	* Objs\C_MCD_TASKS.o
+_MCD_ChainNoEu_TDT              .text   	.text   	* Objs\C_MCD_TASKS.o
+_MCD_DSPI_Tx_Rx_TDT             .text   	.text   	* Objs\C_MCD_TASKS.o
+_MCD_ENetRcv0_TDT               .text   	.text   	* Objs\C_MCD_TASKS.o
+_MCD_ENetRcv1_TDT               .text   	.text   	* Objs\C_MCD_TASKS.o
+_MCD_ENetXmit0_TDT              .text   	.text   	* Objs\C_MCD_TASKS.o
+_MCD_ENetXmit1_TDT              .text   	.text   	* Objs\C_MCD_TASKS.o
+_MCD_SingleEu_TDT               .text   	.text   	* Objs\C_MCD_TASKS.o
+_MCD_SingleNoEu_TDT             .text   	.text   	* Objs\C_MCD_TASKS.o
+_MCD_contextSave0               .bss    	.bss    	* Objs\C_MCD_TASKS.o
+                                                                * D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk
+_MCD_contextSave1               .bss    	.bss    	* Objs\C_MCD_TASKS.o
+                                                                * D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk
+_MCD_contextSave10              .bss    	.bss    	* Objs\C_MCD_TASKS.o
+                                                                * D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk
+_MCD_contextSave11              .bss    	.bss    	* Objs\C_MCD_TASKS.o
+                                                                * D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk
+_MCD_contextSave12              .bss    	.bss    	* Objs\C_MCD_TASKS.o
+                                                                * D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk
+_MCD_contextSave13              .bss    	.bss    	* Objs\C_MCD_TASKS.o
+                                                                * D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk
+_MCD_contextSave14              .bss    	.bss    	* Objs\C_MCD_TASKS.o
+                                                                * D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk
+_MCD_contextSave15              .bss    	.bss    	* Objs\C_MCD_TASKS.o
+                                                                * D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk
+_MCD_contextSave2               .bss    	.bss    	* Objs\C_MCD_TASKS.o
+                                                                * D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk
+_MCD_contextSave3               .bss    	.bss    	* Objs\C_MCD_TASKS.o
+                                                                * D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk
+_MCD_contextSave4               .bss    	.bss    	* Objs\C_MCD_TASKS.o
+                                                                * D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk
+_MCD_contextSave5               .bss    	.bss    	* Objs\C_MCD_TASKS.o
+                                                                * D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk
+_MCD_contextSave6               .bss    	.bss    	* Objs\C_MCD_TASKS.o
+                                                                * D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk
+_MCD_contextSave7               .bss    	.bss    	* Objs\C_MCD_TASKS.o
+                                                                * D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk
+_MCD_contextSave8               .bss    	.bss    	* Objs\C_MCD_TASKS.o
+                                                                * D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk
+_MCD_contextSave9               .bss    	.bss    	* Objs\C_MCD_TASKS.o
+                                                                * D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk
+_MCD_funcDescTab0               .text   	.text   	* Objs\C_MCD_TASKS.o
+                                                                  Objs\C_MCD_API.o
+_MCD_funcDescTab1               .text   	.text   	* Objs\C_MCD_TASKS.o
+_MCD_funcDescTab10              .text   	.text   	* Objs\C_MCD_TASKS.o
+_MCD_funcDescTab11              .text   	.text   	* Objs\C_MCD_TASKS.o
+_MCD_funcDescTab12              .text   	.text   	* Objs\C_MCD_TASKS.o
+_MCD_funcDescTab13              .text   	.text   	* Objs\C_MCD_TASKS.o
+_MCD_funcDescTab14              .text   	.text   	* Objs\C_MCD_TASKS.o
+_MCD_funcDescTab15              .text   	.text   	* Objs\C_MCD_TASKS.o
+_MCD_funcDescTab2               .text   	.text   	* Objs\C_MCD_TASKS.o
+_MCD_funcDescTab3               .text   	.text   	* Objs\C_MCD_TASKS.o
+_MCD_funcDescTab4               .text   	.text   	* Objs\C_MCD_TASKS.o
+_MCD_funcDescTab5               .text   	.text   	* Objs\C_MCD_TASKS.o
+_MCD_funcDescTab6               .text   	.text   	* Objs\C_MCD_TASKS.o
+_MCD_funcDescTab7               .text   	.text   	* Objs\C_MCD_TASKS.o
+_MCD_funcDescTab8               .text   	.text   	* Objs\C_MCD_TASKS.o
+_MCD_funcDescTab9               .text   	.text   	* Objs\C_MCD_TASKS.o
+_MCD_modelTaskTableSrc          .text   	.text   	* Objs\C_MCD_TASKS.o
+                                                                  Objs\C_MCD_API.o
+_MCD_realTaskTableSrc           .text   	.text   	* Objs\C_MCD_TASKS.o
+_MCD_singleBufDescs             .bss    	.bss    	* Objs\C_MCD_TASKS.o
+                                                                * D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk
+_MCD_varTab0                    .text   	.text   	* Objs\C_MCD_TASKS.o
+_MCD_varTab1                    .text   	.text   	* Objs\C_MCD_TASKS.o
+_MCD_varTab10                   .text   	.text   	* Objs\C_MCD_TASKS.o
+_MCD_varTab11                   .text   	.text   	* Objs\C_MCD_TASKS.o
+_MCD_varTab12                   .text   	.text   	* Objs\C_MCD_TASKS.o
+_MCD_varTab13                   .text   	.text   	* Objs\C_MCD_TASKS.o
+_MCD_varTab14                   .text   	.text   	* Objs\C_MCD_TASKS.o
+_MCD_varTab15                   .text   	.text   	* Objs\C_MCD_TASKS.o
+_MCD_varTab2                    .text   	.text   	* Objs\C_MCD_TASKS.o
+_MCD_varTab3                    .text   	.text   	* Objs\C_MCD_TASKS.o
+_MCD_varTab4                    .text   	.text   	* Objs\C_MCD_TASKS.o
+_MCD_varTab5                    .text   	.text   	* Objs\C_MCD_TASKS.o
+_MCD_varTab6                    .text   	.text   	* Objs\C_MCD_TASKS.o
+_MCD_varTab7                    .text   	.text   	* Objs\C_MCD_TASKS.o
+_MCD_varTab8                    .text   	.text   	* Objs\C_MCD_TASKS.o
+_MCD_varTab9                    .text   	.text   	* Objs\C_MCD_TASKS.o
+_MPT__GetBusVoltageInfo         .text   	.text   	* Objs\MPT.o
+_MPT__GetConfigInfo             .text   	.text   	  Objs\ESC_Scheduler.o
+                                                                * Objs\MPT.o
+_MPT__GetStatusData             .text   	.text   	  Objs\SSPC.o
+                                                                * Objs\MPT.o
+_MPT__Initialise                .text   	.text   	  Objs\ESC_Scheduler.o
+                                                                * Objs\MPT.o
+_MPT__PerformServicePhaseRx     .text   	.text   	* Objs\MPT.o
+_MPT__PerformServicePhaseTx     .text   	.text   	* Objs\MPT.o
+_MPT__ProcessStatusData         .text   	.text   	* Objs\MPT.o
+_MPT__Schedule                  .text   	.text   	  Objs\ESC_Scheduler.o
+                                                                * Objs\MPT.o
+_MPT__SetAircraftID             .text   	.text   	  Objs\ESC_Scheduler.o
+                                                                * Objs\MPT.o
+_MPT__SetCommandData            .text   	.text   	  Objs\SSPC.o
+                                                                * Objs\MPT.o
+_MPT__SetCommandEnable          .text   	.text   	  Objs\ESC_Scheduler.o
+                                                                * Objs\MPT.o
+_NETWORK_API_format_message     .text   	.text   	* Objs\L_NETWORK.o
+_NETWORK_Initialise             .text   	.text   	* Objs\L_NETWORK.o
+                                                                  Objs\PLAT_Ethernet.o
+_NETWORK_Process_API_layer      .text   	.text   	* Objs\L_NETWORK.o
+_NETWORK_Process_ARP_layer      .text   	.text   	* Objs\L_NETWORK.o
+                                                                  Objs\PLAT_Ethernet.o
+_NETWORK_Process_ETH_layer      .text   	.text   	* Objs\L_NETWORK.o
+                                                                  Objs\PLAT_Ethernet.o
+_NETWORK_Process_IP_layer       .text   	.text   	* Objs\L_NETWORK.o
+                                                                  Objs\PLAT_Ethernet.o
+_NETWORK_Process_UDP_layer      .text   	.text   	* Objs\L_NETWORK.o
+                                                                  Objs\PLAT_Ethernet.o
+_Net_buffer_queue               .bss    	.bss    	* Objs\C_NET_BUFFERS.o
+                                                                * D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk
+_Network_buffers                .bss    	.bss    	* Objs\C_NET_BUFFERS.o
+                                                                * D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk
+_OFP_VECTORS                    .vectors	.vectors	* Objs\Plat_INTC__Vectors.o
+_Plat_A664_ES__Initialise       .text   	.text   	  Objs\PLAT_ARINC664.o
+                                                                * Objs\PLAT_A664_ES.o
+_Plat_A664_ES__Program          .text   	.text   	  Objs\PLAT_ARINC664.o
+                                                                * Objs\PLAT_A664_ES.o
+_Plat_ARINC429__ConfigureChannel .text   	.text   	* Objs\PLAT_ARINC429.o
+_Plat_ARINC429__GetChannelStatus .text   	.text   	* Objs\PLAT_ARINC429.o
+_Plat_ARINC429__Receive         .text   	.text   	* Objs\PLAT_ARINC429.o
+_Plat_ARINC429__Transmit        .text   	.text   	* Objs\PLAT_ARINC429.o
+_Plat_Arinc664__Bit             .text   	.text   	* Objs\PLAT_ARINC664.o
+_Plat_Arinc664__Initialise      .text   	.text   	* Objs\PLAT_ARINC664.o
+_Plat_Arinc664__Loopback        .text   	.text   	* Objs\PLAT_ARINC664.o
+_Plat_Arinc664__Mib_Get         .text   	.text   	* Objs\PLAT_ARINC664.o
+_Plat_Arinc664__Reset_Phy       .text   	.text   	* Objs\PLAT_ARINC664.o
+_Plat_Arinc664__Rx              .text   	.text   	* Objs\PLAT_ARINC664.o
+_Plat_Arinc664__Tx              .text   	.text   	* Objs\PLAT_ARINC664.o
+_Plat_Discretes__Initialise     .text   	.text   	  Objs\PLAT_Resources.o
+                                                                * Objs\PLAT_Discretes.o
+_Plat_Discretes__RWFlexBus      .text   	.text   	  Objs\PLAT_Resources.o
+                                                                * Objs\PLAT_Discretes.o
+_Plat_Discretes__ReadAppPin     .text   	.text   	* Objs\PLAT_Discretes.o
+_Plat_Discretes__ReadPin        .text   	.text   	  Objs\PLAT_Watchdog.o
+                                                                * Objs\PLAT_Discretes.o
+_Plat_Discretes__ReadPort       .text   	.text   	* Objs\PLAT_Discretes.o
+                                                                  Objs\ConfigMgr.o
+_Plat_Discretes__WriteAppPin    .text   	.text   	* Objs\PLAT_Discretes.o
+_Plat_Discretes__WritePin       .text   	.text   	  Objs\PLAT_Ethernet.o
+                                                                  Objs\PLAT_VMS.o
+                                                                  Objs\PLAT_SBC.o
+                                                                  Objs\PLAT_Watchdog.o
+                                                                  Objs\PLAT_Resources.o
+                                                                * Objs\PLAT_Discretes.o
+_Plat_Discretes__WritePort      .text   	.text   	* Objs\PLAT_Discretes.o
+_Plat_Ethernet__Initialise      .text   	.text   	* Objs\PLAT_Ethernet.o
+                                                                  Objs\FTI.o
+_Plat_Ethernet__Receive         .text   	.text   	* Objs\PLAT_Ethernet.o
+                                                                  Objs\FTI.o
+_Plat_Ethernet__Service         .text   	.text   	* Objs\PLAT_Ethernet.o
+                                                                  Objs\FTI.o
+_Plat_Ethernet__Timer_ISR       .text   	.text   	* Objs\PLAT_Ethernet.o
+                                                                  Objs\Plat_INTC__Vectors.o
+_Plat_Ethernet__Transmit        .text   	.text   	* Objs\PLAT_Ethernet.o
+                                                                  Objs\FTI.o
+_Plat_GPT__AttachCallback       .text   	.text   	* Objs\PLAT_GPT.o
+_Plat_GPT__Initialise           .text   	.text   	  Objs\PLAT_Resources.o
+                                                                * Objs\PLAT_GPT.o
+_Plat_GPT__IsExpired            .text   	.text   	* Objs\PLAT_GPT.o
+                                                                  Objs\ESC_Scheduler.o
+_Plat_GPT__SetDuration          .text   	.text   	* Objs\PLAT_GPT.o
+                                                                  Objs\ESC_Scheduler.o
+_Plat_GPT__SetEnabled           .text   	.text   	* Objs\PLAT_GPT.o
+                                                                  Objs\ESC_Scheduler.o
+_Plat_GPT__SetInterruptEnabled  .text   	.text   	* Objs\PLAT_GPT.o
+                                                                  Objs\ESC_Scheduler.o
+_Plat_GPT__SetRunMode           .text   	.text   	* Objs\PLAT_GPT.o
+                                                                  Objs\ESC_Scheduler.o
+_Plat_GPT__Timer1_ISR           .text   	.text   	  Objs\Plat_INTC__Vectors.o
+                                                                * Objs\PLAT_GPT.o
+_Plat_GPT__Timer2_ISR           .text   	.text   	  Objs\Plat_INTC__Vectors.o
+                                                                * Objs\PLAT_GPT.o
+_Plat_INTC__SetInterruptEnabled .text   	.text   	  Objs\PLAT_VMS.o
+                                                                  Objs\PLAT_PSU.o
+                                                                  Objs\PLAT_SLT.o
+                                                                * Objs\PLAT_INTC.o
+                                                                  Objs\PLAT_GPT.o
+_Plat_INTC__SetInterruptPriority .text   	.text   	  Objs\PLAT_VMS.o
+                                                                  Objs\PLAT_SLT.o
+                                                                * Objs\PLAT_INTC.o
+                                                                  Objs\PLAT_GPT.o
+_Plat_INTC__SetupVectorTable    .text   	.text   	  Objs\PLAT_Resources.o
+                                                                * Objs\PLAT_INTC.o
+_Plat_NVM__Recall               .text   	.text   	* Objs\PLAT_NVM.o
+_Plat_NVM__Store                .text   	.text   	* Objs\PLAT_NVM.o
+_Plat_PSC__GetBytes             .text   	.text   	  Objs\PLAT_VMS.o
+                                                                * Objs\PLAT_PSC.o
+_Plat_PSC__Initialise           .text   	.text   	  Objs\PLAT_VMS.o
+                                                                * Objs\PLAT_PSC.o
+_Plat_PSC__IsFIFOAlarmSet       .text   	.text   	  Objs\PLAT_VMS.o
+                                                                * Objs\PLAT_PSC.o
+_Plat_PSC__IsTxEmpty            .text   	.text   	  Objs\PLAT_VMS.o
+                                                                * Objs\PLAT_PSC.o
+_Plat_PSC__PutBytes             .text   	.text   	  Objs\PLAT_VMS.o
+                                                                * Objs\PLAT_PSC.o
+_Plat_PSC__Reset                .text   	.text   	  Objs\PLAT_VMS.o
+                                                                * Objs\PLAT_PSC.o
+_Plat_PSC__SetActiveInterrupts  .text   	.text   	  Objs\PLAT_VMS.o
+                                                                * Objs\PLAT_PSC.o
+_Plat_PSC__SetEnable            .text   	.text   	  Objs\PLAT_VMS.o
+                                                                * Objs\PLAT_PSC.o
+_Plat_PSC__SetFIFOAlarmLevel    .text   	.text   	  Objs\PLAT_VMS.o
+                                                                * Objs\PLAT_PSC.o
+_Plat_PSC__SetMultiDropMode     .text   	.text   	  Objs\PLAT_VMS.o
+                                                                * Objs\PLAT_PSC.o
+_Plat_PSU__Initialise           .text   	.text   	* Objs\PLAT_PSU.o
+                                                                  Objs\ESC_Scheduler.o
+_Plat_PSU__PowerFail_ISR        .text   	.text   	* Objs\PLAT_PSU.o
+                                                                  Objs\Plat_INTC__Vectors.o
+_Plat_PSU__RegisterPFIHandler   .text   	.text   	* Objs\PLAT_PSU.o
+_Plat_RS485__ConfigureChannel   .text   	.text   	* Objs\PLAT_RS485.o
+_Plat_RS485__GetBytes           .text   	.text   	* Objs\PLAT_RS485.o
+_Plat_RS485__GetChannelStatus   .text   	.text   	* Objs\PLAT_RS485.o
+_Plat_RS485__PutBytes           .text   	.text   	* Objs\PLAT_RS485.o
+_Plat_Resources__Cache_Init     .text   	.text   	* Objs\PLAT_Resources.o
+_Plat_Resources__InitStaticData .text   	.text   	* Objs\PLAT_Resources.o
+_Plat_Resources__Initialise     .text   	.text   	* Objs\PLAT_Resources.o
+                                                                  Objs\ESC_Scheduler.o
+_Plat_Resources__SDRAM_Init     .text   	.text   	* Objs\PLAT_Resources.o
+_Plat_SBC__AddToPayload         .text   	.text   	  Objs\PLAT_RS485.o
+                                                                  Objs\PLAT_ARINC429.o
+                                                                * Objs\PLAT_SBC.o
+_Plat_SBC__ConfigureInterface   .text   	.text   	  Objs\PLAT_RS485.o
+                                                                  Objs\PLAT_ARINC429.o
+                                                                * Objs\PLAT_SBC.o
+_Plat_SBC__GetDeviceStatus      .text   	.text   	  Objs\PLAT_RS485.o
+                                                                  Objs\PLAT_ARINC429.o
+                                                                * Objs\PLAT_SBC.o
+_Plat_SBC__GetFromPayload       .text   	.text   	  Objs\PLAT_RS485.o
+                                                                  Objs\PLAT_ARINC429.o
+                                                                * Objs\PLAT_SBC.o
+_Plat_SBC__GetInterfaceStatus   .text   	.text   	  Objs\PLAT_RS485.o
+                                                                  Objs\PLAT_ARINC429.o
+                                                                * Objs\PLAT_SBC.o
+_Plat_SBC__Initialise           .text   	.text   	* Objs\PLAT_SBC.o
+_Plat_SBC__Service              .text   	.text   	* Objs\PLAT_SBC.o
+_Plat_SLT__AttachCallback       .text   	.text   	* Objs\PLAT_SLT.o
+_Plat_SLT__Initialise           .text   	.text   	* Objs\PLAT_SLT.o
+                                                                  Objs\PLAT_Resources.o
+_Plat_SLT__IsExpired            .text   	.text   	* Objs\PLAT_SLT.o
+_Plat_SLT__SetDuration          .text   	.text   	* Objs\PLAT_SLT.o
+_Plat_SLT__SetEnabled           .text   	.text   	* Objs\PLAT_SLT.o
+_Plat_SLT__SetInterruptEnabled  .text   	.text   	* Objs\PLAT_SLT.o
+_Plat_SLT__SetRunMode           .text   	.text   	* Objs\PLAT_SLT.o
+_Plat_SLT__Timer1_ISR           .text   	.text   	  Objs\Plat_INTC__Vectors.o
+                                                                * Objs\PLAT_SLT.o
+_Plat_Utils__BurstCopy          .text   	.text   	* Objs\PLAT_Utils.o
+                                                                  Objs\FTI.o
+                                                                  Objs\SSPC.o
+                                                                  Objs\MPT.o
+_Plat_Utils__ByteSwap           .text   	.text   	* Objs\PLAT_Utils.o
+_Plat_Utils__CalculateCRC       .text   	.text   	* Objs\PLAT_Utils.o
+_Plat_Utils__ConvertValToStr    .text   	.text   	* Objs\PLAT_Utils.o
+_Plat_Utils__FixedPeriodWait    .text   	.text   	* Objs\PLAT_Utils.o
+                                                                  Objs\PLAT_NVM.o
+                                                                  Objs\PLAT_SBC.o
+                                                                  Objs\PLAT_Resources.o
+_Plat_Utils__ReadTripleCopy     .text   	.text   	* Objs\PLAT_Utils.o
+_Plat_Utils__WordSwap           .text   	.text   	* Objs\PLAT_Utils.o
+_Plat_Utils__WriteTripleCopy    .text   	.text   	* Objs\PLAT_Utils.o
+_Plat_VMS__Initialise           .text   	.text   	* Objs\PLAT_VMS.o
+                                                                  Objs\MPT.o
+_Plat_VMS__PSC0_ISR             .text   	.text   	* Objs\PLAT_VMS.o
+                                                                  Objs\Plat_INTC__Vectors.o
+_Plat_VMS__PSC1_ISR             .text   	.text   	* Objs\PLAT_VMS.o
+                                                                  Objs\Plat_INTC__Vectors.o
+_Plat_VMS__PSC2_ISR             .text   	.text   	* Objs\PLAT_VMS.o
+                                                                  Objs\Plat_INTC__Vectors.o
+_Plat_VMS__PSC3_ISR             .text   	.text   	* Objs\PLAT_VMS.o
+                                                                  Objs\Plat_INTC__Vectors.o
+_Plat_VMS__Service              .text   	.text   	* Objs\PLAT_VMS.o
+                                                                  Objs\MPT.o
+_Plat_VMS__Transmit             .text   	.text   	* Objs\PLAT_VMS.o
+                                                                  Objs\MPT.o
+_Plat_Watchdog__GetRefFrequency .text   	.text   	* Objs\PLAT_Watchdog.o
+_Plat_Watchdog__Initialise      .text   	.text   	* Objs\PLAT_Watchdog.o
+                                                                  Objs\ESC_Scheduler.o
+_Plat_Watchdog__Kick            .text   	.text   	* Objs\PLAT_Watchdog.o
+                                                                  Objs\ESC_Scheduler.o
+_RAM_init                       .text   	.text   	* Objs\L_RAM_Init.o
+                                                                  Objs\PLAT_Resources.o
+_RIU_channel_MAC_address        .bss    	.bss    	  Objs\L_NETWORK.o
+                                                                * Objs\C_NETWORK.o
+                                                                  Objs\C_ARP.o
+                                                                * D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk
+_RIU_host_IP_address            .sbss   	.sbss   	* Objs\L_NETWORK.o
+                                                                  Objs\C_UDP.o
+                                                                  Objs\C_IP.o
+                                                                  Objs\C_ARP.o
+_RIU_listen_port                .sbss   	.sbss   	* Objs\L_NETWORK.o
+_RIU_transmit_port              .sbss   	.sbss   	* Objs\L_NETWORK.o
+                                                                  Objs\C_UDP.o
+_SDA_BASE_                      [absolute]	        	  Objs\PLAT_Resources.o
+                                                                * D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk
+_SLT0_interrupt_level           .sbss   	.sbss   	  Objs\L_Slice_timer_0_init.o
+                                                                * Objs\C_Global.o
+                                                                  Objs\C_ARP.o
+_SSPC__GenerateCommands         .text   	.text   	* Objs\SSPC.o
+_SSPC__GetSSPCStatus            .text   	.text   	  Objs\FTI.o
+                                                                * Objs\SSPC.o
+_SSPC__Initialise               .text   	.text   	  Objs\ESC_Scheduler.o
+                                                                * Objs\SSPC.o
+_SSPC__ProcessStatus            .text   	.text   	* Objs\SSPC.o
+_SSPC__Pull                     .text   	.text   	  Objs\FTI.o
+                                                                * Objs\SSPC.o
+_SSPC__Reset                    .text   	.text   	  Objs\FTI.o
+                                                                * Objs\SSPC.o
+_SSPC__Schedule                 .text   	.text   	  Objs\ESC_Scheduler.o
+                                                                * Objs\SSPC.o
+_SSPC__SetCollar                .text   	.text   	* Objs\SSPC.o
+_SSPC__SetLoadShedFlags         .text   	.text   	  Objs\LoadShed.o
+                                                                * Objs\SSPC.o
+_SSPC__SetSwitchCmd             .text   	.text   	* Objs\SSPC.o
+_Slice_timer_0_init             .text   	.text   	* Objs\L_Slice_timer_0_init.o
+                                                                  Objs\PLAT_SLT.o
+_UDP_connections                .ct_cleared_ram	.ct_cleared_ram	* Objs\C_UDP.o
+_UDP_index                      .ct_cleared_ram	.ct_cleared_ram	  Objs\L_NETWORK.o
+                                                                * Objs\C_UDP.o
+_Unaligned_Rx_BD_store          .bss    	.bss    	* Objs\C_FEC_BD.o
+                                                                * D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk
+_Unaligned_Tx_BD_store          .bss    	.bss    	* Objs\C_FEC_BD.o
+                                                                * D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk
+_Unaligned_data_buffers         .bss    	.bss    	* Objs\C_NET_BUFFERS.o
+                                                                * D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk
+_Used_requestors                .bss    	.bss    	* Objs\C_DMA_UTILS.o
+                                                                * D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk
+__SDA_BASE_                     [absolute]	        	* D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk
+__SP_INIT                       [absolute]	        	  Objs\Plat_INTC__Vectors.o
+                                                                * D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk
+__VECTORS_BASE                  [absolute]	        	  Objs\PLAT_INTC.o
+                                                                * D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk
+___CLEARED_RAM_END              [absolute]	        	  Objs\PLAT_Ethernet.o
+                                                                * D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk
+___CLEARED_RAM_START            [absolute]	        	  Objs\PLAT_Ethernet.o
+                                                                * D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk
+___FLASH_BASE                   [absolute]	        	  Objs\FTI.o
+                                                                * D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk
+___FLASH_END                    [absolute]	        	  Objs\FTI.o
+                                                                * D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk
+___INITDATA_RAM                 [absolute]	        	  Objs\PLAT_Resources.o
+                                                                * D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk
+___INITDATA_RAM_END             [absolute]	        	  Objs\PLAT_Resources.o
+                                                                * D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk
+___INITDATA_ROM                 [absolute]	        	  Objs\PLAT_Resources.o
+                                                                * D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk
+___MBAR                         [absolute]	        	  Objs\L_AFDX_BIT.o
+                                                                  Objs\L_Slice_timer_0_init.o
+                                                                  Objs\L_PCI_WINDOWS_CONFIG.o
+                                                                  Objs\L_PCI_ADDR_SPACE_CONFIG.o
+                                                                  Objs\L_NETWORK.o
+                                                                  Objs\L_DSPI_Start.o
+                                                                  Objs\L_DMA_Initialise.o
+                                                                  Objs\C_PHY_DRV.o
+                                                                  Objs\C_MCD_TASKS.o
+                                                                  Objs\C_FEC_DRV.o
+                                                                  Objs\C_FEC_BD.o
+                                                                  Objs\C_DMA_UTILS.o
+                                                                  Objs\C_clock.o
+                                                                  Objs\PLAT_Ethernet.o
+                                                                  Objs\PLAT_Watchdog.o
+                                                                  Objs\PLAT_PSU.o
+                                                                  Objs\PLAT_SLT.o
+                                                                  Objs\PLAT_PSC.o
+                                                                  Objs\PLAT_INTC.o
+                                                                  Objs\PLAT_GPT.o
+                                                                  Objs\PLAT_Discretes.o
+                                                                * D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk
+___NVRAM_BASE                   [absolute]	        	  Objs\PLAT_NVM.o
+                                                                  Objs\FTI.o
+                                                                * D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk
+___NVRAM_END                    [absolute]	        	  Objs\FTI.o
+                                                                * D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk
+___RAMBAR                       [absolute]	        	* D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk
+___RAM_BASE                     [absolute]	        	  Objs\PLAT_Resources.o
+                                                                  Objs\FTI.o
+                                                                * D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk
+___RAM_END                      [absolute]	        	  Objs\PLAT_Resources.o
+                                                                  Objs\FTI.o
+                                                                * D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk
+___SP_END                       [absolute]	        	* D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk
+___STARTUP                      [absolute]	        	* D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk
+___SYSTEM_SRAM_BASE             [absolute]	        	  Objs\PLAT_Resources.o
+                                                                * D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk
+___SYSTEM_SRAM_END              [absolute]	        	  Objs\PLAT_Resources.o
+                                                                * D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk
+_add_longlong                   .text   	.text   	* Objs\C_64BIT_UNSIGNED_ADD.o
+_afdx_bit                       .text   	.text   	* Objs\L_AFDX_BIT.o
+                                                                  Objs\PLAT_ARINC664.o
+_afdx_locking                   .text   	.text   	  Objs\L_AFDX_RX.o
+                                                                * Objs\L_AFDX_LOCKING.o
+_afdx_loopback                  .text   	.text   	* Objs\L_AFDX_LOOPBACK.o
+                                                                  Objs\PLAT_ARINC664.o
+_afdx_mdio_write                .text   	.text   	  Objs\L_AFDX_RESET_PHY.o
+                                                                * Objs\L_AFDX_MDIO_WRITE.o
+                                                                  Objs\PLAT_A664_ES.o
+_afdx_mib_get                   .text   	.text   	* Objs\L_AFDX_MIB_GET.o
+                                                                  Objs\PLAT_ARINC664.o
+_afdx_reset_phy                 .text   	.text   	* Objs\L_AFDX_RESET_PHY.o
+                                                                  Objs\PLAT_ARINC664.o
+_afdx_rx                        .text   	.text   	* Objs\L_AFDX_RX.o
+                                                                  Objs\PLAT_ARINC664.o
+_afdx_tx                        .text   	.text   	* Objs\L_AFDX_TX.o
+                                                                  Objs\PLAT_ARINC664.o
+_asm_burst_mem_copy             .text   	.text   	  Objs\L_AFDX_RX.o
+                                                                  Objs\L_AFDX_MIB_GET.o
+                                                                  Objs\L_NETWORK.o
+                                                                  Objs\L_DSPI_Start.o
+                                                                  Objs\C_NETWORK.o
+                                                                  Objs\C_MCD_API.o
+                                                                  Objs\C_FIFO.o
+                                                                  Objs\C_FEC_DRV.o
+                                                                  Objs\C_FEC_BD.o
+                                                                  Objs\C_DMA_UTILS.o
+                                                                * Objs\C_Burst_Copy.o
+                                                                  Objs\PLAT_Ethernet.o
+                                                                  Objs\PLAT_VMS.o
+                                                                  Objs\PLAT_Utils.o
+                                                                  Objs\PLAT_SBC.o
+                                                                  Objs\PLAT_Resources.o
+_asm_burst_mem_copy_32          .text   	.text   	  Objs\L_AFDX_TX.o
+                                                                * Objs\C_Burst_Copy_32.o
+_asm_set_ipl                    .text   	.text   	  Objs\L_NETWORK.o
+                                                                * Objs\C_Set_IPL.o
+                                                                  Objs\C_NET_BUFFERS.o
+                                                                  Objs\C_MEM.o
+                                                                  Objs\C_FEC_DRV.o
+                                                                  Objs\C_FEC_BD.o
+                                                                  Objs\C_DMA_UTILS.o
+                                                                  Objs\C_ARP.o
+                                                                  Objs\PLAT_Ethernet.o
+                                                                  Objs\PLAT_NVM.o
+                                                                  Objs\PLAT_PSU.o
+                                                                  Objs\PLAT_Resources.o
+                                                                  Objs\PLAT_INTC.o
+_c_error_handler                .text   	.text   	  Objs\L_AFDX_LOCKING.o
+                                                                  Objs\L_PCI_ADDR_SPACE_CONFIG.o
+                                                                * Objs\C_Error_Handler.o
+                                                                  Objs\C_Default_Exception_Handler.o
+_const_DMA_channel              .text   	.text   	* Objs\C_DMA_UTILS.o
+_const_used_requestors          .text   	.text   	* Objs\C_DMA_UTILS.o
+_core_fault_record              .bss    	.bss    	  Objs\L_AFDX_LOCKING.o
+                                                                  Objs\L_PCI_ADDR_SPACE_CONFIG.o
+                                                                * Objs\C_Error_Handler.o
+                                                                  Objs\C_Default_Exception_Handler.o
+                                                                * D:\TomWoolfrey\APMS\ESC-OFP\ESC_OFP.lk
+_default_exception_handler      .text   	.text   	* Objs\C_Default_Exception_Handler.o
+                                                                  Objs\PLAT_PSU.o
+                                                                  Objs\Plat_INTC__Vectors.o
+                                                                  Objs\PLAT_SLT.o
+                                                                  Objs\PLAT_GPT.o
+_es_status                      .sbss   	.sbss   	* Objs\PLAT_ARINC664.o
+_fatal_error                    .text   	.text   	  Objs\L_DMA_Initialise.o
+                                                                  Objs\C_FEC_DRV.o
+                                                                * Objs\C_fatal_error.o
+                                                                  Objs\C_Error_Handler.o
+_fixed_period_wait              .text   	.text   	  Objs\L_AFDX_TX.o
+                                                                  Objs\L_AFDX_RESET_PHY.o
+                                                                  Objs\L_AFDX_MDIO_WRITE.o
+                                                                  Objs\L_AFDX_LOOPBACK.o
+                                                                  Objs\L_AFDX_LOCKING.o
+                                                                  Objs\L_PCI_WINDOWS_CONFIG.o
+                                                                  Objs\L_PCI_ADDR_SPACE_CONFIG.o
+                                                                * Objs\C_clock.o
+                                                                  Objs\PLAT_Utils.o
+                                                                  Objs\PLAT_A664_ES.o
+                                                                  Objs\PLAT_Resources.o
+_get_bit                        .text   	.text   	  Objs\L_NETWORK.o
+                                                                  Objs\L_DSPI_Start.o
+                                                                  Objs\L_DMA_Initialise.o
+                                                                * Objs\C_MEM.o
+_nvm                            .text   	.text   	* Objs\C_NVM.o
+                                                                  Objs\C_Error_Handler.o
+_pFirst_connection              .ct_cleared_ram	.ct_cleared_ram	  Objs\L_NETWORK.o
+                                                                * Objs\C_UDP.o
+_pMCD_Relocated_buffer_descriptors .sbss   	.sbss   	* Objs\C_MCD_API.o
+_pMCD_dma_bar                   .sbss   	.sbss   	  Objs\C_MCD_TASKS.o
+                                                                * Objs\C_MCD_API.o
+_pMCD_model_task_table          .sbss   	.sbss   	* Objs\C_MCD_API.o
+_pMCD_real_task_table           .sbss   	.sbss   	* Objs\C_MCD_API.o
+_pNetwork_API_RX_FIFO           .sbss   	.sbss   	* Objs\L_NETWORK.o
+_pNetwork_ARP_RX_FIFO           .sbss   	.sbss   	* Objs\L_NETWORK.o
+                                                                  Objs\C_FEC_DRV.o
+_pNetwork_ETH_TX_FIFO           .sbss   	.sbss   	* Objs\L_NETWORK.o
+                                                                  Objs\C_ARP.o
+_pNetwork_IP_RX_FIFO            .sbss   	.sbss   	* Objs\L_NETWORK.o
+                                                                  Objs\C_FEC_DRV.o
+_pNetwork_IP_TX_FIFO            .sbss   	.sbss   	* Objs\L_NETWORK.o
+                                                                  Objs\C_UDP.o
+_pNetwork_UDP_RX_FIFO           .sbss   	.sbss   	* Objs\L_NETWORK.o
+_pNetwork_UDP_TX_FIFO           .sbss   	.sbss   	* Objs\L_NETWORK.o
+_pci_addr_space_config          .text   	.text   	* Objs\L_PCI_ADDR_SPACE_CONFIG.o
+                                                                  Objs\PLAT_ARINC664.o
+_pci_windows_config             .text   	.text   	* Objs\L_PCI_WINDOWS_CONFIG.o
+                                                                  Objs\PLAT_ARINC664.o
+_put_2_bit                      .text   	.text   	* Objs\C_MEM.o
+_put_bit                        .text   	.text   	  Objs\L_PCI_ADDR_SPACE_CONFIG.o
+                                                                  Objs\L_NETWORK.o
+                                                                  Objs\L_DSPI_Start.o
+                                                                  Objs\C_NETWORK.o
+                                                                * Objs\C_MEM.o
+_pvRx_buffer_descriptor         .sbss   	.sbss   	* Objs\C_FEC_BD.o
+_pvTx_buffer_descriptor         .sbss   	.sbss   	* Objs\C_FEC_BD.o
+_start_frame                    .text   	.text   	* Objs\C_clock.o
+_subtract_longlong              .text   	.text   	* Objs\C_64BIT_UNSIGNED_SUBTRACT.o
+_uint16_to_real_string          .text   	.text   	* Objs\C_uint16_to_real_string.o
+                                                                  Objs\PLAT_Utils.o
+_wait_for_frame_end             .text   	.text   	* Objs\C_clock.o
+_wordswap_to_little_endian      .text   	.text   	* Objs\C_Wordswap_To_Little_Endian.o
+                                                                  Objs\PLAT_Utils.o
+asm_burst_mem_copy              .text   	.text   	* Objs\C_Burst_Copy.o
+asm_burst_mem_copy_32           .text   	.text   	* Objs\C_Burst_Copy_32.o
+asm_set_ipl                     .text   	.text   	* Objs\C_Set_IPL.o

@@ -1,0 +1,780 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.6: http://docutils.sourceforge.net/" />
+<title>&quot;&quot;&quot;</title>
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 5951 2009-05-18 18:03:10Z milde $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left, .figure.align-left{
+  clear: left ;
+  float: left ;
+  margin-right: 1em }
+
+img.align-right, .figure.align-right {
+  clear: right ;
+  float: right ;
+  margin-left: 1em }
+
+.align-left {
+  text-align: left }
+
+.align-center {
+  clear: both ;
+  text-align: center }
+
+.align-right {
+  text-align: right }
+
+/* reset inner alignment in figures */
+div.align-right {
+  text-align: left }
+
+/* div.align-center * { */
+/*   text-align: left } */
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font: inherit }
+
+pre.literal-block, pre.doctest-block {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+</head>
+<body>
+<div class="document" id="id1">
+<h1 class="title">&quot;&quot;&quot;</h1>
+
+<p>import pygame</p>
+<p>import pguglobals
+import style</p>
+<dl class="docutils">
+<dt>class SignalCallback:</dt>
+<dd># The function to call
+func = None
+# The parameters to pass to the function (as a list)
+params = None</dd>
+<dt>class Widget:</dt>
+<dd><p class="first">&quot;&quot;&quot;Base class for all PGU graphical objects.</p>
+<p>Example - Creating your own Widget:</p>
+<dl class="docutils">
+<dt>class Draw(gui.Widget):</dt>
+<dd><dl class="first last docutils">
+<dt>def paint(self,s):</dt>
+<dd># Paint the pygame.Surface
+return</dd>
+<dt>def update(self,s):</dt>
+<dd># Update the pygame.Surface and return the update rects
+return [pygame.Rect(0,0,self.rect.w,self.rect.h)]</dd>
+<dt>def event(self,e):</dt>
+<dd># Handle the pygame.Event
+return</dd>
+<dt>def resize(self,width=None,height=None):</dt>
+<dd># Return the width and height of this widget
+return 256,256</dd>
+</dl>
+</dd>
+</dl>
+<div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">gui/widget.py</tt>, line 35)</p>
+Definition list ends without a blank line; unexpected unindent.</div>
+<p>&quot;&quot;&quot;</p>
+<p># The name of the widget (or None if not defined)
+name = None
+# The container this widget belongs to
+container = None
+# Whether this widget has been painted yet
+_painted = False
+# The widget used to paint the background
+background = None
+# ...
+_rect_content = None</p>
+<dl class="docutils">
+<dt>def __init__(self,**params):</dt>
+<dd><p class="first">&quot;&quot;&quot;Widget constructor.</p>
+<p>Keyword arguments:</p>
+<dl class="docutils">
+<dt>decorate -- whether to call theme.decorate(self) to allow the theme</dt>
+<dd>a chance to decorate the widget. Default is true.</dd>
+</dl>
+<div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">gui/widget.py</tt>, line 55)</p>
+Definition list ends without a blank line; unexpected unindent.</div>
+<p>style -- a dict of style parameters.
+x, y -- position parameters
+width, height -- size parameters
+align, valign -- alignment parameters, passed along to style
+font, color, background -- other common parameters that are passed</p>
+<div class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">gui/widget.py</tt>, line 60)</p>
+Unexpected indentation.</div>
+<blockquote>
+along to style</blockquote>
+<div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">gui/widget.py</tt>, line 61)</p>
+Block quote ends without a blank line; unexpected unindent.</div>
+<p>cls -- class name as used by Theme
+name -- name of widget as used by Form.  If set, will call</p>
+<div class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">gui/widget.py</tt>, line 63)</p>
+Unexpected indentation.</div>
+<blockquote>
+form.add(self,name) to add the widget to the most recently
+created Form.</blockquote>
+<div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">gui/widget.py</tt>, line 65)</p>
+Block quote ends without a blank line; unexpected unindent.</div>
+<dl class="docutils">
+<dt>focusable -- True if this widget can receive focus via Tab, etc.</dt>
+<dd>Defaults to True.</dd>
+</dl>
+<div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">gui/widget.py</tt>, line 67)</p>
+Definition list ends without a blank line; unexpected unindent.</div>
+<p>disabled -- True of this widget is disabled.  Defaults to False.
+value -- initial value</p>
+<p>&quot;&quot;&quot;
+#object.Object.__init__(self)
+self.connects = {}
+params.setdefault('decorate',True)
+params.setdefault('style',{})
+params.setdefault('focusable',True)
+params.setdefault('disabled',False)</p>
+<p>self.focusable = params['focusable']
+self.disabled = params['disabled']</p>
+<dl class="docutils">
+<dt>self.rect = pygame.Rect(params.get('x',0),</dt>
+<dd>params.get('y',0),
+params.get('width',0),
+params.get('height',0))</dd>
+</dl>
+<p>s = params['style']
+#some of this is a bit &quot;theme-ish&quot; but it is very handy, so these
+#things don't have to be put directly into the style.
+for att in ('align','valign','x','y','width','height','color','font','background'):</p>
+<div class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">gui/widget.py</tt>, line 90)</p>
+Unexpected indentation.</div>
+<blockquote>
+if att in params: s[att] = params[att]</blockquote>
+<div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">gui/widget.py</tt>, line 91)</p>
+Block quote ends without a blank line; unexpected unindent.</div>
+<p>self.style = style.Style(self,s)</p>
+<p>self.cls = 'default'
+if 'cls' in params: self.cls = params['cls']
+if 'name' in params:</p>
+<div class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">gui/widget.py</tt>, line 96)</p>
+Unexpected indentation.</div>
+<blockquote>
+<p>import form
+self.name = params['name']
+if form.Form.form:</p>
+<div class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">gui/widget.py</tt>, line 99)</p>
+Unexpected indentation.</div>
+<blockquote>
+form.Form.form.add(self)
+self.form = form.Form.form</blockquote>
+</blockquote>
+<div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">gui/widget.py</tt>, line 101)</p>
+Block quote ends without a blank line; unexpected unindent.</div>
+<p>if 'value' in params: self.value = params['value']
+self.pcls = &quot;&quot;</p>
+<dl class="last docutils">
+<dt>if params['decorate'] != False:</dt>
+<dd><dl class="first docutils">
+<dt>if (not pguglobals.app):</dt>
+<dd># TODO - fix this somehow
+import app
+app.App()</dd>
+</dl>
+<div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">gui/widget.py</tt>, line 109)</p>
+Definition list ends without a blank line; unexpected unindent.</div>
+<p class="last">pguglobals.app.theme.decorate(self,params['decorate'])</p>
+</dd>
+</dl>
+</dd>
+<dt>def focus(self):</dt>
+<dd><p class="first">&quot;&quot;&quot;Focus this Widget.&quot;&quot;&quot;
+if self.container:</p>
+<div class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">gui/widget.py</tt>, line 114)</p>
+Unexpected indentation.</div>
+<blockquote class="last">
+<dl class="docutils">
+<dt>if self.container.myfocus != self:  ## by Gal Koren</dt>
+<dd>self.container.focus(self)</dd>
+</dl>
+</blockquote>
+</dd>
+<dt>def blur(self):</dt>
+<dd>&quot;&quot;&quot;Blur this Widget.&quot;&quot;&quot;
+if self.container: self.container.blur(self)</dd>
+<dt>def open(self):</dt>
+<dd>&quot;&quot;&quot;Open this widget as a modal dialog.&quot;&quot;&quot;
+#if getattr(self,'container',None) != None: self.container.open(self)
+pguglobals.app.open(self)</dd>
+<dt>def close(self, w=None):</dt>
+<dd><p class="first">&quot;&quot;&quot;Close this widget, if it is currently an open dialog.&quot;&quot;&quot;
+#if getattr(self,'container',None) != None: self.container.close(self)
+if (not w):</p>
+<div class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">gui/widget.py</tt>, line 130)</p>
+Unexpected indentation.</div>
+<blockquote>
+w = self</blockquote>
+<div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">gui/widget.py</tt>, line 131)</p>
+Block quote ends without a blank line; unexpected unindent.</div>
+<p class="last">pguglobals.app.close(w)</p>
+</dd>
+<dt>def is_open(self):</dt>
+<dd>return (self in pguglobals.app.windows)</dd>
+<dt>def is_hovering(self):</dt>
+<dd><p class="first">&quot;&quot;&quot;Returns true if the mouse is hovering over this widget.&quot;&quot;&quot;
+if self.container:</p>
+<div class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">gui/widget.py</tt>, line 139)</p>
+Unexpected indentation.</div>
+<blockquote>
+return (self.container.myhover is self)</blockquote>
+<div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">gui/widget.py</tt>, line 140)</p>
+Block quote ends without a blank line; unexpected unindent.</div>
+<p class="last">return False</p>
+</dd>
+<dt>def resize(self,width=None,height=None):</dt>
+<dd><p class="first">&quot;&quot;&quot;Resize this widget and all sub-widgets, returning the new size.</p>
+<p>This should be implemented by a subclass.</p>
+<p class="last">&quot;&quot;&quot;
+return (self.style.width, self.style.height)</p>
+</dd>
+<dt>def chsize(self):</dt>
+<dd><p class="first">&quot;&quot;&quot;Change the size of this widget.&quot;&quot;&quot;</p>
+<p>if (not self._painted): return</p>
+<p>if (not self.container): return</p>
+<dl class="docutils">
+<dt>if pguglobals.app:</dt>
+<dd><dl class="first docutils">
+<dt>if pguglobals.app._chsize:</dt>
+<dd>return</dd>
+</dl>
+<div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">gui/widget.py</tt>, line 160)</p>
+Definition list ends without a blank line; unexpected unindent.</div>
+<p class="last">pguglobals.app.chsize()
+return</p>
+</dd>
+</dl>
+<p class="last">#if hasattr(app.App,'app'):
+#    w,h = self.rect.w,self.rect.h
+#    w2,h2 = self.resize()
+#    if w2 != w or h2 != h:
+#        app.App.app.chsize()
+#    else:
+#        self.repaint()</p>
+</dd>
+<dt>def update(self,s):</dt>
+<dd><p class="first">&quot;&quot;&quot;Updates the surface and returns a rect list of updated areas</p>
+<p>This should be implemented by a subclass.</p>
+<p class="last">&quot;&quot;&quot;
+return</p>
+</dd>
+<dt>def paint(self,s):</dt>
+<dd><p class="first">&quot;&quot;&quot;Render this widget onto the given surface</p>
+<p>This should be implemented by a subclass.</p>
+<p class="last">&quot;&quot;&quot;
+return</p>
+</dd>
+<dt>def repaint(self):</dt>
+<dd>&quot;&quot;&quot;Request a repaint of this Widget.&quot;&quot;&quot;
+if self.container: self.container.repaint(self)</dd>
+<dt>def repaintall(self):</dt>
+<dd>&quot;&quot;&quot;Request a repaint of all Widgets.&quot;&quot;&quot;
+if self.container: self.container.repaintall()</dd>
+<dt>def reupdate(self):</dt>
+<dd>&quot;&quot;&quot;Request a reupdate of this Widget.&quot;&quot;&quot;
+if self.container: self.container.reupdate(self)</dd>
+<dt>def next(self):</dt>
+<dd><p class="first">&quot;&quot;&quot;Pass focus to next Widget.</p>
+<p>Widget order determined by the order they were added to their container.</p>
+<p class="last">&quot;&quot;&quot;
+if self.container: self.container.next(self)</p>
+</dd>
+<dt>def previous(self):</dt>
+<dd><p class="first">&quot;&quot;&quot;Pass focus to previous Widget.</p>
+<p>Widget order determined by the order they were added to their container.</p>
+<p>&quot;&quot;&quot;</p>
+<p class="last">if self.container: self.container.previous(self)</p>
+</dd>
+<dt>def get_abs_rect(self):</dt>
+<dd><p class="first">&quot;&quot;&quot;Returns the absolute rect of this widget on the App screen.&quot;&quot;&quot;
+x, y = self.rect.x, self.rect.y
+cnt = self.container
+while cnt:</p>
+<div class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">gui/widget.py</tt>, line 222)</p>
+Unexpected indentation.</div>
+<blockquote>
+<p>x += cnt.rect.x
+y += cnt.rect.y
+if cnt._rect_content:</p>
+<div class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">gui/widget.py</tt>, line 225)</p>
+Unexpected indentation.</div>
+<blockquote>
+x += cnt._rect_content.x
+y += cnt._rect_content.y</blockquote>
+<div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">gui/widget.py</tt>, line 227)</p>
+Block quote ends without a blank line; unexpected unindent.</div>
+<p>cnt = cnt.container</p>
+</blockquote>
+<div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">gui/widget.py</tt>, line 228)</p>
+Block quote ends without a blank line; unexpected unindent.</div>
+<p class="last">return pygame.Rect(x, y, self.rect.w, self.rect.h)</p>
+</dd>
+<dt>def connect(self,code,func,*params):</dt>
+<dd><p class="first">&quot;&quot;&quot;Connect a event code to a callback function.</p>
+<p>&lt;p&gt;There may be multiple callbacks per event code.&lt;/p&gt;</p>
+<p>Arguments:
+code -- event type
+fnc -- callback function
+<a href="#id2"><span class="problematic" id="id3">*</span></a>values -- values to pass to callback.</p>
+<div class="system-message" id="id2">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">gui/widget.py</tt>, line 235); <em><a href="#id3">backlink</a></em></p>
+Inline emphasis start-string without end-string.</div>
+<p>Please note that callbacks may also have &quot;magicaly&quot; parameters.
+Such as:</p>
+<blockquote>
+_event -- receive the event
+_code -- receive the event code
+_widget -- receive the sending widget</blockquote>
+<p>Example:</p>
+<dl class="docutils">
+<dt>def onclick(value):</dt>
+<dd>print 'click', value</dd>
+</dl>
+<p>w = Button(&quot;PGU!&quot;)
+w.connect(gui.CLICK,onclick,'PGU Button Clicked')</p>
+<p>&quot;&quot;&quot;
+if (not code in self.connects):</p>
+<div class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">gui/widget.py</tt>, line 257)</p>
+Unexpected indentation.</div>
+<blockquote>
+self.connects[code] = []</blockquote>
+<div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">gui/widget.py</tt>, line 258)</p>
+Block quote ends without a blank line; unexpected unindent.</div>
+<dl class="docutils">
+<dt>for cb in self.connects[code]:</dt>
+<dd><dl class="first last docutils">
+<dt>if (cb.func == func):</dt>
+<dd># Already connected to this callback function
+return</dd>
+</dl>
+</dd>
+</dl>
+<div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">gui/widget.py</tt>, line 262)</p>
+Definition list ends without a blank line; unexpected unindent.</div>
+<p class="last"># Wrap the callback function and add it to the list
+cb = SignalCallback()
+cb.func = func
+cb.params = params
+self.connects[code].append(cb)</p>
+</dd>
+</dl>
+<p># Remove signal handlers from the given event code. If func is specified,
+# only those handlers will be removed. If func is None, all handlers
+# will be removed.
+def disconnect(self, code, func=None):</p>
+<div class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">gui/widget.py</tt>, line 272)</p>
+Unexpected indentation.</div>
+<blockquote>
+<dl class="docutils">
+<dt>if (not code in self.connects):</dt>
+<dd>return</dd>
+<dt>if (not func):</dt>
+<dd># Remove all signal handlers
+del self.connects[code]</dd>
+<dt>else:</dt>
+<dd><p class="first"># Remove handlers that call 'func'
+n = 0
+callbacks = self.connects[code]
+while (n &lt; len(callbacks)):</p>
+<div class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">gui/widget.py</tt>, line 282)</p>
+Unexpected indentation.</div>
+<blockquote class="last">
+<dl class="docutils">
+<dt>if (callbacks[n].func == func):</dt>
+<dd># Remove this callback
+del callbacks[n]</dd>
+<dt>else:</dt>
+<dd>n += 1</dd>
+</dl>
+</blockquote>
+</dd>
+</dl>
+</blockquote>
+<dl class="last docutils">
+<dt>def send(self,code,event=None):</dt>
+<dd><p class="first">&quot;&quot;&quot;Send a code, event callback trigger.&quot;&quot;&quot;
+if (not code in self.connects):</p>
+<div class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">gui/widget.py</tt>, line 291)</p>
+Unexpected indentation.</div>
+<blockquote>
+return</blockquote>
+<div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">gui/widget.py</tt>, line 292)</p>
+Block quote ends without a blank line; unexpected unindent.</div>
+<p># Trigger all connected signal handlers
+for cb in self.connects[code]:</p>
+<div class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">gui/widget.py</tt>, line 294)</p>
+Unexpected indentation.</div>
+<blockquote class="last">
+<p>func = cb.func
+values = list(cb.params)</p>
+<p>nargs = func.func_code.co_argcount
+names = list(func.func_code.co_varnames)[:nargs]
+if hasattr(func,'im_class'): names.pop(0)</p>
+<p>args = []
+magic = {'_event':event,'_code':code,'_widget':self}
+for name in names:</p>
+<div class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">gui/widget.py</tt>, line 304)</p>
+Unexpected indentation.</div>
+<blockquote>
+<dl class="docutils">
+<dt>if name in magic.keys():</dt>
+<dd>args.append(magic[name])</dd>
+<dt>elif len(values):</dt>
+<dd>args.append(values.pop(0))</dd>
+<dt>else:</dt>
+<dd>break</dd>
+</dl>
+</blockquote>
+<div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">gui/widget.py</tt>, line 310)</p>
+Block quote ends without a blank line; unexpected unindent.</div>
+<p>args.extend(values)
+func(<a href="#id4"><span class="problematic" id="id5">*</span></a>args)</p>
+<div class="system-message" id="id4">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">gui/widget.py</tt>, line 310); <em><a href="#id5">backlink</a></em></p>
+Inline emphasis start-string without end-string.</div>
+</blockquote>
+</dd>
+<dt>def _event(self,e):</dt>
+<dd>if self.disabled: return
+self.send(e.type,e)
+return self.event(e)</dd>
+<dt>def event(self,e):</dt>
+<dd><p class="first">&quot;&quot;&quot;Called when an event is passed to this object.</p>
+<p>Please note that if you use an event, returning the value True
+will stop parent containers from also using the event.  (For example, if
+your widget handles TABs or arrow keys, and you don't want those to
+also alter the focus.)</p>
+<p>This should be implemented by a subclass.</p>
+<p class="last">&quot;&quot;&quot;
+return</p>
+</dd>
+<dt>def get_toplevel(self):</dt>
+<dd><p class="first">&quot;&quot;&quot;Returns the top-level widget (usually the Desktop) by following the
+chain of 'container' references.</p>
+<p>&quot;&quot;&quot;
+top = self
+while (top.container):</p>
+<div class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">gui/widget.py</tt>, line 338)</p>
+Unexpected indentation.</div>
+<blockquote>
+top = top.container</blockquote>
+<div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">gui/widget.py</tt>, line 339)</p>
+Block quote ends without a blank line; unexpected unindent.</div>
+<p class="last">return top</p>
+</dd>
+<dt>def collidepoint(self, pos):</dt>
+<dd><p class="first">&quot;&quot;&quot;Test if the given point hits this widget. Over-ride this function
+for more advanced collision testing.</p>
+<p class="last">&quot;&quot;&quot;
+return self.rect.collidepoint(pos)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
+</body>
+</html>

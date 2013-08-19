@@ -1,0 +1,34 @@
+     Data Field Name     |Size |Format |              Data            
+-------------------------|-----|-------|------------------------------
+Destination MAC Address  |6    |MAC    |             00:23:5b:00:01:01
+Source MAC Address       |6    |MAC    |             00:0d:88:cd:a1:d3
+Type                     |2    |Hex    |                        0x0800
+Version / Header Length  |1    |Hex    |                          0x45
+DSF                      |1    |Hex    |                          0x00
+Total Length             |2    |Int    |                            44
+Identification           |2    |Hex    |                        0xbe4b
+Flags / Fragment Offset  |2    |Bin    |                      00000000
+TTL                      |1    |Int    |                           128
+Protocol                 |1    |Hex    |                          0x11
+Header Checksum          |2    |Hex    |                        0x6177
+Source IP Address        |4    |IP     |                    10.0.3.254
+Destination IP Address   |4    |IP     |                      10.0.3.1
+Source Port              |2    |Int    |                          1279
+Destination Port         |2    |Int    |                          2100
+Length                   |2    |Int    |                            24
+Checksum                 |2    |Hex    |                        0xd46b
+Flags                    |1    |Bin    |                      00000000
+Ack #                    |1    |Int    |                             0
+Payload Length           |1    |Int    |                             3
+OpCode                   |1    |Hex    |                          0x21
+Byte 0                   |1    |Bin    |                      00000001
+Byte 1                   |1    |Bin    |                      00000000
+Byte 2                   |1    |Bin    |                      00000000
+Byte 3                   |1    |Bin    |                      00000000
+Byte 4                   |1    |Bin    |                      00000000
+Byte 5                   |1    |Bin    |                      00000000
+Briefing In Progress     |2    |Hex    |                        0x0000
+Byte 8                   |1    |Bin    |                      00000000
+Byte 9                   |1    |Bin    |                      00000000
+Byte 10                  |1    |Bin    |                      00000000
+Byte 11                  |1    |Bin    |                      00000000

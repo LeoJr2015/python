@@ -1,0 +1,64 @@
+{
+	"menus":{
+	 "main_menu": {
+		"title":"Main Menu",
+		"titleRGB":[8,165,225],
+		"titlesize":75,
+		"buttons":[
+			{ "text":"Start Game", "code":3 },
+			{ "text":"Demo", "code":4 },
+			{ "text":"High Scores", "code":5 },
+			{ "text":"Exit Game", "code":-10 }
+		]
+	},
+	"ages_menu": {
+		"title":"Choose your age",
+		"titleRGB":[8,165,225],
+		"titlesize":75,
+		"buttons":[
+			{ "text":"0-13", "code":"0-13" },
+			{ "text":"14-21", "code":"14-21" },
+			{ "text":"22-30", "code":"22-30" },
+			{ "text":"31-40", "code":"31-40" },
+			{ "text":"41-50", "code":"41-50" },
+			{ "text":"51+", "code":"51+" }
+		]
+	}
+	},
+	"logger":{
+		"dictkeys":["id","agegroup","difficulty","score"],
+		"logfile":"visitorlog.csv"
+	},
+	"game":{
+		"gametime":180000,
+		"n_aircraft":30,
+		"n_destinations":6,
+		"n_obstacles":5,
+		"framerate":40,
+		"fullscreen":true,
+		"n_highscores":30
+	},
+	"scoring":{
+		"reach_dest":200,
+		"obs_collide":-20,
+		"ac_collide":-500
+	},
+	"codes":{
+		"user_end":1,
+		"time_up":2,
+		"start":3,
+		"demo":4,
+		"ac_collide":5,
+		"high_score":5,
+		"kill":-10
+	},
+	"aircraft":{
+		"max_waypoints":6,
+		"speed_min":100,
+		"speed_max":1000,
+		"speed_default":200,
+		"speed_scalefactor":2000.0,
+		"collision_radius":20,
+		"draw_radius":false
+	}
+}

@@ -26,7 +26,7 @@ import fnmatch
 from Tkinter import *
 
 def auto_detect_serial_unix(preferred_list=['*']):
-    '''try to auto-detect serial ports on win32'''
+    '''try to auto-detect serial ports on linux'''
     import glob
     glist = glob.glob('/dev/ttyUSB*') + glob.glob('/dev/ttyACM*')
     ret = []

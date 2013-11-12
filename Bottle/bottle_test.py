@@ -31,4 +31,4 @@ def index(name='World'):
 def index():
     return '<html><title>Bottle Test</title><b>Hello World</b>'
 
-run(host='localhost', port=8080,reloader=True)
+run(host='0.0.0.0', port=8080)

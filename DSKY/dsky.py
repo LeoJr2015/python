@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  untitled.py
+#  dsky.py
 #  
-#  Copyright 2012 Scott Thomson <scotty3785@gmail.com>
+#  Copyright 2013 Scott Thomson <scotty3785@gmail.com>
 #  
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by

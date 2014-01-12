@@ -55,22 +55,21 @@ class Keypad(Frame):
             self.bttn[-1].config(bg="black",fg="white",highlightcolor='black',activeforeground='black')
             
     def click(self,key):
-        #print key
         self.master.keypress(key)
         
 class statusLamps(Frame):
     def __init__(self,master,**kw):
         lamps = (('UPLINK\nACTY','U',0,0),
-                 ('TEMP','T',0,1),
-                 ('NO ATT','N',1,0),
-                 ('GIMBAL\nLOCK','G',1,1),
-                 ('STBY','S',2,0),
+                ('TEMP','T',0,1),
+                ('NO ATT','N',1,0),
+                ('GIMBAL\nLOCK','G',1,1),
+                ('STBY','S',2,0),
                 ('PROG','P',2,1),
-                 ('RESTART','R',3,0),
-                 ('OPR ERR','E',3,1),
-                 ('TRACKER','K',4,0))
+                ('RESTART','R',3,0),
+                ('OPR ERR','E',3,1),
+                ('TRACKER','K',4,0))
         Frame.__init__(self,master)
-        self.config(bg='black')
+        self.config(bg='black',width=120)
         self.lamps = {}
         self.faults = {}
         for (text,shortcut,r,c) in lamps:
@@ -136,6 +135,8 @@ class Display(Frame):
         Label(self,text='PROG',fg='black',bg='green',font='Courier 14').grid(row=0,column=2)
         Label(self,text='VERB',fg='black',bg='green',font='Courier 14').grid(row=2,column=1)
         Label(self,text='NOUN',fg='black',bg='green',font='Courier 14').grid(row=2,column=2)
+        self.compAct = Message(self,text="COMP\nACTY",fg="#1e1e1e",bg="black")
+        self.compAct.grid(row=0,column=1,rowspan=2)
         self.verb = Digits(self,'00')
         self.verb.grid(row=3,column=1)
         self.noun = Digits(self,'00')
@@ -150,6 +151,13 @@ class Display(Frame):
         #self.r3.displayMode('flash')
         self.r3.disp.config(width=6)
         self.r3.grid(row=6,column=1,columnspan=2)
+        
+    def compActivity(self):
+        self.compAct.config(bg="green")
+        self.compActyTimer = self.after(200,self.compActivityOff)
+        
+    def compActivityOff(self):
+        self.compAct.config(bg="black")
         
     def setRegister(self,reg,value,radix='decimal'):
         neg = False
@@ -199,6 +207,7 @@ class Display(Frame):
     def setNounToProg(self):
         (verb,noun) = self.getVerbNoun()
         self.setProg(noun)
+        
     def setInitialState(self):
         self.verb.displayMode('off')
         self.noun.displayMode('off')
@@ -228,11 +237,14 @@ class App(Frame):
         self.keys = Keypad(self)
         self.keys.grid(row=2,columnspan=2)
         self.agc = AGC(self.display,self.lamps)
+        self.updateAGC()
+        self.currentRegister = 0
+        
     def keypress(self,key):
         (verb,noun) = self.display.getVerbNoun()
         if key in ('+','-'):
-            if self.agc.mode == 'R1':
-                self.agc.writeR1(key)
+            if self.agc.mode == 'Reg':
+                self.agc.writeRegister(key,self.currentRegister)
         
         if key in ('1','2','3','4','5','6','7','8','9','0'):
             ## Numerical Key Pressed
@@ -254,8 +266,8 @@ class App(Frame):
                     self.agc.mode = ''
                 self.display.verb.displayMode('on')
                 
-            elif self.agc.mode == 'R1':
-                self.agc.writeR1(key)
+            elif self.agc.mode == 'Reg':
+                self.agc.writeRegister(key,self.currentRegister)
             elif self.agc.changingProgram == 'set':
                 print "Ready to accept program"
                 current = self.display.noun.value.get()
@@ -272,19 +284,20 @@ class App(Frame):
             #print (verb,noun)
             if (verb == '06'):
                 self.agc.displayNoun(noun)
-            #elif (verb,noun) == ('06','65'):
-            #    self.agc.setElapsedTime()
-            #elif (verb,noun) == ('06','90'):
-            #    self.agc.displayNoun90()
             elif (verb,noun) == ('16','65'):
                 self.agc.updateElapsedTime()
 
             elif verb == '21':
-                self.agc.writeR1(key)
+                self.currentRegister = 1
+                self.agc.writeRegister(key,self.currentRegister)
+            elif verb == '22':
+                self.currentRegister = 2
+                self.agc.writeRegister(key,self.currentRegister)
+            elif verb == '23':
+                self.currentRegister = 3
+                self.agc.writeRegister(key,self.currentRegister)
             elif verb == '37' and self.agc.changingProgram == 'no':
                 self.agc.verb37()
-            elif verb == '43':
-                self.agc.verb43()
             elif verb == '37' and self.agc.changingProgram == 'set':
                 self.display.verb.displayMode('on')
                 self.agc.changingProgram = 'yes'
@@ -292,6 +305,9 @@ class App(Frame):
                 
         if key == 'PRO':
             self.lamps.toggleLamp('E')
+            
+        if key == 'KEYREL':
+            self.display.compActivity()
                 
         if key == 'VERB':
             self.display.verb.value.set('')
@@ -314,6 +330,11 @@ class App(Frame):
             #self.display.setRegister(1,0)
             #self.display.setRegister(2,0)
             #self.display.setRegister(3,0)
+            
+    def updateAGC(self):
+        self.agc.updateElapsedTime()
+        
+        self.updateTimer = self.after(100,self.updateAGC)
 
 class AGC():
     def __init__(self,display,lamps):
@@ -323,32 +344,26 @@ class AGC():
         self.changingProgram = 'no'
         self.entryRadix = ''
         self.startTime = time.time()
-        self.R1 = 0
         self.rvOutOfPlane = (4,3,2)
         self.nouns = {'90':(21,22,23),
                       '65':( 0, 0, 0),
                       '06':(99,88)}
-        
-    def writeRegister(self,reg,value):
-        pass    
-        #blinkVerbNoun('on')
-        
-    def setElapsedTime(self):
-        elapsedTime = time.time() - self.startTime
-        #hours = int(elapsedTime/60/60)
-        #minutes = int(elapsedTime/60
-        seconds = int(elapsedTime)
-        minutes = int(seconds/60)
-        hours = int(minutes/60)
-        self.nouns['90'] = (hours,minutes,seconds)
-        self.display.setRegisters(hours,minutes,seconds,radix='octal')
-        
+        self.nounType = {'90':1,
+                         '65':1,
+                         '06':0}
         
     def updateElapsedTime(self):
-        self.setElapsedTime()
-        (verb,noun) = self.display.getVerbNoun()
-        if (verb,noun) == ('16','65'):
-            self._updateTimer = self.display.after(1000,self.updateElapsedTime)
+        elapsedTime = time.time() - self.startTime
+        minutes, seconds = divmod(elapsedTime, 60)
+        hours, minutes = divmod(minutes, 60)
+        self.nouns['65'] = (hours,minutes,seconds)
+        
+        
+#    def updateElapsedTime(self):
+#        self.setElapsedTime()
+#        (verb,noun) = self.display.getVerbNoun()
+#        if (verb,noun) == ('16','65'):
+#            self._updateTimer = self.display.after(1000,self.updateElapsedTime)
                       
     def verb37(self):
         print "Verb 37"
@@ -365,30 +380,30 @@ class AGC():
             self.changingProgram = 'no'
         else:
             print "Invalid:",self.changingProgram
-    
-    def verb43(self):
-        print "Verb 37"
-        self.display.setRegisters(0,0,0)
-            
-    def displayNoun90(self):
-        (r1,r2,r3) = self.nouns['90']
-        self.display.setRegisters(r1,r2,r3)
         
-    def displayNoun(self,noun):
+    def displayNoun(self,noun):        
         if noun in self.nouns.keys():
             data = self.nouns[noun]
+            if self.nounType[noun] == 1:
+                rad = 'decimal'
+            else:
+                rad = 'octal'
+                
             if len(data) == 3:
                 (r1,r2,r3) = data
-                self.display.setRegisters(r1,r2,r3,radix='octal')
+                self.display.setRegisters(r1,r2,r3,radix=rad)
             elif len(data) == 2:
                 (r1,r2) = data
-                self.display.setRegister(1,r1,radix='octal')
-                self.display.setRegister(2,r2,radix='octal')
+                self.display.setRegister(1,r1,radix=rad)
+                self.display.setRegister(2,r2,radix=rad)
+                self.display.setRegister(3,0,radix=rad)
                 self.display.r1.displayMode('on')
                 self.display.r2.displayMode('on')
                 self.display.r3.displayMode('off')
             elif len(data) == 1:
-                self.display.setRegister(1,r1,radix='octal')
+                self.display.setRegister(1,r1,radix=rad)
+                self.display.setRegister(2,0,radix=rad)
+                self.display.setRegister(3,0,radix=rad)
                 self.display.r1.displayMode('on')
                 self.display.r2.displayMode('off')
                 self.display.r3.displayMode('off')
@@ -396,55 +411,69 @@ class AGC():
                 print "Invalid Noun"
         else:
             self.lamps.setLamp('E')
-    
-        
-    def writeR1(self,key):
-        #print "Write R1: ", self.mode
-        if self.mode == '':
-            self.display.blinkVerbNoun('on')
-            self.mode = 'R1'
-            self.display.r1.value.set('')
-        elif self.mode == 'R1':
-            #print "Entry Mode: ", self.entryRadix
-            self.display.r1.displayMode('on')
-            current = self.display.r1.value.get()
-            if self.entryRadix == '':    
-                if key in ('+','-'):
-                    self.entryRadix = 'dec'
-                    self.display.r1.value.set(key)
-                elif key in ('1','2','3','4','5','6','7','0'):
-                    self.entryRadix = 'oct'
-                    self.display.r1.value.set(" "+key)
+     
+    def writeRegister(self,key,reg):
+        if not self.display.noun.value.get() in self.nouns.keys():
+            self.lamps.setLamp('E')
+        else:
+            if reg == 1:
+                r = self.display.r1
+            elif reg == 2:
+                r = self.display.r2
+            elif reg == 3:
+                r = self.display.r3
+            #print "Write R%i: %s" % (reg, self.mode)
+            if self.mode == '':
+                self.display.blinkVerbNoun('on')
+                self.mode = 'Reg'
+                r.value.set('')
+            elif self.mode == 'Reg':
+                #print "Entry Mode: ", self.entryRadix
+                r.displayMode('on')
+                current = r.value.get()
+                if self.entryRadix == '':    
+                    if key in ('+','-'):
+                        self.entryRadix = 'dec'
+                        r.value.set(key)
+                    elif key in ('1','2','3','4','5','6','7','0'):
+                        self.entryRadix = 'oct'
+                        r.value.set(" "+key)
+                        
+                elif self.entryRadix == 'dec':
+                    if key in ('1','2','3','4','5','6','7','8','9','0'):
+                        #print "Length: %s" % len(current)
+                        if len(current)<6:
+                            r.value.set(current+key)
+                        if len(r.value.get()) == 6:
+                            self.mode = 'Reg_Ready'
                     
-            elif self.entryRadix == 'dec':
-                if key in ('1','2','3','4','5','6','7','8','9','0'):
-                    #print "Length: %s" % len(current)
-                    if len(current)<6:
-                        self.display.r1.value.set(current+key)
-                    if len(self.display.r1.value.get()) == 6:
-                        self.mode = 'R1_Ready'
-                
-            elif self.entryRadix == 'oct':
-                if not key in ('8','9'):
-                    #print "Length: %s" % len(current)
-                    if len(current) == 0:
-                        current = ' '
-                    if len(current)<6:
-                        self.display.r1.value.set(current+key)
-                    if len(self.display.r1.value.get()) == 6:
-                        self.mode = 'R1_Ready'
-                                    
-            print "Entry Radix %s" % (self.entryRadix)
-        elif self.mode == 'R1_Ready':
-            if key in 'ENTR':
-                print "Enter Pressed"
-                self.mode = ''
-                self.display.blinkVerbNoun('off')
-                self.entryRadix = ''
-                (r1,r2,r3) = self.nouns[self.display.noun.value.get()]
-                r1 = int(self.display.r1.value.get()) 
-                self.nouns['90'] = (r1,r2,r3)
-        
+                elif self.entryRadix == 'oct':
+                    if not key in ('8','9'):
+                        #print "Length: %s" % len(current)
+                        if len(current) == 0:
+                            current = ' '
+                        if len(current)<6:
+                            r.value.set(current+key)
+                        if len(r.value.get()) == 6:
+                            self.mode = 'Reg_Ready'
+                                        
+                print "Entry Radix %s" % (self.entryRadix)
+            elif self.mode == 'Reg_Ready':
+                if key in 'ENTR':
+                    print "Enter Pressed"
+                    self.mode = ''
+                    self.currentRegister = 0
+                    self.display.blinkVerbNoun('off')
+                    self.entryRadix = ''
+                    (r1,r2,r3) = self.nouns[self.display.noun.value.get()]
+                    if reg == 1:
+                        r1 = int(r.value.get()) 
+                    elif reg == 2:
+                        r2 = int(r.value.get()) 
+                    elif reg == 3:
+                        r3 = int(r.value.get()) 
+                    
+                    self.nouns['90'] = (r1,r2,r3)   
          
 def main():
     root = Tk()

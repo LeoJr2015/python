@@ -82,9 +82,6 @@ class BigTrak:
 	def start(self):
 		clock = pygame.time.Clock()
 		
-		
-		
-		
 		while (self.gameEndCode == 0):
 			pygame.display.flip()
 			for event in pygame.event.get():

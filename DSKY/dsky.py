@@ -245,7 +245,15 @@ class App(Frame):
         if key in ('+','-'):
             if self.agc.mode == 'Reg':
                 self.agc.writeRegister(key,self.currentRegister)
-        
+                
+        if key in ('CLR'):
+            if self.agc.mode == 'NOUN':
+                self.display.noun.value.set('')
+            elif self.agc.mode == 'VERB':
+                self.display.verb.value.set('')
+            elif self.agc.mode == 'Reg':
+                
+                    
         if key in ('1','2','3','4','5','6','7','8','9','0'):
             ## Numerical Key Pressed
             if self.agc.mode == 'NOUN':

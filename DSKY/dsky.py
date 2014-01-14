@@ -251,8 +251,8 @@ class App(Frame):
                 self.display.noun.value.set('')
             elif self.agc.mode == 'VERB':
                 self.display.verb.value.set('')
-            elif self.agc.mode == 'Reg':
-                
+            #elif self.agc.mode == 'Reg':
+            #    self.display.                
                     
         if key in ('1','2','3','4','5','6','7','8','9','0'):
             ## Numerical Key Pressed

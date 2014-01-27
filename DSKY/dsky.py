@@ -263,6 +263,8 @@ class App(Frame):
                 self.display.noun.value.set('')
             elif self.agc.mode == 'VERB':
                 self.display.verb.value.set('')
+            elif self.agc.mode in ('Reg','Reg_Ready'):
+                self.agc.writeRegister(key)
             #elif self.agc.mode == 'Reg':
             #    self.display.                
                     
@@ -525,13 +527,13 @@ class AGC():
                 r = self.display.r2
             elif self.currentRegister == 3:
                 r = self.display.r3
-            #print "Write R%i: %s" % (reg, self.mode)
+            print "Write R%i: %s" % (self.currentRegister, self.mode)
             if self.mode == '':
                 self.display.blinkVerbNoun('on')
                 self.mode = 'Reg'
                 r.value.set('')
             elif self.mode == 'Reg':
-                #print "Entry Mode: ", self.entryRadix
+                print "Entry Mode: ", self.entryRadix
                 r.displayMode('on')
                 current = r.value.get()
                 if self.entryRadix == '':    
@@ -541,24 +543,32 @@ class AGC():
                     elif key in ('1','2','3','4','5','6','7','0'):
                         self.entryRadix = 'oct'
                         r.value.set(" "+key)
+                    elif key in ('CLR'):
+                        r.value.set('')
                         
                 elif self.entryRadix == 'dec':
                     if key in ('1','2','3','4','5','6','7','8','9','0'):
-                        #print "Length: %s" % len(current)
+                        print "Length: %s" % len(current)
                         if len(current)<6:
                             r.value.set(current+key)
                         if len(r.value.get()) == 6:
                             self.mode = 'Reg_Ready'
+                    elif key in ('CLR'):
+                        r.value.set(" ")
+                        self.entryRadix = ''
                     
                 elif self.entryRadix == 'oct':
-                    if not key in ('8','9'):
-                        #print "Length: %s" % len(current)
+                    if key in ('1','2','3','4','5','6','7','0'):
+                        print "Length: %s" % len(current)
                         if len(current) == 0:
                             current = ' '
                         if len(current)<6:
                             r.value.set(current+key)
                         if len(r.value.get()) == 6:
                             self.mode = 'Reg_Ready'
+                    elif key in ('CLR'):
+                        r.value.set(" ")
+                        self.entryRadix = ''
                                         
                 #print "Entry Radix %s" % (self.entryRadix)
             elif self.mode == 'Reg_Ready':
@@ -600,7 +610,11 @@ class AGC():
                         self.currentRegister = 0
                         self.display.blinkVerbNoun('off')
                         self.entryRadix = ''
-                    
+                
+                elif key in ('CLR'):
+                        r.value.set(" ")
+                        self.entryRadix = ''
+                        self.mode = 'Reg'
                     
                         
          

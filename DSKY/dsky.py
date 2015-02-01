@@ -20,7 +20,7 @@
 #  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #  MA 02110-1301, USA.
 #  
-#  
+# 
 from Tkinter import *
 import time
 
@@ -59,36 +59,40 @@ class Keypad(Frame):
         
 class statusLamps(Frame):
     def __init__(self,master,**kw):
-        lamps = (('UPLINK\nACTY','U',0,0),
-                ('TEMP','T',0,1),
-                ('NO ATT','N',1,0),
-                ('GIMBAL\nLOCK','G',1,1),
-                ('STBY','S',2,0),
-                ('PROG','P',2,1),
-                ('RESTART','R',3,0),
-                ('OPR ERR','E',3,1),
-                ('TRACKER','K',4,0))
+        lamps = (('UPLINK\nACTY','U',0,0,'white'),
+                ('TEMP','T',0,1,'yellow'),
+                ('NO ATT','N',1,0,'white'),
+                ('GIMBAL\nLOCK','G',1,1,'yellow'),
+                ('STBY','S',2,0,'white'),
+                ('PROG','P',2,1,'yellow'),
+                ('RESTART','R',3,0,'yellow'),
+                ('OPR ERR','E',3,1,'white'),
+                ('TRACKER','K',4,0,'yellow'),
+                ('','',5,0,''),
+                ('','',6,0,''))
         Frame.__init__(self,master)
-        self.config(bg='black',width=120)
+        self.config(bg='gray',width=120)
         self.lamps = {}
         self.faults = {}
-        for (text,shortcut,r,c) in lamps:
+        self.errCol = {}
+        for (text,shortcut,r,c,errCol) in lamps:
             self.faults[shortcut] = False
-            self.lamps[shortcut] = Message(self,text=text,fg="gray",bg='black',bd=2,relief=FLAT, font='Courier 10 bold',anchor=CENTER,width=100)
+            self.errCol[shortcut] = errCol
+            self.lamps[shortcut] = Message(self,text=text,fg="black",bg='grey',bd=2,relief=FLAT, font='Courier 10 bold',anchor=CENTER,width=100)
             self.lamps[shortcut].grid(row=r,column=c,sticky=E+W)
     def setLamp(self,lamp):
         self.faults[lamp] = True
-        self.lamps[lamp].config(fg="red")
+        self.lamps[lamp].config(bg=self.errCol[lamp])
     def clearLamp(self,lamp):
         self.faults[lamp] = False
-        self.lamps[lamp].config(fg="gray")
+        self.lamps[lamp].config(bg="gray")
     def toggleLamp(self,lamp):
         if self.faults[lamp]:
             self.faults[lamp] = False
             self.lamps[lamp].config(fg="gray")
         else:
             self.faults[lamp] = True
-            self.lamps[lamp].config(fg="red")
+            self.lamps[lamp].config(bg=self.errCol[lamp])
         
 class Digits(Frame):
     def __init__(self,master,value,**kw):   
@@ -101,6 +105,7 @@ class Digits(Frame):
         self.state = 'on'
         self.mode = 'on'
         self.timerRunning = False
+        
     def displayMode(self,mode):
         self.mode = mode
         if mode == 'on':
@@ -141,13 +146,13 @@ class Display(Frame):
         self.verb.grid(row=3,column=1)
         self.noun = Digits(self,'00')
         self.noun.grid(row=3,column=2)
-        self.r1 = Digits(self,'+00000')
+        self.r1 = Digits(self,'+88888')
         self.r1.disp.config(width=6)
         self.r1.grid(row=4,column=1,columnspan=2)
-        self.r2 = Digits(self,"+00000",width=8)
+        self.r2 = Digits(self,"+88888",width=8)
         self.r2.disp.config(width=6)
         self.r2.grid(row=5,column=1,columnspan=2)
-        self.r3 = Digits(self,'+00000')
+        self.r3 = Digits(self,'+88888')
         #self.r3.displayMode('flash')
         self.r3.disp.config(width=6)
         self.r3.grid(row=6,column=1,columnspan=2)
@@ -193,11 +198,14 @@ class Display(Frame):
         self.r3.displayMode('on')
 
     def clearDisplay(self):
-        self.r1.value.set('')
-        self.r2.value.set('')
-        self.r3.value.set('')
-        self.verb.value.set('')
-        self.noun.value.set('')
+        self.r1.displayMode('off')
+        self.r2.displayMode('off')
+        self.r3.displayMode('off')
+        self.r1.value.set('+88888')
+        self.r2.value.set('+88888')
+        self.r3.value.set('+88888')
+        self.verb.value.set('00')
+        self.noun.value.set('00')
         
     def getVerbNoun(self):
         return (self.verb.value.get(),self.noun.value.get())
@@ -249,8 +257,6 @@ class App(Frame):
         self.agc = AGC(self.display,self.lamps)
         self.updateAGC()
        
-
-        
     def keypress(self,key):
         (verb,noun) = self.display.getVerbNoun()
         self.display.compActivity()
@@ -264,9 +270,7 @@ class App(Frame):
             elif self.agc.mode == 'VERB':
                 self.display.verb.value.set('')
             elif self.agc.mode in ('Reg','Reg_Ready'):
-                self.agc.writeRegister(key)
-            #elif self.agc.mode == 'Reg':
-            #    self.display.                
+                self.agc.writeRegister(key)              
                     
         if key in ('1','2','3','4','5','6','7','8','9','0'):
             ## Numerical Key Pressed
@@ -302,14 +306,12 @@ class App(Frame):
                 self.display.noun.displayMode('on')
                     
         if key == 'ENTR':
-
             (verb,noun) = self.display.getVerbNoun()
             #print (verb,noun)
             if (verb == '06'):
                 self.agc.displayNoun(noun)
             elif (verb) == ('16'):
                 self.agc.mode='Update'
-                #self.agc.updateElapsedTime()
                 self.agc.updateNoun(noun=noun)
             elif verb == '21':
                 self.agc.currentRegister = 1
@@ -320,7 +322,7 @@ class App(Frame):
             elif verb == '23':
                 self.agc.currentRegister = 3
                 self.agc.writeRegister(key)
-            elif verb == '24':
+            elif verb == '25':
                 if self.agc.currentRegister == 0:
                     self.agc.currentRegister = 1
                 self.agc.setAllRegisters = True
@@ -341,33 +343,23 @@ class App(Frame):
             if self.agc.program == 6:
                 if self.agc.programState == 2:
                     self.agc.prog06()
-                
             
         if key == 'KEYREL':
             self.display.compActivity()
-                
+        
         if key == 'VERB':
             self.display.verb.value.set('')
             self.agc.mode = 'VERB'
         elif key == 'NOUN':
             self.display.noun.value.set('')
             self.agc.mode = 'NOUN'
-        elif key == '1':
-            #self.display.setRegister(1,777)
-            pass
-        elif key == '2':
-            #self.display.setRegister(2,-777)
-            pass
-        elif key == '3':
-            pass
-            #self.display.setRegister(3,-100000)
         elif key == 'RST':
             if self.lamps.faults['E']:
                 self.lamps.clearLamp('E')
             #self.display.setRegister(1,0)
             #self.display.setRegister(2,0)
             #self.display.setRegister(3,0)
-            
+
     def updateAGC(self):
         self.agc.updateElapsedTime()
         self.agc.updateRealTime()
@@ -395,7 +387,7 @@ class AGC():
                          '36':1,
                          '06':0}
                          
-        self.progs = ['06']
+        self.progs = ['00','01','06']
 
         self.updatingNoun = 0
         self.programState = None
@@ -424,14 +416,7 @@ class AGC():
         self.displayNoun(noun)
         if self.mode == 'Update':
             self._updateTimer = self.display.after(1000,self.updateNoun)
-        
-        
-#    def updateElapsedTime(self):
-#        self.setElapsedTime()
-#        (verb,noun) = self.display.getVerbNoun()
-#        if (verb,noun) == ('16','65'):
-#            self._updateTimer = self.display.after(1000,self.updateElapsedTime)
-                      
+
     def verb37(self):
         #print "Verb 37"
         #print self.changingProgram
@@ -450,16 +435,50 @@ class AGC():
             self.runProgram()
         else:
             print "Invalid:",self.changingProgram
-            
+
     def runProgram(self):
         prog = self.display.getProg()
         print "Program: %s" % prog
+        if prog in self.progs:
+            self.lamps.setLamp('P')
         if prog == '06':
             self.prog06()
+        elif prog == '01':
+            self.prog01()
+        elif prog == '00':
+            self.prog00()
         else:
             self.lamps.setLamp('E')
-            
-            
+
+    def prog00(self):
+        self.display.clearDisplay()
+
+    def prog01(self):
+        if self.programState == None:
+            self.program = 1
+            self.programState = 1
+            self.programTimer = self.display.after(1000,self.prog01)
+        elif self.programState == 1:
+            self.programState = 2
+            self.programTimer = self.display.after(10000,self.prog01)
+        elif self.programState == 2:
+            self.lamps.setLamp('N')
+            self.programTimer = self.display.after(10000,self.prog01)
+            self.programState = 3
+        elif self.programState == 3:
+            self.lamps.clearLamp('N')
+            self.display.setProg('02')
+            self.program = 2
+            self.programState = 1
+            #self.programTimer = self.display.after(2000,self.prog02)
+
+    #def prog02(self):
+        #if self.programState == 1:
+            ##Vertical Alignment
+            #self.programState = 2
+            #self.display.after(1000,self.prog02)
+        #elif self.programState == 2:
+
     def prog06(self):
         if self.programState == None:
             self.program = 6
@@ -482,6 +501,9 @@ class AGC():
         elif self.programState == 3:
             self.display.clearDisplay()
             self.display.prog.displayMode('off')
+            self.display.verb.displayMode('off')
+            self.display.noun.displayMode('off')
+            self.lamps.clearLamp('P')
             self.lamps.setLamp('S')
             self.program = None
             self.programState = None
@@ -493,7 +515,7 @@ class AGC():
                 rad = 'decimal'
             else:
                 rad = 'octal'
-                
+
             if len(data) == 3:
                 (r1,r2,r3) = data
                 self.display.setRegisters(r1,r2,r3,radix=rad)
@@ -562,7 +584,7 @@ class AGC():
                         print "Length: %s" % len(current)
                         if len(current) == 0:
                             current = ' '
-                        if len(current)<6:
+                        if len(current) < 6:
                             r.value.set(current+key)
                         if len(r.value.get()) == 6:
                             self.mode = 'Reg_Ready'
@@ -576,14 +598,32 @@ class AGC():
                     #print "Enter Pressed"
                     #print "Completed Register %s" % self.currentRegister
                     ## Save State of Registers ##
-                    (r1,r2,r3) = self.nouns[self.display.noun.value.get()]
+                    currentNoun = self.display.noun.value.get()
+                    currentNounValue = self.nouns[currentNoun]
+                    """Unpack the noun"""
+                    if len(currentNounValue) == 1:
+                        r1 = currentNounValue
+                    elif len(currentNounValue) == 2:
+                        (r1,r2) = currentNounValue
+                    elif len(currentNounValue) == 3:
+                        (r1,r2,r3) = currentNounValue
+                    
+                    """Get the new register value"""
                     if self.currentRegister == 1:
                         r1 = int(r.value.get()) 
                     elif self.currentRegister == 2:
                         r2 = int(r.value.get()) 
                     elif self.currentRegister == 3:
-                        r3 = int(r.value.get()) 
-                    self.nouns['90'] = (r1,r2,r3)
+                        r3 = int(r.value.get())
+                        
+                    """Set the new register value"""
+                    if len(currentNounValue) == 1:
+                        self.nouns[currentNoun] = (r1)
+                    elif len(currentNounValue) == 2:
+                        self.nouns[currentNoun] = (r1,r2)
+                    elif len(currentNounValue) == 3:
+                        self.nouns[currentNoun] = (r1,r2,r3)
+                    
 
                     ##If we are setting all registers move to the next one ##
                     if self.setAllRegisters:

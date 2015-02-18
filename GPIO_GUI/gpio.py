@@ -100,7 +100,9 @@ class GPIO(Frame):
         self.led.grid(column=3,row=0)
 
         self.set_state.config(state=DISABLED)
-        self.updateCurrentFunction()
+        function = self.updateCurrentFunction()
+        if function not in ['Input','Output']:
+            self.mode_sel['state'] = DISABLED
 
 ##    def _configurePin(self, y):
 ##        """Future capability to setup pull up/down"""
@@ -128,11 +130,11 @@ class GPIO(Frame):
     def getPinFunctionName(self,pin):
         functions = {pi.IN:'Input',
                      pi.OUT:'Output',
+                     pi.I2C:'I2C',
                      pi.SPI:'SPI',
                      pi.HARD_PWM:'HARD_PWM',
                      pi.SERIAL:'Serial',
-                     pi.UNKNOWN:'Unknown'}
-                     
+                     pi.UNKNOWN:'Unknown'}                     
         return functions[pi.gpio_function(pin)]
         
         
@@ -176,6 +178,7 @@ class GPIO(Frame):
     def updateCurrentFunction(self):
         pinFunction = self.getPinFunctionName(self.pin)
         self.current_mode.set(pinFunction)
+        return pinFunction
         ##print("GPIO %s is an %s" % (self.pin,pinFunction))
         
 

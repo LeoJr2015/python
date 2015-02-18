@@ -45,6 +45,7 @@ class LED(Frame):
         """Returns the current state of the LED"""
         return self.state
 
+## Future Functionality
 ##class gpioEdit(tkSimpleDialog.Dialog):
 ##    """Dialog to be expanded to support advanced gpio features like
 ##       - Pull Up / Pull Down Resistor Config
@@ -79,7 +80,7 @@ class GPIO(Frame):
     def __init__(self,parent,pin=0,name=None,**kw):
         self.pin = pin
         if name == None:
-            self.name = "GPIO %s" % (str(self.pin))
+            self.name = "GPIO %02d" % (self.pin)
         Frame.__init__(self,parent,width=150,height=20,relief=SUNKEN,bd=1,padx=5,pady=5)
         ##Future capability
         ##self.bind('<Double-Button-1>', lambda e, s=self: self._configurePin(e.y))
@@ -95,14 +96,15 @@ class GPIO(Frame):
         self.mode_sel.grid(column=1,row=0)
         self.set_state.grid(column=2,row=0)
         self.current_mode = StringVar()
-        self.lblCurrentMode = Label(self,textvariable=self.current_mode)
-        self.lblCurrentMode.grid(column=1,row=1)
         self.led.grid(column=3,row=0)
 
         self.set_state.config(state=DISABLED)
-        function = self.updateCurrentFunction()
+        function = self.getPinFunctionName()
         if function not in ['Input','Output']:
+            self.mode_sel.delete(0,'end')
+            self.mode_sel.insert(0,function)
             self.mode_sel['state'] = DISABLED
+            
 
 ##    def _configurePin(self, y):
 ##        """Future capability to setup pull up/down"""
@@ -125,9 +127,9 @@ class GPIO(Frame):
             self.set_state.config(state=NORMAL)
             pi.setup(self.pin,pi.OUT)
         self.updateInput()
-        self.updateCurrentFunction()
 
-    def getPinFunctionName(self,pin):
+    def getPinFunctionName(self):
+        pin = self.pin
         functions = {pi.IN:'Input',
                      pi.OUT:'Output',
                      pi.I2C:'I2C',
@@ -136,15 +138,6 @@ class GPIO(Frame):
                      pi.SERIAL:'Serial',
                      pi.UNKNOWN:'Unknown'}                     
         return functions[pi.gpio_function(pin)]
-        
-        
-
-    def setName(self,name=None):
-        """Sets a new name for the GPIO port
-        setName("Hot Tub")"""
-        if name == None:
-            name = "GPIO ",str(self.pin)
-        self.Label.config(text=name)
 
 ## Future Functionality
 ##    def setPullUp(self,pullup):
@@ -175,11 +168,6 @@ class GPIO(Frame):
             state = pi.input(self.pin)
             self.state = state
             self.updateLED()
-    def updateCurrentFunction(self):
-        pinFunction = self.getPinFunctionName(self.pin)
-        self.current_mode.set(pinFunction)
-        return pinFunction
-        ##print("GPIO %s is an %s" % (self.pin,pinFunction))
         
 
 class App(Frame):
@@ -188,35 +176,11 @@ class App(Frame):
         self.parent = parent
         pi.setmode(pi.BCM)
         self.ports = []
-        ############################################################
-        ### UPDATE gpio TO SELECT WHICH GPIO YOU WISH TO CONTROL ###
-        ### Format is (BCM Pin Number, Row, Column)              ###
-        ### Row and Column set where each widget should be       ###
-        ### positioned in the app.                               ###
-        ############################################################
-        gpio = ((2,0,0),
-                (3,1,0),
-                (4,2,0),
-                (7,3,0),
-                (8,4,0),
-                (9,5,0),
-                (10,6,0),
-                (11,7,0),
-                (14,8,0),
-                (15,0,1),
-                (17,1,1),
-                (18,2,1),
-                (22,3,1),
-                (23,4,1),
-                (24,5,1),
-                (25,6,1),
-                (27,7,1))
-        num_of_gpio = len(gpio)
-        ####################################################################
-        col = 0
+        ## Get the RPI Hardware dependant list of GPIO
+        gpio = self.getRPIVersionGPIO()
         for num,(p,r,c) in enumerate(gpio):
             self.ports.append(GPIO(self,pin=p))
-            self.ports[col-1].grid(row=r,column=c)
+            self.ports[-1].grid(row=r,column=c)
         self.update()
 
     def onClose(self):
@@ -238,6 +202,66 @@ class App(Frame):
         """Runs every 100ms to update the state of the GPIO inputs"""
         self.readStates()
         self._timer = self.after(100,self.update)
+    def getRPIVersionGPIO(self):
+        """Returns the GPIO hardware config for different Pi versions
+           Currently supports layout 1 and 3"""
+        gpio = ((2,0,0),
+                (3,1,0),
+                (4,2,0),
+                (7,3,0),
+                (8,4,0),
+                (9,5,0),
+                (10,6,0),
+                (11,7,0),
+                (14,8,0),
+                (15,0,1),
+                (17,1,1),
+                (18,2,1),
+                (22,3,1),
+                (23,4,1),
+                (24,5,1),
+                (25,6,1),
+                (27,7,1))
+        gpio3 = ((2,0,0),
+                (3,1,0),
+                (4,2,0),
+                (17,3,0),
+                (27,4,0),
+                (22,5,0),
+                (10,6,0),
+                (9,7,0),
+                (11,8,0),
+                (5,9,0),
+                (6,10,0),
+                (13,11,0),
+                (19,12,0),
+                (26,13,0),
+                (14,0,1), 
+                (15,1,1),
+                (18,2,1),
+                (23,3,1),
+                (24,4,1),
+                (25,5,1),
+                (8,6,1),
+                (7,7,1),
+                (12,8,1),
+                (16,9,1),
+                (20,10,1),
+                (21,11,1))
+        if pi.RPI_REVISION == 3:
+            gpio = gpio3
+            self.parent.title('Raspberry Pi GPIO - A+/B+/2B+')
+        elif pi.RPI_REVISION == 2:
+            #Change this when I know the pins on RPi GPIO Version 2
+            #gpio = gpio2
+            self.parent.title('Raspberry Pi GPIO - A/B Rev2')
+        elif pi.RPI_REVISION == 1:
+            self.parent.title('Raspberry Pi GPIO - A/B')
+        else:
+            self.parent.title('Raspberry Pi GPIO - Unknown Version')
+            ##Assume same config as A+/B+/2B+
+            gpio = gpio3
+        return gpio
         
 
 def main():
@@ -247,6 +271,7 @@ def main():
     a.grid()
     """When the window is closed, run the onClose function."""
     root.protocol("WM_DELETE_WINDOW",a.onClose)
+    root.resizable(False,False)
     root.mainloop()
    
 

@@ -205,23 +205,40 @@ class App(Frame):
     def getRPIVersionGPIO(self):
         """Returns the GPIO hardware config for different Pi versions
            Currently supports layout 1 and 3"""
-        gpio = ((2,0,0),
+        gpio1 = ((0,0,0),
+                (1,1,0),
+                (4,2,0),
+                (17,3,0),
+                (21,4,0),
+                (22,5,0),
+                (10,6,0),
+                (9,7,0),
+                (11,8,0),
+                (14,0,1),
+                (15,1,1),
+                (18,2,1),
+                (23,3,1),
+                (24,4,1),
+                (25,5,1),
+                (8,6,1),
+                (7,7,1))
+        gpio2 = ((2,0,0),
                 (3,1,0),
                 (4,2,0),
-                (7,3,0),
-                (8,4,0),
-                (9,5,0),
+                (17,3,0),
+                (27,4,0),
+                (22,5,0),
                 (10,6,0),
-                (11,7,0),
-                (14,8,0),
-                (15,0,1),
-                (17,1,1),
+                (9,7,0),
+                (11,8,0),
+                (14,0,1),
+                (15,1,1),
                 (18,2,1),
-                (22,3,1),
-                (23,4,1),
-                (24,5,1),
-                (25,6,1),
-                (27,7,1))
+                (23,3,1),
+                (24,4,1),
+                (25,5,1),
+                (8,6,1),
+                (7,7,1))
         gpio3 = ((2,0,0),
                 (3,1,0),
                 (4,2,0),
@@ -253,10 +270,11 @@ class App(Frame):
             self.parent.title('Raspberry Pi GPIO - A+/B+/2B+')
         elif pi.RPI_REVISION == 2:
             #Change this when I know the pins on RPi GPIO Version 2
-            #gpio = gpio2
+            gpio = gpio2
             self.parent.title('Raspberry Pi GPIO - A/B Rev2')
         elif pi.RPI_REVISION == 1:
             self.parent.title('Raspberry Pi GPIO - A/B')
+            gpio = gpio1
         else:
             self.parent.title('Raspberry Pi GPIO - Unknown Version')
             ##Assume same config as A+/B+/2B+

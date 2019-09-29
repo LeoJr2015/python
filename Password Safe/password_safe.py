@@ -4,26 +4,37 @@ from Crypto.Cipher import AES
 import os
 import getpass
 
+
 def hexdump(src, length=8): 
     result = [] 
-    digits = 4 if isinstance(src, unicode) else 2 
-    for i in xrange(0, len(src), length): 
-       s = src[i:i+length] 
+    digits = 4
+    for i in range(0, len(src), length):
+       s = src[i:i+length]
+
        hexa = b' '.join(["%0*X" % (digits, ord(x))  for x in s]) 
-       text = b''.join([x if 0x20 <= ord(x) < 0x7F else b'.'  for x in s]) 
-       result.append( b"%04X   %-*s   %s" % (i, length*(digits + 1), hexa, text) ) 
+
+       text = b''.join([x if 0x20 <= ord(x) < 0x7F else b'.'  for x in s])
+
+       result.append( b"%04X   %-*s   %s" % (i, length*(digits + 1), hexa, text) )
     return b'\n'.join(result)
 
+
 class AES_Crypto:
+
 	def set_key(self,key):
+
 		pad_to = 16 - (len(key) % 16)
 		key = key + ("\x00"*pad_to)
 		self.obj = AES.new(key,AES.MODE_ECB)
+
 	def encrypt(self,message):
+
 		pad_to = 16 - (len(message) % 16)
 		message = message + ("\x00"*pad_to)
 		return self.obj.encrypt(message)
+
 	def decrypt(self,message):
+
 		try:
 			decrypted = self.obj.decrypt(message)
 			decrypted = decrypted.rstrip('\x00')
@@ -38,35 +49,46 @@ class database:
 		self.enc = AES_Crypto()
 		
 	def _createdb(self):
-		self.c.execute("create table if not exists passwords (id INTEGER PRIMARY KEY,description text, username text, password text, category integer)")
- 		self.c.execute("create table if not exists unlock (id INTEGER PRIMARY KEY, name text, key blob)")
- 	
- 	def create_master_key(self):
+		self.c.execute("""create table if not exists passwords (id INTEGER PRIMARY KEY,description text, username text, 
+		password text, category integer)""")
+
+		self.c.execute("create table if not exists unlock (id INTEGER PRIMARY KEY, name text, key blob)")
+
+	def create_master_key(self):
+
 		result = self.c.execute("select count(*) from unlock where name = 'master'")
 		number = result.fetchall()[0][0]
 		if number > 0:
 			print("Key has already been generated")
 		else:
-			random = buffer(os.urandom(128))
+			random = memoryview(os.urandom(128))
+
 			self.c.execute("insert into unlock (name,key) values (?,?)" , ("master",random))
+
 		self.c.commit()
 		
 	def encrypt_master_key(self,key):
 		result = self.c.execute("select count(*) from unlock where name = 'encrypt'")
 		number = result.fetchall()[0][0]
+
 		if number > 0:
 			print("Master Key has already been encrypted")
+
 		else:
 			self.enc.set_key(key)
 			result = self.c.execute("select (key) from unlock where name = 'master'")
 			result = str(result.fetchall()[0][0])
+
 			encryptedkey = self.enc.encrypt(result)
-			self.c.execute("insert into unlock (name,key) values (?,?)" , ("encrypt",buffer(encryptedkey)))
+
+			self.c.execute("insert into unlock (name,key) values (?,?)" , ("encrypt", memoryview(encryptedkey)))
 			self.c.commit()
 			
 	def check_for_master_key(self):
+
 		result = self.c.execute("select count(*) from unlock where name = 'encrypt'")
 		number = result.fetchall()[0][0]
+
 		if number > 0:
 			return True
 		else:
@@ -78,7 +100,9 @@ class database:
 		master = str(result.fetchall()[0][0])
 		result = self.c.execute("select (key) from unlock where name = 'encrypt'")
 		result = str(result.fetchall()[0][0])
+
 		self.master_key = result
+
 		encrypt = self.enc.decrypt(result)
 
 		#print "Result1= ", hexdump(master)
@@ -91,22 +115,23 @@ class database:
 			return False
 		
 	def insert(self,fields):
-		 ds = fields['description']
-		 un = fields['username']
-		 pw = fields['password']
-		 self.c.execute("insert into passwords (description,username,password) values (?,?,?)" , (ds,un,pw))
-		 self.c.commit()
+		ds = fields['description']
+		un = fields['username']
+		pw = fields['password']
+		self.c.execute("insert into passwords (description,username,password) values (?,?,?)" , (ds,un,pw))
+		self.c.commit()
 		 
 	def get(self,description):
 		for row in self.c.execute("select username,password from passwords where description = ?",[description]):
 			return (row[0], row[1])
+
 	def get_list(self):
 		passwd_list = []
 		item = 1
 		for row in self.c.execute("select description from passwords"):
 			#print row[0]
 			passwd_list.append(row[0])
-			print(item,"-" ,row[0])
+			print(item, "-", row[0])
 			item += 1
 		return passwd_list
 		
@@ -116,13 +141,14 @@ def main():
 	db = database('test.db')
 	enc = AES_Crypto()
 	granted = False
-	while (granted == False):
-		if (db.check_for_master_key()):
+	while granted == False:
+
+		if db.check_for_master_key():
 			print("Master Key Exists")
 			
-			while (granted == False):
+			while granted == False:
 				user_key = getpass.getpass("Enter your User Key: ")
-				if  (db.validate_key(user_key)):
+				if  db.validate_key(user_key):
 					print("Access Granted")
 					enc.set_key(user_key)
 					granted = True
@@ -131,9 +157,9 @@ def main():
 		else:
 			print("No Master Key")
 			match = False
-			while (match == False):
-				user_key = getpass.getpass("Create User Key: ")
-				confirm = getpass.getpass("Confirm your User Key: ")
+			while match == False:
+				user_key = getpass.unix_getpass(prompt= "Create User Key: ")
+				confirm = getpass.unix_getpass(prompt="Confirm your User Key: ")
 			
 				if user_key == confirm:
 					db.create_master_key()
@@ -147,7 +173,7 @@ def main():
 	#db.insert(entry)
 	#db.get('Facebook')
 	choice = -1
-	while (kill==0):
+	while kill==0:
 		
 		print ("*******************")
 		print ("***Password Safe***")
@@ -163,23 +189,27 @@ def main():
 			quit()
 		if choice == 1:
 			entry['description'] = input("Description: ")
-			entry['username'] = buffer(enc.encrypt(input("Username: ")))
-			entry['password'] = buffer(enc.encrypt(input("Password: ")))
+			entry['username'] = memoryview(enc.encrypt(input("Username: ")))
+			entry['password'] = memoryview(enc.encrypt(input("Password: ")))
 			db.insert(entry)
 
 		elif choice == 2:
 			passwd_list = db.get_list()
-			if (len(passwd_list)):
+
+			if len(passwd_list):
+
 				pwd_choice = int(input("Which item? "))
 				item = db.get(passwd_list[pwd_choice-1])
 				for field in item:
-					print enc.decrypt(field)
+					print(enc.decrypt(field))
+
 			else:
 				print("No Items")
+
 		elif choice == 3:
 			kill = 1    
 	
-	 
+
 if __name__ == '__main__':
 	main()
 

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import sqlite3
 from Crypto.Cipher import AES
 import os
@@ -45,7 +45,7 @@ class database:
 		result = self.c.execute("select count(*) from unlock where name = 'master'")
 		number = result.fetchall()[0][0]
 		if number > 0:
-			print "Key has already been generated"
+			print("Key has already been generated")
 		else:
 			random = buffer(os.urandom(128))
 			self.c.execute("insert into unlock (name,key) values (?,?)" , ("master",random))
@@ -55,7 +55,7 @@ class database:
 		result = self.c.execute("select count(*) from unlock where name = 'encrypt'")
 		number = result.fetchall()[0][0]
 		if number > 0:
-			print "Master Key has already been encrypted"
+			print("Master Key has already been encrypted")
 		else:
 			self.enc.set_key(key)
 			result = self.c.execute("select (key) from unlock where name = 'master'")
@@ -106,7 +106,7 @@ class database:
 		for row in self.c.execute("select description from passwords"):
 			#print row[0]
 			passwd_list.append(row[0])
-			print item,"-" ,row[0]
+			print(item,"-" ,row[0])
 			item += 1
 		return passwd_list
 		
@@ -118,18 +118,18 @@ def main():
 	granted = False
 	while (granted == False):
 		if (db.check_for_master_key()):
-			print "Master Key Exists"
+			print("Master Key Exists")
 			
 			while (granted == False):
 				user_key = getpass.getpass("Enter your User Key: ")
 				if  (db.validate_key(user_key)):
-					print "Access Granted"
+					print("Access Granted")
 					enc.set_key(user_key)
 					granted = True
 				else:
-					print "Access Denied"
+					print("Access Denied")
 		else:
-			print "No Master Key"
+			print("No Master Key")
 			match = False
 			while (match == False):
 				user_key = getpass.getpass("Create User Key: ")
@@ -141,7 +141,7 @@ def main():
 					match = True
 			
 				else:
-					print "No Match"
+					print("No Match")
 	
 	kill = 0
 	#db.insert(entry)
@@ -149,33 +149,33 @@ def main():
 	choice = -1
 	while (kill==0):
 		
-		print "*******************"
-		print "***Password Safe***"
-		print "*******************"
-		print "What would you like to do?"
-		print "1. Insert item"
-		print "2. Fetch item"
-		print "3. Quit"
+		print ("*******************")
+		print ("***Password Safe***")
+		print ("*******************")
+		print ("What would you like to do?")
+		print ("1. Insert item")
+		print ("2. Fetch item")
+		print ("3. Quit")
 		try:
-			choice = int(raw_input("\n>"))
+			choice = int(input("\n>"))
 		except: 
-			print "Not a Valid Entry"
+			print("Not a Valid Entry")
 			quit()
 		if choice == 1:
-			entry['description'] = raw_input("Description: ")
-			entry['username'] = buffer(enc.encrypt(raw_input("Username: ")))
-			entry['password'] = buffer(enc.encrypt(raw_input("Password: ")))
+			entry['description'] = input("Description: ")
+			entry['username'] = buffer(enc.encrypt(input("Username: ")))
+			entry['password'] = buffer(enc.encrypt(input("Password: ")))
 			db.insert(entry)
 
 		elif choice == 2:
 			passwd_list = db.get_list()
 			if (len(passwd_list)):
-				pwd_choice = int(raw_input("Which item? "))
+				pwd_choice = int(input("Which item? "))
 				item = db.get(passwd_list[pwd_choice-1])
 				for field in item:
 					print enc.decrypt(field)
 			else:
-				print "No Items"
+				print("No Items")
 		elif choice == 3:
 			kill = 1    
 	
